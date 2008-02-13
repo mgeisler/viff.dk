@@ -1,6 +1,5 @@
 .. -*- coding: utf-8 -*-
 
-
 =============================================================
  Welcome to VIFF, the Virtual Ideal Functionality Framework!
 =============================================================
@@ -168,7 +167,6 @@ Archive`__.
 VIFF is developed by `Martin Geisler`_, `Mikkel Krøigård`_, and `Tomas
 Toft`_. Other contributors are very welcome! Please come to the
 `mailing list`_ and talk to us if you want to help in any way.
-
 
 .. _mailing list:
 .. _VIFF-devel mailing list: http://lists.viff.dk/listinfo.cgi/viff-devel-viff.dk
