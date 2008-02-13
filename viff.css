@@ -1,0 +1,119 @@
+
+html {
+  font-family: sans-serif;
+  margin: 1em 2em;
+}
+
+p {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+li {
+  text-align: left;
+  margin-bottom: 0.5em;
+}
+
+img {
+  border: 0px;
+}
+
+h1 {
+  text-align: center;
+  color: #A00;
+}
+
+h2 {
+  color: #0A0;
+  border-bottom: medium solid #0A0;
+}
+
+div.news {
+  font-size: 85%;
+  background-color: #EEE;
+  border: medium solid #DDD;
+  overflow: auto;
+  margin: 1em 0em;
+  padding: 0.5em;
+}
+
+div.left {
+  float: left;
+  width: 50%;
+}
+
+div.right {
+  float: left;
+  width: 49%;
+}
+
+
+div.news ul {
+  padding: 0px;
+  margin: 0em 2em;
+}
+
+div.news ul em {
+  font-size: 85%;
+  white-space: nowrap;
+}
+
+div.news ul a {
+  margin-right: 0.5em;
+}
+
+div.news li {
+  padding: 0px;
+  margin: 0.5em 0em;
+}
+
+#links {
+  text-align: center;
+  font-size: 115%;
+  font-weight: bold;
+  line-height: 3em;
+}
+
+#links a {
+  white-space: nowrap;
+  border-width: medium;
+  border-style: solid;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: inherit;
+  margin: 0em 0.5em;
+}
+
+#links a:hover {
+  text-decoration: underline;
+}
+
+.green {
+  border-color: #6F6;
+  background-color: #AFA;
+}
+
+.green:hover {
+  border-color: #8F8;
+  background-color: #CFC;
+}
+
+.blue {
+  border-color: #66F;
+  background-color: #AAF;
+}
+
+.blue:hover {
+  border-color: #88F;
+  background-color: #CCF;
+}
+
+.red {
+  border-color: #F66;
+  background-color: #FAA;
+}
+
+.red:hover {
+  border-color: #F88;
+  background-color: #FCC;
+}
