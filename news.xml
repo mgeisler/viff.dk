@@ -1,0 +1,24 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:py="http://genshi.edgewall.org/" class="news">
+  <div class="left">
+    <p><b>News from the <a href="http://hg.viff.dk/viff/log/">changelog</a>:</b></p>
+    <ul>
+      <li py:for="entry in repository">
+        <a href="${entry.link}">${entry.title}</a>
+        <em>${entry.age} ago by
+        ${entry.author_detail['name']}</em>
+      </li>
+    </ul>
+  </div>
+
+  <div class="right">
+    <p><b>News from the <a
+    href="http://news.gmane.org/gmane.comp.cryptography.viff.devel">mailing list</a>:</b></p>
+    <ul>
+      <li py:for="entry in viff_devel">
+        <a href="${entry.link}">${entry.title}</a>
+        <em>${entry.age} ago by ${entry.author}</em>
+      </li>
+    </ul>
+  </div>
+</div>

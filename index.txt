@@ -1,0 +1,182 @@
+.. -*- coding: utf-8 -*-
+
+
+=============================================================
+ Welcome to VIFF, the Virtual Ideal Functionality Framework!
+=============================================================
+
+.. raw:: html
+
+  <div id="links">
+    <a class="green" href="#releases">Download VIFF 0.3</a>
+    <a class="blue"
+        href="http://lists.viff.dk/listinfo.cgi/viff-devel-viff.dk">Join
+    the mailing list</a>
+    <a class="red" href="/api/">API docs</a>
+  </div>
+
+.. raw:: html
+   :file: news.html
+
+.. image:: images/viff-dog.png
+   :align: right
+   :alt: The VIFF dog
+
+.. |Zp| replace:: **Z**\ *p*
+.. |GF256| replace:: **GF**\ (2\ :sup:`8`)
+
+VIFF is a framework which allows you to specify secure multi-party
+computations in a clean and easy way. Current features include:
+
+* arithmetic with shares from |Zp| or |GF256|.
+
+* secret sharing based on Shamir and pseudo-random secret sharing
+  (PRSS).
+
+* addition, multiplication, exclusive-or of shares.
+
+* comparison of secret shared |Zp| inputs, with secret |Zp| or |GF256|
+  output.
+
+* automatic parallel (asynchronous) execution.
+
+* secure communication using TLS (the successor to SSL).
+
+* cute mascot :-)
+
+VIFF is implemented in Python_ using Twisted_ and should run on any
+platform where Python runs (succesfully tested on Linux and Windows).
+Please see the INSTALL_ file for details on the requirements.
+
+VIFF is Free Software, licensed under the `GNU GPL`_. This means that
+you can download and use it for free and modify it to suit your needs.
+You are free to redistribute your modifications as long as you do it
+together with the modified source.
+
+.. _Python: http://python.org/
+.. _Twisted: http://twistedmatrix.com/
+.. _INSTALL: http://hg.viff.dk/viff/raw-file/tip/INSTALL
+.. _GNU GPL: http://hg.viff.dk/viff/raw-file/tip/COPYING
+
+Use Cases
+~~~~~~~~~
+
+VIFF allows you to do secure multi-party computations, in which a
+number of parties (three or more at the moment) execute a
+cryptographic protocol to do some joint computation. The computation
+could be anything, but elections and auctions are good examples of
+what you would want to do with secure multi-party computations (SMPC
+or simply MPC if it is implied that the protocol is secure).
+
+Using VIFF your protocol is run without the players revealing anything
+about their inputs. So three millionaires can determine among
+themselves who has, say, the most money *without revealing how much
+they are worth* to one another. So they all learn who is richest, but
+nothing else.
+
+The techniques for doing this involves computations on secret shared
+values, but the programmer can mostly ignore this when using VIFF.
+Please see the example programs included in the distribution below.
+
+Releases
+~~~~~~~~
+
+The latest version VIFF source code can be obtained using Mercurial_ by
+the command::
+
+  hg clone http://hg.viff.dk/viff/
+
+or by `browsing the repository online`__. There you can also subscribe to
+a RSS_ or Atom_ feed with updates.
+
+.. __: http://hg.viff.dk/viff/
+.. _Mercurial: http://www.selenic.com/mercurial/
+.. _RSS: http://hg.viff.dk/viff/rss-log
+.. _Atom: http://hg.viff.dk/viff/atom-log
+
+The repository should be mostly stable and a snapshot can be
+downloaded here:
+
+* **viff-tip**: tar.bz2__, tar.gz__, zip__.
+
+.. __: http://hg.viff.dk/viff/archive/tip.tar.bz2
+.. __: http://hg.viff.dk/viff/archive/tip.tar.gz
+.. __: http://hg.viff.dk/viff/archive/tip.zip
+
+You can also download a release below:
+
+* **viff-0.3**: tar.bz2__, tar.gz__, zip__, released on December 27th 2007.
+
+  .. __: http://viff.dk/release/viff-0.3.tar.bz2
+  .. __: http://viff.dk/release/viff-0.3.tar.gz
+  .. __: http://viff.dk/release/viff-0.3.zip
+
+  Changes since 0.2: Secure communication between the players were
+  implemented using TLS_ (the successor to SSL). An included Makefile
+  can generate the needed certificates. The network layer was
+  completely reimplemented, this breaks compatibility with programs
+  written for VIFF version 0.2 or earlier.
+
+  .. _TLS: http://en.wikipedia.org/wiki/Transport_Layer_Security
+
+* **viff-0.2**: tar.bz2__, tar.gz__, zip__, released on November 14th 2007.
+
+  .. __: http://viff.dk/release/viff-0.2.tar.bz2
+  .. __: http://viff.dk/release/viff-0.2.tar.gz
+  .. __: http://viff.dk/release/viff-0.2.zip
+
+  Changes since 0.1.1: Implemented overloaded arithmetic operators, so
+  ``w = x + y * z`` now adds and multiplies the three shares as expected.
+  Updated API documentation. Released using a Distutils setup.py
+  script.
+
+* **viff-0.1.1**: tar.bz2__, tar.gz__, zip__, released on October 23rd 2007.
+
+  .. __: http://viff.dk/release/viff-0.1.1.tar.bz2
+  .. __: http://viff.dk/release/viff-0.1.1.tar.gz
+  .. __: http://viff.dk/release/viff-0.1.1.zip
+
+  Changes since 0.1: Added API documentation and updated the
+  installation instructions.
+
+* **viff-0.1**: tar.bz2__, tar.gz__, zip__, released on October 16th 2007.
+
+  .. __: http://viff.dk/release/viff-0.1.tar.bz2
+  .. __: http://viff.dk/release/viff-0.1.tar.gz
+  .. __: http://viff.dk/release/viff-0.1.zip
+
+  First public release. Implements basic functionality including
+  addition, multiplication, exclusive-or, and comparison of shares.
+  Shares can be made using Shamir sharing or PRSS. Includes a suite of
+  unit tests and example programs.
+
+Please see the `VIFF API documentation`__ in addition to the documentation
+included in the files above.
+
+.. __: http://viff.dk/api/
+
+Contact
+~~~~~~~
+
+Please post your questions and comments on VIFF to the `VIFF-devel
+mailing list`_. Any question can be sent there — VIFF is still a
+little rough around the edges, so please ask for help if you cannot
+get VIFF working! The list is archived locally_, at Gmane_ (where you
+can read/post over `NNTP using a newsreader`__) and at `The Mail
+Archive`__.
+
+VIFF is developed by `Martin Geisler`_, `Mikkel Krøigård`_, and `Tomas
+Toft`_. Other contributors are very welcome! Please come to the
+`mailing list`_ and talk to us if you want to help in any way.
+
+
+.. _mailing list:
+.. _VIFF-devel mailing list: http://lists.viff.dk/listinfo.cgi/viff-devel-viff.dk
+.. _locally: http://lists.viff.dk/pipermail/viff-devel-viff.dk/
+.. _Gmane: http://dir.gmane.org/gmane.comp.cryptography.viff.devel
+.. __: nntp://news.gmane.org/gmane.comp.cryptography.viff.devel
+.. __: http://www.mail-archive.com/viff-devel@viff.dk/
+
+.. _Martin Geisler: http://www.daimi.au.dk/~mg/
+.. _Mikkel Krøigård: http://www.daimi.au.dk/~mk/
+.. _Tomas Toft: http://dinapigen.dk/TOMAS/
