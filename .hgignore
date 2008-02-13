@@ -3,3 +3,6 @@ syntax: glob
 *~
 *.html
 .feed-cache
+api
+release
+tmp
