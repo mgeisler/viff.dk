@@ -80,8 +80,8 @@ Please see the example programs included in the distribution below.
 Releases
 ~~~~~~~~
 
-The latest version VIFF source code can be obtained using Mercurial_ by
-the command::
+The latest version of the VIFF source code can be obtained using
+Mercurial_ by the command::
 
   hg clone http://hg.viff.dk/viff/
 
