@@ -5,15 +5,23 @@
  VIFF Documentation
 ====================
 
-Here you will find some resources about VIFF. Apart from these we
-would also like to refer to the `API documentation`_ which not only
-describes the API, but also tries to give a overview of the VIFF
-architecture. The code examples includes in the ``apps/`` directory
-also contains many hints on best practices with VIFF. Finally, the
-unit tests in the ``viff/test/`` directory will show you many small
-programs using all of VIFF.
+Here you will find some resources about VIFF.
 
-.. _API documentation: http://viff.dk/api/
+API Documentation
+~~~~~~~~~~~~~~~~~
+
+* The API documentation not only describes the API, but also tries to
+  give a overview of the VIFF architecture.
+
+  Available `online`__.
+
+  .. __: http://viff.dk/api/
+
+* The code examples includes in the ``apps/`` directory also contains
+  many hints on best practices with VIFF.
+
+* The unit tests in the ``viff/test/`` directory will show you many
+  small programs using all of VIFF.
 
 Presentations
 ~~~~~~~~~~~~~
@@ -27,6 +35,6 @@ Presentations
   .. _SIMAP: http://simap.dk/
   .. __: design-talk.pdf
 
-Please `send us`__ any presentations you make.
+Please `send us`__ any presentations or programs you make.
 
 .. __: mailto:viff-devel@viff.dk
