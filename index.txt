@@ -11,7 +11,7 @@
     <a class="blue"
         href="http://lists.viff.dk/listinfo.cgi/viff-devel-viff.dk">Join
     the mailing list</a>
-    <a class="red" href="/api/">API docs</a>
+    <a class="red" href="docs/index.html">Documentation</a>
   </div>
 
 .. raw:: html
