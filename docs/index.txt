@@ -1,5 +1,5 @@
 
-.. header:: `Return to home <../index.html>`__
+.. header:: `Return to home <../index.html>`__.
 
 ====================
  VIFF Documentation
