@@ -1,6 +1,4 @@
 
-.. header:: `Return to home <../index.html>`__.
-
 ====================
  VIFF Documentation
 ====================
@@ -38,3 +36,5 @@ Presentations
 Please `send us`__ any presentations or programs you make.
 
 .. __: mailto:viff-devel@viff.dk
+
+.. include:: layout.rst

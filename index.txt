@@ -178,3 +178,5 @@ Toft`_. Other contributors are very welcome! Please come to the
 .. _Martin Geisler: http://www.daimi.au.dk/~mg/
 .. _Mikkel Krøigård: http://www.daimi.au.dk/~mk/
 .. _Tomas Toft: http://dinapigen.dk/TOMAS/
+
+.. include:: layout.rst
