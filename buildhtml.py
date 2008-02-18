@@ -33,6 +33,8 @@ from docutils.parsers import rst
 from docutils.readers import standalone, pep
 from docutils.writers import html4css1, pep_html
 
+# This enables the highlighted sourcecode directive:
+import pygments_rst
 
 usage = '%prog [options] [<directory> ...]'
 description = ('Generates .html from all the reStructuredText .txt files '
