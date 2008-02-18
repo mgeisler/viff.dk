@@ -118,6 +118,18 @@ div.news li {
   background-color: #FCC;
 }
 
+div.highlight {
+ margin: 0.5em 0em;
+  padding: 1em;
+  background-color: #EEE;
+  border: thin solid #CCC;
+}
+
+pre {
+  padding: 0em;
+  margin: 0em;
+}
+
 /* Docutils does not (yet) have support for multiple style sheets, so
  * we include the Pygments rules here. The rules are generated using
  * pygmentize -S default -f html.
