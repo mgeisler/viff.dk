@@ -25,7 +25,9 @@ To run the VIFF unit tests you must make sure that ``import viff``
 works correctly in Python. In other words, you must make sure that
 VIFF is installed or that the root of your source tree is in
 ``PYTHONPATH``. You can test this by changing to some unrelated
-directory, starting an interactive Python session and run::
+directory, starting an interactive Python session and run:
+
+.. sourcecode:: pycon
 
   >>> import viff
   >>> print viff.__version__
@@ -164,7 +166,9 @@ prefer.
        twisted.trial.unittest._Assertions.html
 
 A simple example of a unit test is ``viff.test.test_field`` which
-looks like this (heavily abbreviated)::
+looks like this (heavily abbreviated):
+
+.. sourcecode:: python
 
   """Tests for viff.field."""
 
@@ -224,7 +228,9 @@ In VIFF the ``util.py`` file contains the logic needed to connect a
 number of Runtime instances in this way. All you need to do is to
 create a subclass of RuntimeTestCase and decorate the test methods
 with ``protocol`` like this example (abbreviated from
-``viff.test.test_active_runtime``)::
+``viff.test.test_active_runtime``):
+
+.. sourcecode:: python
 
   from viff.test.util import RuntimeTestCase, protocol
 
