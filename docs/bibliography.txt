@@ -15,7 +15,7 @@ The algorighms used by VIFF are published in various academic papers.
 Here we will try to point out which parts of the code uses which
 papers.
 
-* ``viff/shamir.py``: Uses [Shamir79]_ extensively.
+* The ``viff.shamir`` module is obviously based on [Shamir79]_.
 
 *  ``apps/millionaires.py``: Inspired by [Yao82]_.
 
