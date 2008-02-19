@@ -130,6 +130,17 @@ pre {
   margin: 0em;
 }
 
+div.note {
+  background-color:  #FFEA80; /* HSV: 50,  50, 100 */
+  border: thin solid #FFD500; /* HSV: 50, 100, 100 */
+  padding: 0.5em;
+  margin: 0.5em 0em;
+}
+
+p.admonition-title {
+  font-weight: bold;
+}
+
 /* Docutils does not (yet) have support for multiple style sheets, so
  * we include the Pygments rules here. The rules are generated using
  * pygmentize -S default -f html.
