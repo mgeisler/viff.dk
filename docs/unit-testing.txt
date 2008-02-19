@@ -137,9 +137,9 @@ get output similar to this:
 
   PASSED (skips=1, successes=64)
 
-Lots of success! But one of the tests were skipped — we do this when
-we have a test which represents a known problem. Otherwise every test
-run would be cluttered with long of traceback messages, making it
+Lots of success! But one of the tests was skipped — we do this when we
+have a test which represents a known problem. Otherwise every test run
+would be cluttered with long of traceback messages, making it
 difficult to notice new *unexpected* failures.
 
 
@@ -210,7 +210,7 @@ This demonstrates the most important features in a simple unit test:
 * A ``setUp`` method is used to collect preperations that are needed
   for every test.
 
-* Several test methods are defined. They make use fo the assertions
+* Several test methods are defined. They make use of the assertions
   offered by Trial.
 
 .. _doctests: http://docs.python.org/lib/module-doctest.html
@@ -262,18 +262,18 @@ In the method you can branch on ``runtime.id``. This is needed in the
 typical case where you want only one of the parties to input something
 to a calculation.
 
-In this example all four parties get a ``x`` which will eventually
+In this example all four parties get an ``x`` which will eventually
 contain the string "Hello World". Using Trial we can return ``x`` and
 Trial will then wait for ``x`` to trigger before declaring the test a
 success or failure. We have attached ``self.assertEquals`` as a
 callback on ``x`` with an extra argument of "Hello World". This means
-that when ``x`` eventually trigger the assertion is run, and the test
-finished.
+that when ``x`` eventually triggers, the assertion is run and the test
+finishes.
 
-This is the real power of Trial. You can do some calculation and
+This is the real power of Trial. You can do some calculations and
 finish by returning a Deferred (and remember that Shares are Deferreds
 in VIFF). The value of this Deferred is not important, it is only
-important that it trigger when the test is done. You will often need
+important that it triggers when the test is done. You will often need
 to use ``twisted.internet.defer.gatherResults`` to combine several
 Deferreds into one that you can return to Trial. Just make sure that
 your final Deferred depends on all other Deferreds so that you do not
