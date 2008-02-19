@@ -25,6 +25,9 @@ papers.
 * Broadcast (``Runtime.broadcast``) is based on the original paper by
   [Bracha84]_ and on the explanation by [Cachin05]_.
 
+* The pseudo-random secret sharing (PRSS) in ``viff.prss`` is
+  described in [CDI05]_.
+
 
 .. [Shamir79] Adi Shamir, *How to share a secret*, Communications of
    the ACM, 22 (11): 612-613.
@@ -45,5 +48,11 @@ papers.
    Distributed Systems*, ETHZ, 2005, PDF__.
 
    .. __: http://www.zurich.ibm.com/~cca/sft05/agreement.pdf
+
+.. [CDI05] Ronald Cramer, Ivan Damgård, and Yuval Ishai, *Share
+   Conversion, Pseudorandom Secret-Sharing and Applications to Secure
+   Computation*, Proc of TCC 2005, LNCS 3378, PS__.
+
+   .. __:  http://www.cs.technion.ac.il/~yuvali/pubs/CDI05.ps
 
 .. include:: layout.rst
