@@ -16,7 +16,9 @@ API Documentation
   .. __: http://viff.dk/api/
 
 * The code examples includes in the ``apps/`` directory also contains
-  many hints on best practices with VIFF.
+  many hints on best practices with VIFF. The ``apps/millionaires.py``
+  example is particularly well commented and may serve as a template
+  for new programs.
 
 * The unit tests in the ``viff/test/`` directory will show you many
   small programs using all of VIFF.
