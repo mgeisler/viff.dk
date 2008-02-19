@@ -17,9 +17,18 @@
 .. raw:: html
    :file: news.html
 
-.. image:: images/viff-dog.png
-   :align: right
-   :alt: The VIFF dog
+.. raw:: html
+
+   <!-- Preload rollover image. -->
+   <script type="text/javascript">
+     dog = new Image();
+     dog.src = "images/viff-dog-alert.png";
+   </script>
+
+   <img src="images/viff-dog.png" name="dog" alt="The VIFF dog"
+        class="align-right" align="right"
+        onmouseover="javascript:dog.src='images/viff-dog-alert.png'"
+        onmouseout="javascript:dog.src='images/viff-dog.png'" />
 
 .. |Zp| replace:: **Z**\ *p*
 .. |GF256| replace:: **GF**\ (2\ :sup:`8`)
