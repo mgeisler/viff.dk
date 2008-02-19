@@ -1,0 +1,30 @@
+.. -*- coding: utf-8 -*-
+
+==============
+ Bibliography
+==============
+
+.. note::
+
+   This list is far from complete. If you find more relevant
+   references then please `send us a mail`__ with the information.
+
+   .. __: mailto:viff-devel@viff.dk
+
+The algorighms used by VIFF are published in various academic papers.
+Here we will try to point out which parts of the code uses which
+papers.
+
+* ``viff/shamir.py``: Uses [Shamir79]_ extensively.
+
+*  ``apps/millionaires.py``: inspired by [Yao82]_.
+
+
+.. [Shamir79] Adi Shamir, *How to share a secret*, Communications of
+   the ACM, 22 (11): 612-613.
+
+.. [Yao82] Andrew Chi-Chih Yao, *Protocols for Secure Computations*,
+   FOCS 1982, 160-164.
+
+
+.. include:: layout.rst
