@@ -1,0 +1,15 @@
+
+===========================
+ 500 Internal Server Error
+===========================
+
+The server suffered an internal error. Please `report this`_ if it
+continues.
+
+.. _report this: mailto:viff-devel@viff.dk
+
+You could try going back to the `front page`_
+
+.. _front page: http://viff.dk/
+
+.. include:: layout.rst
