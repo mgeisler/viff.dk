@@ -109,9 +109,10 @@ if __name__ == "__main__":
     #tip_age = age(repository_data.entries[0].updated_parsed)
     #now = strftime("%Y-%m-%d %H:%M UTC", gmtime())
 
-    repository_entries = repository_data.entries[:4]
+    count = 4
+    repository_entries = repository_data.entries[:count]
     viff_devel_entries = [e for e in viff_devel_data.entries
-                          if e.author != "viff-devel< at >viff.dk"][:4]
+                          if e.author != "viff-devel< at >viff.dk"][:count]
 
     logging.info("Rendering news.html")
     loader = TemplateLoader(['.'])
