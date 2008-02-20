@@ -6,4 +6,4 @@ RewriteEngine on
 RewriteBase  /
 
 # Rewrite /docs/ to /doc/.
-RewriteRule  ^docs(.*)$  doc$1 [R]
+RewriteRule  ^docs(.*)$  doc$1 [R=permanent]
