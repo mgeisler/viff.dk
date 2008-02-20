@@ -109,12 +109,15 @@ if __name__ == "__main__":
     #tip_age = age(repository_data.entries[0].updated_parsed)
     #now = strftime("%Y-%m-%d %H:%M UTC", gmtime())
 
+    repository_entries = repository_data.entries[:4]
+    viff_devel_entries = [e for e in viff_devel_data.entries
+                          if e.author != "viff-devel< at >viff.dk"][:4]
+
     logging.info("Rendering news.html")
     loader = TemplateLoader(['.'])
     tmpl = loader.load('news.xml')
-    stream = tmpl.generate(repository=repository_data.entries[:4],
-                           viff_devel=viff_devel_data.entries[:4])
-
+    stream = tmpl.generate(repository=repository_entries,
+                           viff_devel=viff_devel_entries)
     out = open('_news.html', 'w')
     out.write(stream.render('html'))
     out.close()
