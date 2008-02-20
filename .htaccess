@@ -7,3 +7,6 @@ RewriteBase  /
 
 # Rewrite /docs/ to /doc/.
 RewriteRule  ^docs(.*)$  doc$1 [R=permanent]
+
+# Forbid Python files from being downloaded (or worse: executed!).
+RewriteRule  ^.*\.py$ [F]
