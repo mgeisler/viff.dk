@@ -1,0 +1,23 @@
+
+===============
+ 404 Not Found
+===============
+
+The file you were looking for was not found. Please `report this`_ if
+you think this is an error.
+
+.. _report this: mailto:viff-devel@viff.dk
+
+You might have been searching for one of these:
+
+* `VIFF front page`__.
+* `VIFF documentation`__.
+* `VIFF releases`__.
+* `VIFF repository`__.
+
+.. __: http://viff.dk/
+.. __: http://viff.dk/doc/
+.. __: http://viff.dk/release/
+.. __: http://hg.viff.dk/viff/
+
+.. include:: layout.rst
