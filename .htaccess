@@ -1,0 +1,9 @@
+
+RewriteEngine on
+
+# Unfortunately this path only works on places like DreamHost where
+# the website is in the root of the domain.
+RewriteBase  /
+
+# Rewrite /docs/ to /doc/.
+RewriteRule  ^docs(.*)$  doc$1 [R]
