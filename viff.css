@@ -28,6 +28,14 @@ h2 {
   border-bottom: medium solid #0A0;
 }
 
+dl.docutils dd {
+  margin-bottom: 0.5em
+}
+
+dl.docutils dt {
+  font-weight: bold;
+}
+
 div.news {
   font-size: 85%;
   background-color: #EEE;
