@@ -26,6 +26,22 @@ API Documentation
 Presentations
 ~~~~~~~~~~~~~
 
+* Slides used at a PhD Qualification Exam by Martin Geisler, held on
+  February 21st, 2008. Like the report they accompagny, the second
+  part of the slides are about VIFF and includes benchmark results.
+
+  Available as PDF__.
+
+  .. __: mg-progress-report-talk.pdf
+
+* PhD Progress Report by Martin Geisler. The second part of the report
+  describes the design of VIFF and proves it secure in the Universally
+  Composability security framework by Canetti.
+
+  Available as PDF__.
+
+  .. __: mg-progress-report.pdf
+
 * VIFF Design Talk given by Martin Geisler on September 20th, 2007 at
   a SIMAP_ meeting. The talk describes some of the goals of the VIFF
   design. It is current to version 0.2 of VIFF.
