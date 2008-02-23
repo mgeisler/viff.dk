@@ -1,6 +1,7 @@
 
 .. header::
    [ `VIFF Documentation <index.html>`__ ]
+   [ `Development <development.html>`__ ]
    [ `Coding Style <coding-style.html>`__ ]
    [ `Unit Testing <unit-testing.html>`__ ]
    [ `Bibliography <bibliography.html>`__ ]
