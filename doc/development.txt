@@ -44,21 +44,6 @@ changes back into VIFF is to ensure that one of the developers has
 read access on the repository files. He can then simply pull the
 changesets over and eventually push them out to the VIFF repository.
 
-The patchbomb_ extension for Mercurial will allow you to use
-
-.. sourcecode:: text
-
-   hg email -t viff-devel@viff.dk -o
-
-to send the changesets not present in the VIFF repository (``-o``) to
-the VIFF development list (``-t viff-devel@viff.dk``). You will
-probably want to test using a ``-n`` flag or by sending the patches to
-your own address first to make sure everything looks okay. You can get
-the full list of options using ``hg help email``.
-
-.. _patchbomb: http://www.selenic.com/mercurial/
-                      wiki/index.cgi/PatchbombExtension
-
 Alternatively, you can setup a Mercurial repository where one of the
 developers can ``hg pull`` from. You can do this by uploading your
 clone on some public web server (any webserver works for this since
@@ -72,6 +57,22 @@ running
 which creates a web server on port 8000 just like the one running at
 http://hg.viff.dk/viff/. The default port number is 8000, so you can
 leave that out.
+
+A final option is the patchbomb_ extension for Mercurial, which will
+allow you to use
+
+.. sourcecode:: text
+
+   hg email -t viff-devel@viff.dk -o
+
+to send the changesets not present in the VIFF repository (``-o``) to
+the VIFF development list (``-t viff-devel@viff.dk``). You will
+probably want to test using a ``-n`` flag or by sending the patches to
+your own address first to make sure everything looks okay. You can get
+the full list of options using ``hg help email``.
+
+.. _patchbomb: http://www.selenic.com/mercurial/
+                      wiki/index.cgi/PatchbombExtension
 
 
 Revising Changes
