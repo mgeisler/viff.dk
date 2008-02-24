@@ -5,12 +5,22 @@
 ==============
 
 VIFF employs a set of unit tests to help developers catch regressions
-and to ensure the correctness of the implementation. VIFF uses the
-Trial_ testing framework, which is part of Twisted. Using Trial has
-the big advantage that it understands Twisted's Deferreds_ — if a unit
-test returns a Deferred, Trial waits for it to trigger before it
-declares the test a success or failure. Please refer to this
-tutorial_ for more information.
+and to ensure the correctness of the implementation. The code is
+continuously tested using a BuildBot_ and the results are available
+online_. If you see warnings or errors from the unit tests on the
+`BuildBot waterfall page`_, then please take it as an invitation to
+fix them!
+
+.. _BuildBot: http://buildbot.net/
+.. _online: http://buildbot.viff.dk/
+.. _BuildBot waterfall page: http://buildbot.viff.dk/waterfall
+
+When using Twisted it is natural to use its unit testing framework
+called Trial_. Trial has the big advantage over normal testing
+frameworks that it understands Twisted's Deferreds_ — if a unit test
+returns a Deferred, Trial waits for it to trigger before it declares
+the test a success or failure. Please refer to this tutorial_ for more
+information.
 
 .. _Trial: http://twistedmatrix.com/trac/wiki/TwistedTrial
 .. _Deferreds: http://twistedmatrix.com/projects/core/
