@@ -5,7 +5,11 @@
 ==================
 
 This page explains what you need to know if you want to start hacking
-on VIFF.
+on VIFF. In addition to these instructions you will want to read up on
+the `coding style`_ used by VIFF (it is the normal Python style,
+nothing fancy there).
+
+.. _coding style: coding-style.html
 
 
 Getting the Source Code
