@@ -56,9 +56,17 @@ the full list of options using ``hg help email``.
 
 Alternatively, you can setup a Mercurial repository where one of the
 developers can ``hg pull`` from. You can do this by uploading your
-clone on some public web server or by running ``hg serve`` which
-creates a web server on port 8000 (you can change the port with ``-p``
-if you want).
+clone on some public web server (any webserver works for this since
+the developers can pull using ``hg pull static-http://...``) or by
+running
+
+.. sourcecode:: text
+
+   hg serve -p 8000
+
+which creates a web server on port 8000 just like the one running at
+http://hg.viff.dk/viff/. The default port number is 8000, so you can
+leave that out.
 
 
 Revising Changes
