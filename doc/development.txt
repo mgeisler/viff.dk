@@ -38,8 +38,13 @@ Contributing Changes
 --------------------
 
 When you have created a new feature or fixed a bug, then you need to
-send your changes to one of the VIFF developers. The patchbomb_
-extension for Mercurial will allow you to use
+send your changes to one of the VIFF developers. If you share a file
+system with one of the developers, then the easiest way to get your
+changes back into VIFF is to ensure that one of the developers has
+read access on the repository files. He can then simply pull the
+changesets over and eventually push them out to the VIFF repository.
+
+The patchbomb_ extension for Mercurial will allow you to use
 
 .. sourcecode:: text
 
