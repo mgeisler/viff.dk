@@ -54,7 +54,7 @@ computations in a clean and easy way. Current features include:
 
 VIFF is implemented in Python_ using Twisted_ and should run on any
 platform where Python runs (succesfully tested on Linux and Windows).
-Please see the INSTALL_ file for details on the requirements.
+Please see the `installation guide`_ for details on the requirements.
 
 VIFF is Free Software, licensed under the `GNU GPL`_. This means that
 you can download and use it for free and modify it to suit your needs.
@@ -63,7 +63,7 @@ together with the modified source.
 
 .. _Python: http://python.org/
 .. _Twisted: http://twistedmatrix.com/
-.. _INSTALL: http://hg.viff.dk/viff/raw-file/tip/INSTALL
+.. _installation guide: install.html
 .. _GNU GPL: http://hg.viff.dk/viff/raw-file/tip/COPYING
 
 Use Cases
