@@ -33,8 +33,8 @@
 .. |Zp| replace:: **Z**\ *p*
 .. |GF256| replace:: **GF**\ (2\ :sup:`8`)
 
-VIFF is a framework which allows you to specify secure multi-party
-computations in a clean and easy way. Current features include:
+VIFF is a framework which allows you to specify `secure multi-party
+computations`_ in a clean and easy way. Current features include:
 
 * arithmetic with shares from |Zp| or |GF256|.
 
@@ -61,6 +61,8 @@ you can download and use it for free and modify it to suit your needs.
 You are free to redistribute your modifications as long as you do it
 together with the modified source.
 
+.. _secure multi-party computations: http://en.wikipedia.org/wiki/
+                                     Secure_multiparty_computation
 .. _Python: http://python.org/
 .. _Twisted: http://twistedmatrix.com/
 .. _installation guide: install.html
