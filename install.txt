@@ -27,7 +27,10 @@ Please report back if you find that VIFF works with earlier versions
 than the ones listed here.
 
 Below you will find installation instructions for the different
-platforms on which we test VIFF.
+platforms on which we `test VIFF`_.
+
+.. _test VIFF: http://buildbot.viff.dk/
+
 
 Windows
 -------
