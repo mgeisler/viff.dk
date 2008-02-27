@@ -15,11 +15,16 @@ bignum arithmetic. You can find these components here:
 :ConfigObj:      http://voidspace.org.uk/python/configobj.html
 :GMPY:           http://code.google.com/p/gmpy/
 
-VIFF has been tested with the following versions: Python 2.4.1,
-Twisted 2.5.0, python-gnutls 1.1.4, ConfigObj 4.4.0, and GMPY
-1.0alpha. Things might work with earlier versions, we do not know yet.
-Please `report back`_ if you find that VIFF works with earlier
-versions than the ones listed here.
+VIFF has been succesfully tested with the following versions:
+
+:Python:         2.4.1 and 2.5.0
+:Twisted:        2.5.0
+:python-gnutls:  1.1.4
+:ConfigObj:      4.4.0
+:GMPY:           1.0alpha and 1.0.2
+
+Please `report back`_ if you find that VIFF works with other versions
+than the ones listed here.
 
 Below you will find installation instructions for the different
 platforms on which we `test VIFF`_.
