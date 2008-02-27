@@ -16,4 +16,5 @@ repository, add yourself to the list and `send us a patch`_!
 .. _send us a patch: mailto:viff-devel@viff.dk
 
 
+.. header:: `Return to the VIFF homepage <index.html>`__.
 .. include:: layout.rst

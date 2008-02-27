@@ -116,4 +116,5 @@ there. Consult the documentation for your shell to learn how
 environment variables are set.
 
 
+.. header:: `Return to the VIFF homepage <index.html>`__.
 .. include:: layout.rst
