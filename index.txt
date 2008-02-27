@@ -160,8 +160,9 @@ You can also download a release below:
   Shares can be made using Shamir sharing or PRSS. Includes a suite of
   unit tests and example programs.
 
-Please see the `VIFF API documentation`__ in addition to the documentation
-included in the files above.
+Please see the `installation guide`_, and the `VIFF API
+documentation`__ in addition to the documentation included in the
+files above.
 
 .. __: http://viff.dk/api/
 
