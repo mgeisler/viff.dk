@@ -14,3 +14,5 @@
    `Return to the VIFF homepage <../index.html>`__.
 
    .. include:: ../copyright.rst
+
+   .. _VIFF Development Team (footer): ../authors.html
