@@ -18,12 +18,13 @@ bignum arithmetic. You can find these components here:
 VIFF has been tested with the following versions: Python 2.4.1,
 Twisted 2.5.0, python-gnutls 1.1.4, ConfigObj 4.4.0, and GMPY
 1.0alpha. Things might work with earlier versions, we do not know yet.
-Please report back if you find that VIFF works with earlier versions
-than the ones listed here.
+Please `report back`_ if you find that VIFF works with earlier
+versions than the ones listed here.
 
 Below you will find installation instructions for the different
 platforms on which we `test VIFF`_.
 
+.. _report back: mailto:viff-devel@viff.dk
 .. _test VIFF: http://buildbot.viff.dk/
 
 
