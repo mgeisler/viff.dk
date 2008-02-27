@@ -44,7 +44,11 @@ GNU/Linux
 
 VIFF was originally developed on GNU/Linux and is well supported
 there. When installing the VIFF dependencies you either have the
-option of using your package manager or to install from source.
+option of using your `package manager`_ or to install from source. VIFF
+itself must be installed `from source`_.
+
+.. _package manager: `Using a Package Manager`_
+.. _from source: `Installing from Source`_
 
 Using a Package Manager
 ~~~~~~~~~~~~~~~~~~~~~~~
