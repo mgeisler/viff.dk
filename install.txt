@@ -49,7 +49,7 @@ option of using your package manager or to install from source.
 Using a Package Manager
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Debian Lenny (unstable)
+Debian Lenny (testing)
   You can install all dependencies by the command
 
   .. sourcecode:: sh
