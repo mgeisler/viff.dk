@@ -9,16 +9,11 @@ asynchronous communication, (optionally) python-gnutls for secure
 communication, ConfigObj for configuration files, and GMPY for fast
 bignum arithmetic. You can find these components here:
 
-Python:
-  http://python.org/
-Twisted:
-  http://twistedmatrix.com/
-python-gnutls:
-  http://pypi.python.org/pypi/python-gnutls/
-ConfigObj:
-  http://voidspace.org.uk/python/configobj.html
-GMPY:
-  http://code.google.com/p/gmpy/
+:Python:         http://python.org/
+:Twisted:        http://twistedmatrix.com/
+:python-gnutls:  http://pypi.python.org/pypi/python-gnutls/
+:ConfigObj:      http://voidspace.org.uk/python/configobj.html
+:GMPY:           http://code.google.com/p/gmpy/
 
 VIFF has been tested with the following versions: Python 2.4.1,
 Twisted 2.5.0, python-gnutls 1.1.4, ConfigObj 4.4.0, and GMPY
