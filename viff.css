@@ -149,6 +149,21 @@ p.admonition-title {
   font-weight: bold;
 }
 
+table.docutils td, table.docutils th,
+table.docinfo  td, table.docinfo  th {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  vertical-align: top;
+}
+
+table.docutils th.field-name,
+table.docinfo  th.docinfo-name {
+  font-weight: bold;
+  text-align: left;
+  padding-left: 0;
+}
+
+
 /* Docutils does not (yet) have support for multiple style sheets, so
  * we include the Pygments rules here. The rules are generated using
  * pygmentize -S default -f html.
