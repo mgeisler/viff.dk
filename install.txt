@@ -57,6 +57,7 @@ This describes installation of VIFF on Max OS X 10.5.
       PATH="/Library/Python/2.5/site-packages:${PATH}"
 
 3) Install python-gnutls.
+
    a) Install `XCode`_  from Apple which provides the gcc compiler.
    b) Install `gnutls`_ (and required packages) from source.
    c) Install `python-gnutls`_.
