@@ -56,15 +56,15 @@ This describes installation of VIFF on Max OS X 10.5.
 
       PATH="/Library/Python/2.5/site-packages:${PATH}"
 
-3) Install python-gnutls
-   a) Install `XCode`_  from Apple which provides the gcc compiler
-   b) Install `gnutls`_ (and required packages) from source
-   c) Install `python-gnutls`_
+3) Install python-gnutls.
+   a) Install `XCode`_  from Apple which provides the gcc compiler.
+   b) Install `gnutls`_ (and required packages) from source.
+   c) Install `python-gnutls`_.
 
-4) Install ConfigObj (http://voidspace.org.uk/python/configobj.html)
+4) Install ConfigObj (http://voidspace.org.uk/python/configobj.html).
 
 5) Install `GMPY from Google`_ following the instructions in
-   ``gmpy-1.02.macosx.README.txt`` (under Downloads)
+   ``gmpy-1.02.macosx.README.txt`` (under Downloads).
 
 6) Install VIFF from source (see below). If you prefer you can just
    install it in site-packages, it makes no difference. For
