@@ -43,9 +43,14 @@ Mac OS X
 
 This describes installation of viff on Max OS X 10.5.
 
-1) Install the full MacPython 2.5 `MacPython`_  (the Python-installation which comes with Mac OS X is not  entirely up-to-date).
+1) Install the full MacPython 2.5 `MacPython`_ (the
+   Python-installation which comes with Mac OS X is not entirely
+   up-to-date).
 
-2) Install Twisted from source (http://twistedmatrix.com/). Notice again that Mac OS X comes with a pre-installed version of Twisted, but this is not the full Twisted installation. After installation change your PYTHONPATH (in your ./.bash_profile) to 
+2) Install Twisted from source (http://twistedmatrix.com/). Notice
+   again that Mac OS X comes with a pre-installed version of Twisted,
+   but this is not the full Twisted installation. After installation
+   change your PYTHONPATH (in your ./.bash_profile) to
 
    ::
 
@@ -58,13 +63,20 @@ This describes installation of viff on Max OS X 10.5.
 
 4) Install ConfigObj (http://voidspace.org.uk/python/configobj.html)
 
-5) Install `GMPY from Google`_ following the instructions in gmpy-1.02.macosx.README.txt (under Downloads)
+5) Install `GMPY from Google`_ following the instructions in
+   gmpy-1.02.macosx.README.txt (under Downloads)
 
-6) Install viff from source (see below). If you prefer you can just install it in site-packages, it makes no difference. For developers, it is perhaps a better solution in to create a symbolic link from the site-packages directory to the viff python files (viff/viff/), as otherwise you need to re-install viff each time the project is modified.
+6) Install viff from source (see below). If you prefer you can just
+   install it in site-packages, it makes no difference. For
+   developers, it is perhaps a better solution in to create a symbolic
+   link from the site-packages directory to the viff python files
+   (viff/viff/), as otherwise you need to re-install viff each time
+   the project is modified.
 
 .. _MacPython: http://www.pythonmac.org
 .. _XCode: http://developer.apple.com/tools/xcode/
-.. _gnutls: http://www.gnu.org/software/gnutls/manual/gnutls.html#Downloading-and-Installing
+.. _gnutls: http://www.gnu.org/software/gnutls/manual/gnutls.html
+            #Downloading-and-Installing
 .. _python-gnutls: http://pypi.python.org/pypi/python-gnutls/
 .. _GMPY from Google: http://code.google.com/p/gmpy/
 
