@@ -53,8 +53,9 @@ computations`_ in a clean and easy way. Current features include:
 * cute mascot :-)
 
 VIFF is implemented in Python_ using Twisted_ and should run on any
-platform where Python runs (succesfully tested on Linux and Windows).
-Please see the `installation guide`_ for details on the requirements.
+platform where Python runs (succesfully tested on Linux, Windows, and
+Mac OS X). Please see the `installation guide`_ for details on the
+requirements.
 
 VIFF is Free Software, licensed under the `GNU GPL`_. This means that
 you can download and use it for free and modify it to suit your needs.
