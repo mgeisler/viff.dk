@@ -41,7 +41,7 @@ Windows
 Mac OS X
 --------
 
-This describes installation of viff on Max OS X 10.5.
+This describes installation of VIFF on Max OS X 10.5.
 
 1) Install the full MacPython 2.5 `MacPython`_ (the
    Python-installation which comes with Mac OS X is not entirely
@@ -66,11 +66,11 @@ This describes installation of viff on Max OS X 10.5.
 5) Install `GMPY from Google`_ following the instructions in
    ``gmpy-1.02.macosx.README.txt`` (under Downloads)
 
-6) Install viff from source (see below). If you prefer you can just
+6) Install VIFF from source (see below). If you prefer you can just
    install it in site-packages, it makes no difference. For
    developers, it is perhaps a better solution in to create a symbolic
-   link from the site-packages directory to the viff python files
-   (``viff/viff/``), as otherwise you need to re-install viff each time
+   link from the site-packages directory to the VIFF Python files
+   (``viff/viff/``), as otherwise you need to re-install VIFF each time
    the project is modified.
 
 .. _MacPython: http://www.pythonmac.org
