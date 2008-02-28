@@ -52,9 +52,9 @@ This describes installation of viff on Max OS X 10.5.
    but this is not the full Twisted installation. After installation
    change your PYTHONPATH (in your ./.bash_profile) to
 
-   ::
+   .. sourcecode:: sh
 
-     PATH="/Library/Python/2.5/site-packages:${PATH}"
+      PATH="/Library/Python/2.5/site-packages:${PATH}"
 
 3) Install python-gnutls
    a) Install `XCode`_  from Apple which provides the gcc compiler
