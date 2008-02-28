@@ -43,24 +43,30 @@ Mac OS X
 
 This describes installation of viff on Max OS X 10.5.
 
-1) Install the full MacPython 2.5 http://www.pythonmac.org (the Python-installation which comes with Mac OS X is not  entirely up-to-date).
+1) Install the full MacPython 2.5 `MacPython`_  (the Python-installation which comes with Mac OS X is not  entirely up-to-date).
 
 2) Install Twisted from source (http://twistedmatrix.com/). Notice again that Mac OS X comes with a pre-installed version of Twisted, but this is not the full Twisted installation. After installation change your PYTHONPATH (in your ./.bash_profile) to 
 
-  .. sourcecode:: sh
+  ::
 
      PATH="/Library/Python/2.5/site-packages:${PATH}"
 
 3) Install python-gnutls
-  a) Install XCode from Apple which provides the gcc compiler (http://developer.apple.com/tools/xcode/)
-  b) Install gnutls (and required packages) from source (http://www.gnu.org/software/gnutls/manual/gnutls.html#Downloading-and-Installing)
-  c) Install python-gnutls (http://pypi.python.org/pypi/python-gnutls/)
+   a) Install `XCode`_  from Apple which provides the gcc compiler
+   b) Install `gnutls`_ (and required packages) from source
+   c) Install `python-gnutls`_
 
 4) Install ConfigObj (http://voidspace.org.uk/python/configobj.html)
 
-5) Install GMPY following the instructions in gmpy-1.02.macosx.README.txt (under Downloads) from http://code.google.com/p/gmpy/.
+5) Install`GMPY from Google´_ following the instructions in gmpy-1.02.macosx.README.txt (under Downloads)
 
 6) Install viff from source (see below). If you prefer you can just install it in site-packages, it makes no difference. For developers, it is perhaps a better solution in to create a symbolic link from the site-packages directory to the viff python files (viff/viff/), as otherwise you need to re-install viff each time the project is modified.
+
+.. _MacPython: http://www.pythonmac.org
+.. _XCode: http://developer.apple.com/tools/xcode/
+.. _gnutls: http://www.gnu.org/software/gnutls/manual/gnutls.html#Downloading-and-Installing
+.. _python-gnutls: http://pypi.python.org/pypi/python-gnutls/
+.. _GMPY from Google: http://code.google.com/p/gmpy/
 
 GNU/Linux
 ---------
