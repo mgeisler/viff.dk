@@ -3,7 +3,9 @@
  VIFF Documentation
 ====================
 
-Here you will find some resources about VIFF.
+Here you will find some resources about VIFF. You can follow the links
+at the top for pages on special topics, or you can look at the API
+documentation and presentations linked below.
 
 API Documentation
 ~~~~~~~~~~~~~~~~~
