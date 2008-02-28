@@ -3,13 +3,21 @@
  VIFF Documentation
 ====================
 
-Here you will find some resources about VIFF.
+Here you will find some resources about VIFF. You can follow the links
+at the top for pages on special topics, or you can look at the API
+documentation and presentations linked below.
 
 API Documentation
 ~~~~~~~~~~~~~~~~~
 
 * The API documentation not only describes the API, but also tries to
   give a overview of the VIFF architecture.
+
+  .. note::
+
+     The online API documentation reflects the current development
+     version of VIFF. You might therefore prefer the API documentation
+     bundled with each release.
 
   Available `online`__.
 
