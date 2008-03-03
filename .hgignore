@@ -9,3 +9,4 @@ syntax: regexp
 ^(?!api/).*\.html$
 ^\.feed-cache$
 ^tmp$
+^builds$
