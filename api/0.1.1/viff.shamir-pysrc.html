@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>viff.shamir</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="viff-module.html">Package&nbsp;viff</a> ::
+        Module&nbsp;shamir
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="viff.shamir-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="viff.shamir-module.html">Module viff.shamir</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># Copyright 2007 Martin Geisler</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># This file is part of VIFF</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># VIFF is free software; you can redistribute it and/or modify it</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># under the terms of the GNU General Public License as published by</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># the Free Software Foundation; either version 2 of the License, or</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># (at your option) any later version.</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># VIFF is distributed in the hope that it will be useful, but</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># WITHOUT ANY WARRANTY; without even the implied warranty of</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># General Public License for more details.</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># You should have received a copy of the GNU General Public License</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># along with VIFF in the file COPYING; if not, write to the Free</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># 02110-1301 USA</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">Shamir sharing and recombination.</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">operator</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package viff=viff-module.html"><a title="viff" class="py-name" href="#" onclick="return doclink('link-0', 'viff', 'link-0');">viff</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module viff.util=viff.util-module.html"><a title="viff.util" class="py-name" href="#" onclick="return doclink('link-1', 'util', 'link-1');">util</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Variable viff.util.rand=viff.util-module.html#rand"><a title="viff.util.rand" class="py-name" href="#" onclick="return doclink('link-2', 'rand', 'link-2');">rand</a></tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">     </tt>
+<a name="share"></a><div id="share-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="share-toggle" onclick="return toggle('share');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="viff.shamir-module.html#share">share</a><tt class="py-op">(</tt><tt class="py-param">secret</tt><tt class="py-op">,</tt> <tt class="py-param">threshold</tt><tt class="py-op">,</tt> <tt class="py-param">num_players</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="share-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="share-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">    <tt class="py-docstring">"""Shamir share secret.</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-docstring">    It holds that sharing and recombination cancels each other:</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; from field import GF</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; Zp = GF(47)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; secret = Zp(42)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-docstring">    &gt;&gt;&gt; recombine(share(secret, 7, 15)[:8]) == secret</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring">    True</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">    <tt class="py-keyword">assert</tt> <tt class="py-name">threshold</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt> <tt class="py-keyword">and</tt> <tt class="py-name">threshold</tt> <tt class="py-op">&lt;</tt> <tt class="py-name">num_players</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">     </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">    <tt class="py-name">coef</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">secret</tt><tt class="py-op">]</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">j</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">threshold</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-comment"># TODO: introduce a random() method in FieldElements so that</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># this wont have to be a long when we are sharing a</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># GMPIntegerFieldElement.</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">coef</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt id="link-3" class="py-name"><a title="viff.util.rand" class="py-name" href="#" onclick="return doclink('link-3', 'rand', 'link-2');">rand</a></tt><tt class="py-op">.</tt><tt class="py-name">randint</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-name">long</tt><tt class="py-op">(</tt><tt class="py-name">secret</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Variable viff.field.GF256.modulus=viff.field.GF256-class.html#modulus"><a title="viff.field.GF256.modulus" class="py-name" href="#" onclick="return doclink('link-4', 'modulus', 'link-4');">modulus</a></tt><tt class="py-op">)</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">    <tt class="py-name">shares</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">num_players</tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-comment"># Instead of calculating s_i as</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment">#</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment">#   s_i = s + a_1 x_i + a_2 x_i^2 + ... + a_t x_i^t</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment">#</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># we avoid the exponentiations by calculating s_i by</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment">#</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment">#   s_i = s + x_i (a_1 + x_i (a_2 + x_i ( ... (a_t) ... )))</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment">#</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># This is a little faster, even for small n and t.</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">cur_point</tt> <tt class="py-op">=</tt> <tt class="py-name">secret</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Module viff.field=viff.field-module.html,Method viff.field.GF256.field()=viff.field.GF256-class.html#field"><a title="viff.field
+viff.field.GF256.field" class="py-name" href="#" onclick="return doclink('link-5', 'field', 'link-5');">field</a></tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-name">cur_share</tt> <tt class="py-op">=</tt> <tt class="py-name">coef</tt><tt class="py-op">[</tt><tt class="py-name">threshold</tt><tt class="py-op">]</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">        <tt class="py-comment"># Go backwards from threshold-1 down to 0</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">for</tt> <tt class="py-name">j</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">threshold</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">            <tt class="py-name">cur_share</tt> <tt class="py-op">=</tt> <tt class="py-name">coef</tt><tt class="py-op">[</tt><tt class="py-name">j</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-name">cur_point</tt> <tt class="py-op">*</tt> <tt class="py-name">cur_share</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-name">shares</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">cur_point</tt><tt class="py-op">,</tt> <tt class="py-name">cur_share</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">shares</tt> </tt>
+</div><a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line"> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line"><tt class="py-comment"># Cached recombination vectors.</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt id="link-6" class="py-name" targets="Variable viff.shamir._recombination_vectors=viff.shamir-module.html#_recombination_vectors"><a title="viff.shamir._recombination_vectors" class="py-name" href="#" onclick="return doclink('link-6', '_recombination_vectors', 'link-6');">_recombination_vectors</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line"> </tt>
+<a name="recombine"></a><div id="recombine-def"><a name="L71"></a><tt class="py-lineno">71</tt> <a class="py-toggle" href="#" id="recombine-toggle" onclick="return toggle('recombine');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="viff.shamir-module.html#recombine">recombine</a><tt class="py-op">(</tt><tt class="py-param">shares</tt><tt class="py-op">,</tt> <tt class="py-param">x_recomb</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="recombine-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="recombine-expanded"><a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">    <tt class="py-docstring">"""Recombines list of (xi, yi) pairs.</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line"><tt class="py-docstring">    Recombination is done in the optional point x.</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">    <tt class="py-name">xs</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">x_i</tt> <tt class="py-keyword">for</tt> <tt class="py-op">(</tt><tt class="py-name">x_i</tt><tt class="py-op">,</tt> <tt class="py-name">_</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-name">shares</tt><tt class="py-op">]</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">    <tt class="py-name">ys</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">y_i</tt> <tt class="py-keyword">for</tt> <tt class="py-op">(</tt><tt class="py-name">_</tt><tt class="py-op">,</tt> <tt class="py-name">y_i</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-name">shares</tt><tt class="py-op">]</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line">        <tt class="py-name">key</tt> <tt class="py-op">=</tt> <tt class="py-name">tuple</tt><tt class="py-op">(</tt><tt class="py-name">xs</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-op">(</tt><tt class="py-name">x_recomb</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line">        <tt class="py-name">vector</tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name"><a title="viff.shamir._recombination_vectors" class="py-name" href="#" onclick="return doclink('link-7', '_recombination_vectors', 'link-6');">_recombination_vectors</a></tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">KeyError</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">        <tt class="py-name">vector</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt><tt class="py-op">,</tt> <tt class="py-name">x_i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">enumerate</tt><tt class="py-op">(</tt><tt class="py-name">xs</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line">            <tt class="py-name">factors</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">x_k</tt> <tt class="py-op">-</tt> <tt class="py-name">x_recomb</tt><tt class="py-op">)</tt> <tt class="py-op">/</tt> <tt class="py-op">(</tt><tt class="py-name">x_k</tt> <tt class="py-op">-</tt> <tt class="py-name">x_i</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line">                       <tt class="py-keyword">for</tt> <tt class="py-name">k</tt><tt class="py-op">,</tt> <tt class="py-name">x_k</tt> <tt class="py-keyword">in</tt> <tt class="py-name">enumerate</tt><tt class="py-op">(</tt><tt class="py-name">xs</tt><tt class="py-op">)</tt> <tt class="py-keyword">if</tt> <tt class="py-name">k</tt> <tt class="py-op">!=</tt> <tt class="py-name">i</tt><tt class="py-op">]</tt> </tt>
+<a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line">            <tt class="py-name">vector</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">reduce</tt><tt class="py-op">(</tt><tt class="py-name">operator</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method viff.runtime.Runtime.mul()=viff.runtime.Runtime-class.html#mul"><a title="viff.runtime.Runtime.mul" class="py-name" href="#" onclick="return doclink('link-8', 'mul', 'link-8');">mul</a></tt><tt class="py-op">,</tt> <tt class="py-name">factors</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line">        <tt id="link-9" class="py-name"><a title="viff.shamir._recombination_vectors" class="py-name" href="#" onclick="return doclink('link-9', '_recombination_vectors', 'link-6');">_recombination_vectors</a></tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">vector</tt> </tt>
+<a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">sum</tt><tt class="py-op">(</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">operator</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="viff.runtime.Runtime.mul" class="py-name" href="#" onclick="return doclink('link-10', 'mul', 'link-8');">mul</a></tt><tt class="py-op">,</tt> <tt class="py-name">ys</tt><tt class="py-op">,</tt> <tt class="py-name">vector</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L89"></a><tt class="py-lineno">89</tt>  <tt class="py-line"> </tt>
+<a name="L90"></a><tt class="py-lineno">90</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno">91</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">doctest</tt> </tt>
+<a name="L92"></a><tt class="py-lineno">92</tt>  <tt class="py-line">    <tt class="py-name">doctest</tt><tt class="py-op">.</tt><tt class="py-name">testmod</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno">93</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0beta1 on Tue Oct 23 14:24:04 2007</a>
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>

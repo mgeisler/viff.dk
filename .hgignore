@@ -1,10 +1,14 @@
-syntax: glob
+syntax: regexp
 
-*.pyc
-*~
-*.orig
-*.html
-.feed-cache
-api
-release
-tmp
+# Ignore *.pyc, *~, and *.orig files
+\.pyc$
+~$
+\.orig$
+
+# Ignore *.html files except in api
+^(?!api/).*\.html$
+
+# Ignored directories
+^\.feed-cache$
+^tmp$
+^builds$
