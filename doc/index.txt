@@ -13,12 +13,6 @@ API Documentation
 * The API documentation not only describes the API, but also tries to
   give a overview of the VIFF architecture.
 
-  .. note::
-
-     The online API documentation reflects the current development
-     version of VIFF. You might therefore prefer the API documentation
-     bundled with each release.
-
   Available `online`__.
 
   .. __: http://viff.dk/api/
