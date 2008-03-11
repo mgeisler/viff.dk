@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>viff.config</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="viff-module.html">Package&nbsp;viff</a> ::
+        Module&nbsp;config
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="viff.config-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module config</h1><span class="codelink"><a href="viff.config-pysrc.html">source&nbsp;code</a></span><br /><br />
+<p>Functions for loading and saving player configurations.</p>
+  <p>Each player participating in a protocol execution must know some 
+  information about the other players, namely their hostname and port 
+  number. The player also needs to know something about itself, namely the 
+  keys used for pseudo-random secret sharing (PRSS).</p>
+  The <a href="viff.config.Player-class.html" class="link">Player</a> 
+  class encapsulates this information. Generating a player configuration is
+  done using the <a href="viff.config-module.html#generate_configs" 
+  class="link">generate_configs</a> function. The 
+  <code>apps/generate_config_files.py</code> script uses that function to 
+  generate a player config and save it in a number of .ini files. Such a 
+  .ini file can be loaded with the <a 
+  href="viff.config-module.html#load_config" class="link">load_config</a> 
+  function.<br /><br />
+
+<!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Classes"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="viff.config.Player-class.html" class="summary-name">Player</a><br />
+      Wrapper for information about a player in the protocol.
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>int</code>, <code>dict</code> from <code>int</code> to <a 
+      href="viff.config.Player-class.html" class="link">Player</a> 
+      instances.</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.config-module.html#load_config" class="summary-sig-name">load_config</a>(<span class="summary-sig-arg">source</span>)</span><br />
+      Load a player configuration file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.config-pysrc.html#load_config">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>dict</code> from <code>int</code> to 
+      <code>ConfigObj</code>.</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.config-module.html#generate_configs" class="summary-sig-name">generate_configs</a>(<span class="summary-sig-arg">n</span>,
+        <span class="summary-sig-arg">t</span>,
+        <span class="summary-sig-arg">addresses</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">prefix</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Generate player configurations.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.config-pysrc.html#generate_configs">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="load_config"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">load_config</span>(<span class="sig-arg">source</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.config-pysrc.html#load_config">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Load a player configuration file.</p>
+  <p>Configuration files are simple INI-files containing information 
+  (hostname and port number) about the other players in the protocol.</p>
+  One of the players own the config file and for this player additional 
+  information on PRSS keys is available.
+  <dl class="fields">
+    <dt>Returns: <code>int</code>, <code>dict</code> from <code>int</code> to <a 
+      href="viff.config.Player-class.html" class="link">Player</a> 
+      instances.</dt>
+        <dd>owner ID and a mapping of player IDs to players.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="generate_configs"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">generate_configs</span>(<span class="sig-arg">n</span>,
+        <span class="sig-arg">t</span>,
+        <span class="sig-arg">addresses</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">prefix</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.config-pysrc.html#generate_configs">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </table>
+  
+  <p>Generate player configurations.</p>
+  The configurations are returned as <code>ConfigObj</code>s and can be 
+  saved to disk if desired.
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>n</code></strong> - number of players.</li>
+        <li><strong class="pname"><code>t</code></strong> - threshold.</li>
+        <li><strong class="pname"><code>addresses</code></strong> - list of (host, port) pairs.</li>
+        <li><strong class="pname"><code>prefix</code></strong> - filename prefix.</li>
+    </ul></dd>
+    <dt>Returns: <code>dict</code> from <code>int</code> to 
+      <code>ConfigObj</code>.</dt>
+        <dd>mapping from player id to player configuration.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0beta1 on Wed Nov 14 09:06:14 2007</a>
+    </td>
+    <td align="right" class="footer">
+      <a href="http://epydoc.sourceforge.net">http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie()
+  // -->
+</script>
+  
+</body>
+</html>
