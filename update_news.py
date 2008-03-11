@@ -66,7 +66,11 @@ def age(time_tuple):
               (60, 'minutes'),
               (1, 'seconds')]
 
-    difference = time() - timegm(time_tuple)
+    # Correction for daylight saving. Feedparser seems to return a
+    # struct_time with the tm_isdst flag set to 1 if local daylight
+    # savings is in effect. This hopefully corrects this extra offset.
+    daylight_offset = time_tuple[8] * 3600
+    difference = time() - (timegm(time_tuple) - daylight_offset)
     for delta, text in deltas:
         if difference > 2*delta:
             break
