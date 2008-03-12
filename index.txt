@@ -7,7 +7,7 @@
 .. raw:: html
 
   <div id="links">
-    <a class="green" href="#releases">Download VIFF 0.3</a>
+    <a class="green" href="#releases">Download VIFF 0.4</a>
     <a class="blue"
         href="http://lists.viff.dk/listinfo.cgi/viff-devel-viff.dk">Join
     the mailing list</a>
@@ -117,6 +117,77 @@ downloaded here:
 .. __: http://hg.viff.dk/viff/archive/tip.zip
 
 You can also download a release below:
+
+* **viff-0.4**: tar.bz2__, tar.gz__, zip__, exe__, released on March 12th 2008.
+
+  .. __: http://viff.dk/release/viff-0.4.tar.bz2
+  .. __: http://viff.dk/release/viff-0.4.tar.gz
+  .. __: http://viff.dk/release/viff-0.4.zip
+  .. __: http://viff.dk/release/viff-0.4.win32.exe
+
+  Implemented a reliable Bracha broadcast which is secure against
+  active adversaries. Shamir sharings, pseudo-random as well as
+  standard, can now be asymmetric which means that only a subset of
+  the parties provide input. The open protocol is now also asymmetric,
+  in the sense that only a subset of the parties receive the opened
+  result. The behavior of field elements in Boolean expressions has
+  been fixed. This means that ``GF256(0) and GF256(1)`` now returns
+  ``GF256(0)`` instead of ``GF256(1)``. Added a modern implementation
+  of the classic Yao millionaires example from 1982 which started this
+  field of research.
+
+  Details:
+
+  * Bracha broadcast, which is a reliable broadcast mechanism against
+    active adversaries, has been implemented. Secure broadcast is a
+    building block that is often used in active security scenarios.
+
+  * Asymmetric Shamir sharing. It is now possible to specify that just
+    a subset of the players should provide input to a Shamir sharing.
+    This change is not backwards compatible with version 0.3 or
+    earlier. Adapting old programs is easy:
+
+    .. sourcecode:: python
+
+       a, b, c = rt.shamir_share(Zp(input))
+       # should be changed to:
+       a, b, c = rt.shamir_share([1, 2, 3], Zp, input)
+
+    where Zp is a field and rt is a Runtime.
+
+  * Asymmetric pseudo-random secret sharing. As the asymmetric Shamir
+    sharing above, this is not backwards compatible. This can be fixed
+    by changing statements such as e.g.
+
+    .. sourcecode:: python
+
+       a, b, c = rt.prss_share(Zp(input))
+       # to this:
+       a, b, c = rt.prss_share([1, 2, 3], Zp, input)
+
+    where Zp is a field and rt is a Runtime.
+
+  * Asymmetric open protocol, meaning that it is now possible to
+    specify that only a subset of the players should receive the
+    opened secret. This change is not backwards compatible in cases,
+    where threshold is explicitly passed as a parameter. To correct
+    this, name the threshold parameter, e.g. change
+
+    .. sourcecode:: python
+
+       result = rt.open(sharing, rt.threshold * 2)
+       # to this:
+       result = rt.open(sharing, threshold=rt.threshold * 2)
+
+  * Overloaded exclusive-or operations on Share instances. Given two
+    shares a and b, one can now do
+
+    .. sourcecode:: python
+
+       c = a ^ b
+
+    to obtain the exclusive-or. This works for both GF256 shares and Zp
+    shares, though the two types must not be mixed.
 
 * **viff-0.3**: tar.bz2__, tar.gz__, zip__, released on December 27th 2007.
 
