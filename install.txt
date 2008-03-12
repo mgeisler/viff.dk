@@ -61,7 +61,7 @@ This describes installation of VIFF on Windows XP Proffesional Version
 
 5) Download and install GMPY from `http://code.google.com/p/gmpy/`_.
 
-6) This should be enough to run viff with non-secured channels. To
+6) This should be enough to run VIFF with non-secured channels. To
    verify the installation so far, try out one of the applications.
    We will run the millionaires example with three players and a
    threshold of one. For this test, we will let all players run on
@@ -115,7 +115,7 @@ This describes installation of VIFF on Windows XP Proffesional Version
    need to download and install Python-gnutils. Hovever, we haven't
    had the time to test installation of this on Windows yet. Feel free
    to contribute with details about this by sending an email to the
-   `viff mailing list`_.
+   `VIFF mailing list`_.
 
 .. _www.python.org: http://www.python.org
 .. _www.twistedmatrix.com: http://www.twistedmatrix.com
