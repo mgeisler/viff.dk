@@ -53,7 +53,7 @@ This describes installation of VIFF on Windows XP Proffesional Version
 4) Download the configobj.zip file from
    `here`_ and enter
 
-   .. sourcecode:: sh
+   .. sourcecode:: bat
 
       python setup.py install
 
@@ -71,26 +71,26 @@ This describes installation of VIFF on Windows XP Proffesional Version
    a) Go to the ``viff/apps/`` directory and generate the the config file
       for this setup by entering
       
-      .. sourcecode:: sh
+      .. sourcecode:: bat
 
 	 python generate-config-files.py -n 3 -t 1 localhost:9001 localhost:9002 localhost:9003
 
    b) Open three separate command prompts and go to the ``viff/apps/``
       directory in each. In the first, type
 
-      .. sourcecode:: sh
+      .. sourcecode:: bat
 
 	 python millionaires.py --no-tls player-3.ini
 
       in the second, type
 
-      .. sourcecode:: sh	
+      .. sourcecode:: bat
 
 	 python millionaires.py --no-tls player-2.ini
 
       and in the last, type
 
-      .. sourcecode:: sh
+      .. sourcecode:: bat
 
 	 python millionaires.py --no-tls player-1.ini
 
@@ -99,7 +99,7 @@ This describes installation of VIFF on Windows XP Proffesional Version
       first. If the installation works, you should see something like
       this from e.g. player 3:
     
-      .. sourcecode:: sh
+      .. sourcecode:: bat
 
 	 C:\viff\apps> python millionaires.py --no-tls player-3.ini 
 	 Seeding random generator with random seed 7416
