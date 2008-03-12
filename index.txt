@@ -165,7 +165,7 @@ You can also download a release below:
        # to this:
        a, b, c = rt.prss_share([1, 2, 3], Zp, input)
 
-    where Zp is a field and rt is a Runtime.
+    where ``Zp`` is a field and ``rt`` is a Runtime.
 
   * Asymmetric open protocol, meaning that it is now possible to
     specify that only a subset of the players should receive the
