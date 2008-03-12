@@ -32,6 +32,9 @@ platforms on which we `test VIFF`_.
 .. _report back: mailto:viff-devel@viff.dk
 .. _test VIFF: http://buildbot.viff.dk/
 
+.. contents::
+   :depth: 1
+
 
 Windows
 -------
