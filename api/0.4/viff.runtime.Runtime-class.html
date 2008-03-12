@@ -1,0 +1,1769 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>viff.runtime.Runtime</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="viff-module.html">Package&nbsp;viff</a> ::
+        <a href="viff.runtime-module.html">Module&nbsp;runtime</a> ::
+        Class&nbsp;Runtime
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="viff.runtime.Runtime-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Runtime</h1><p class="nomargin-top"><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime">source&nbsp;code</a></span></p>
+<p>The VIFF runtime.</p>
+  <p>The runtime is used for sharing values (<a 
+  href="viff.runtime.Runtime-class.html#shamir_share" 
+  class="link">shamir_share</a> or <a 
+  href="viff.runtime.Runtime-class.html#prss_share" 
+  class="link">prss_share</a>) into <a href="viff.runtime.Share-class.html"
+  class="link">Share</a> object and opening such shares (<a 
+  href="viff.runtime.Runtime-class.html#open" class="link">open</a>) again.
+  Calculations on shares is normally done through overloaded arithmetic 
+  operations, but it is also possible to call <a 
+  href="viff.runtime.Runtime-class.html#add" class="link">add</a>, <a 
+  href="viff.runtime.Runtime-class.html#mul" class="link">mul</a>, etc. 
+  directly if one prefers.</p>
+  <p>Each player in the protocol uses a Runtime object. To create in 
+  instance and connect it correctly with the other players, please use the 
+  <a href="viff.runtime-module.html#create_runtime" 
+  class="link">create_runtime</a> function instead of instantiating a 
+  Runtime directly. The <a href="viff.runtime-module.html#create_runtime" 
+  class="link">create_runtime</a> function will take care of setting up 
+  network connections and return a Deferred which triggers with the Runtime
+  object when it is ready.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">player</span>,
+        <span class="summary-sig-arg">threshold</span>,
+        <span class="summary-sig-arg">options</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Initialize runtime.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="add_player"></a><span class="summary-sig-name">add_player</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">player</span>,
+        <span class="summary-sig-arg">protocol</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.add_player">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#shutdown" class="summary-sig-name">shutdown</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Shutdown the runtime.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.shutdown">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#wait_for" class="summary-sig-name">wait_for</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*vars</span>)</span><br />
+      Make the runtime wait for the variables given.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.wait_for">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#callback" class="summary-sig-name">callback</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">deferred</span>,
+        <span class="summary-sig-arg">func</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Schedule a callback on a deferred with the correct program counter.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.callback">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#synchronize" class="summary-sig-name">synchronize</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.synchronize">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">Share or None</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#open" class="summary-sig-name">open</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">share</span>,
+        <span class="summary-sig-arg">receivers</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">threshold</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Open a secret sharing.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.open">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#add" class="summary-sig-name">add</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">share_a</span>,
+        <span class="summary-sig-arg">share_b</span>)</span><br />
+      Addition of shares.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.add">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#sub" class="summary-sig-name">sub</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">share_a</span>,
+        <span class="summary-sig-arg">share_b</span>)</span><br />
+      Subtraction of shares.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.sub">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#mul" class="summary-sig-name">mul</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">share_a</span>,
+        <span class="summary-sig-arg">share_b</span>)</span><br />
+      Multiplication of shares.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.mul">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#xor" class="summary-sig-name">xor</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">share_a</span>,
+        <span class="summary-sig-arg">share_b</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.xor">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>List</code> of <code>Shares</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#prss_share" class="summary-sig-name">prss_share</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">inputters</span>,
+        <span class="summary-sig-arg">field</span>,
+        <span class="summary-sig-arg">element</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Creates pseudo-random secret sharings.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.prss_share">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#prss_share_random" class="summary-sig-name">prss_share_random</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">field</span>,
+        <span class="summary-sig-arg">binary</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Generate shares of a uniformly random element from the field given.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.prss_share_random">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#_shamir_share" class="summary-sig-name" onclick="show_private();">_shamir_share</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">number</span>)</span><br />
+      Share a FieldElement using Shamir sharing.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._shamir_share">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#shamir_share" class="summary-sig-name">shamir_share</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">inputters</span>,
+        <span class="summary-sig-arg">field</span>,
+        <span class="summary-sig-arg">number</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Secret share <code>number</code> over <code>field</code> using 
+      Shamir's method.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.shamir_share">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#convert_bit_share" class="summary-sig-name">convert_bit_share</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">share</span>,
+        <span class="summary-sig-arg">dst_field</span>)</span><br />
+      Convert a 0/1 share into dst_field.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.convert_bit_share">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#convert_bit_share_II" class="summary-sig-name">convert_bit_share_II</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">share</span>,
+        <span class="summary-sig-arg">dst_field</span>)</span><br />
+      Convert a 0/1 share into dst_field.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.convert_bit_share_II">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#greater_than_equal" class="summary-sig-name">greater_than_equal</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">share_a</span>,
+        <span class="summary-sig-arg">share_b</span>)</span><br />
+      Compute share_a &gt;= share_b.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.greater_than_equal">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#_finish_greater_than_equal" class="summary-sig-name" onclick="show_private();">_finish_greater_than_equal</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">results</span>,
+        <span class="summary-sig-arg">l</span>)</span><br />
+      Finish the calculation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._finish_greater_than_equal">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#_diamond" class="summary-sig-name" onclick="show_private();">_diamond</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">(top_a, bot_a)</span>,
+        <span class="summary-sig-arg">(top_b, bot_b)</span>)</span><br />
+      The &quot;diamond-operator&quot;.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._diamond">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#_broadcast" class="summary-sig-name" onclick="show_private();">_broadcast</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sender</span>,
+        <span class="summary-sig-arg">message</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Perform a Bracha broadcast.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._broadcast">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#broadcast" class="summary-sig-name">broadcast</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">senders</span>,
+        <span class="summary-sig-arg">message</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Perform one or more Bracha broadcast(s).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.broadcast">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#greater_than_equalII_preproc" class="summary-sig-name">greater_than_equalII_preproc</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">field</span>,
+        <span class="summary-sig-arg">smallField</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Preprocessing for greater_than_equalII.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.greater_than_equalII_preproc">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#greater_than_equalII_online" class="summary-sig-name">greater_than_equalII_online</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">share_a</span>,
+        <span class="summary-sig-arg">share_b</span>,
+        <span class="summary-sig-arg">preproc</span>,
+        <span class="summary-sig-arg">field</span>)</span><br />
+      Compute share_a &gt;= share_b.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.greater_than_equalII_online">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#_finish_greater_than_equalII" class="summary-sig-name" onclick="show_private();">_finish_greater_than_equalII</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">c</span>,
+        <span class="summary-sig-arg">field</span>,
+        <span class="summary-sig-arg">smallField</span>,
+        <span class="summary-sig-arg">s_bit</span>,
+        <span class="summary-sig-arg">s_sign</span>,
+        <span class="summary-sig-arg">mask</span>,
+        <span class="summary-sig-arg">r_modl</span>,
+        <span class="summary-sig-arg">r_bits</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Finish the calculation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._finish_greater_than_equalII">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#greater_than_equalII" class="summary-sig-name">greater_than_equalII</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">share_a</span>,
+        <span class="summary-sig-arg">share_b</span>)</span><br />
+      Compute share_a &gt;= share_b.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.greater_than_equalII">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#_exchange_shares" class="summary-sig-name" onclick="show_private();">_exchange_shares</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">id</span>,
+        <span class="summary-sig-arg">field_element</span>)</span><br />
+      Exchange shares with another player.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._exchange_shares">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_expect_share"></a><span class="summary-sig-name">_expect_share</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">peer_id</span>,
+        <span class="summary-sig-arg">field</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._expect_share">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_expect_data"></a><span class="summary-sig-name">_expect_data</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">peer_id</span>,
+        <span class="summary-sig-arg">type</span>,
+        <span class="summary-sig-arg">deferred</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._expect_data">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.Runtime-class.html#_recombine" class="summary-sig-name" onclick="show_private();">_recombine</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">shares</span>,
+        <span class="summary-sig-arg">threshold</span>)</span><br />
+      Shamir recombine a list of deferred (id,share) pairs.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._recombine">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== STATIC METHODS ==================== -->
+<a name="section-StaticMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Static Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-StaticMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="add_options"></a><span class="summary-sig-name">add_options</span>(<span class="summary-sig-arg">parser</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.add_options">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="id"></a><span class="summary-name">id</span><br />
+      ID of this player.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="threshold"></a><span class="summary-name">threshold</span><br />
+      Shamir secret sharing threshold.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>list</code> of integers.</span>
+    </td><td class="summary">
+        <a href="viff.runtime.Runtime-class.html#program_counter" class="summary-name">program_counter</a><br />
+      Current program counter.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>dict</code> from <code>(program_counter, player_id)</code> to 
+      deferred data.</span>
+    </td><td class="summary">
+        <a href="viff.runtime.Runtime-class.html#incoming_data" class="summary-name">incoming_data</a><br />
+      Data expected to be received in the future.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>dict</code> from Player ID to <a 
+      href="viff.runtime.ShareExchanger-class.html" 
+      class="link">ShareExchanger</a> objects.</span>
+    </td><td class="summary">
+        <a name="protocols"></a><span class="summary-name">protocols</span><br />
+      Connections to the other players.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="viff.runtime.Runtime-class.html#num_players" class="summary-name">num_players</a><br />
+      Number of known players.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>dict</code> from player_id to <a 
+      href="viff.config.Player-class.html" class="link">Player</a> objects.</span>
+    </td><td class="summary">
+        <a name="players"></a><span class="summary-name">players</span><br />
+      Information on players.
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_bracha_echo"></a><span class="summary-name">_bracha_echo</span><br />
+      Echo counters for Bracha broadcast.
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_bracha_ready"></a><span class="summary-name">_bracha_ready</span><br />
+      Ready counters for Bracha broadcast.
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_bracha_sent_ready"></a><span class="summary-name">_bracha_sent_ready</span><br />
+      Have we sent a ready message?
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_bracha_delivered"></a><span class="summary-name">_bracha_delivered</span><br />
+      Have we delivered the message?
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">player</span>,
+        <span class="sig-arg">threshold</span>,
+        <span class="sig-arg">options</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initialize runtime.</p>
+  <p>Initialized a runtime owned by the given, the threshold, and 
+  optionally a set of options. The runtime has no network connections and 
+  knows of no other players -- the <a 
+  href="viff.runtime-module.html#create_runtime" 
+  class="link">create_runtime</a> function should be used instead to create
+  a usable runtime.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="shutdown"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">shutdown</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.shutdown">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Shutdown the runtime.</p>
+  <p>All connections are closed and the runtime cannot be used again after 
+  this has been called.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="wait_for"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">wait_for</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*vars</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.wait_for">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Make the runtime wait for the variables given.</p>
+  <p>The runtime is shut down when all variables are calculated.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>vars</code></strong> (list of Deferreds) - variables to wait for.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="callback"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">callback</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">deferred</span>,
+        <span class="sig-arg">func</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.callback">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Schedule a callback on a deferred with the correct program 
+  counter.</p>
+  <p>If a callback depends on the current program counter, then use this 
+  method to schedule it instead of simply calling addCallback directly. 
+  Simple callbacks that are independent of the program counter can still be
+  added directly to the Deferred as usual.</p>
+  <p>Any extra arguments are passed to the callback as with 
+  addCallback.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>deferred</code></strong> - the Deferred.</li>
+        <li><strong class="pname"><code>func</code></strong> - the callback.</li>
+        <li><strong class="pname"><code>args</code></strong> - extra arguments.</li>
+        <li><strong class="pname"><code>kwargs</code></strong> - extra keyword arguments.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="synchronize"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">synchronize</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.synchronize">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="open"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">open</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">share</span>,
+        <span class="sig-arg">receivers</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">threshold</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.open">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Open a secret sharing.</p>
+  <p>Communication cost: every player sends one share to each receiving 
+  player.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>share</code></strong> (Share) - the player's private part of the sharing to open.</li>
+        <li><strong class="pname"><code>receivers</code></strong> (None or a <code>List</code> of integers) - the ids of the players that will eventually obtain the opened 
+          result or None if all players should obtain the opened result.</li>
+        <li><strong class="pname"><code>threshold</code></strong> (integer or None) - the threshold used to open the sharing or None if the runtime 
+          default should be used.</li>
+    </ul></dd>
+    <dt>Returns: Share or None</dt>
+        <dd>the result of the opened sharing if the player's id is in 
+          <code>receivers</code>, otherwise None.</dd>
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="add"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">add</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">share_a</span>,
+        <span class="sig-arg">share_b</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.add">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Addition of shares.</p>
+  <p>Communication cost: none.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="sub"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sub</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">share_a</span>,
+        <span class="sig-arg">share_b</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.sub">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Subtraction of shares.</p>
+  <p>Communication cost: none.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="mul"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">mul</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">share_a</span>,
+        <span class="sig-arg">share_b</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.mul">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Multiplication of shares.</p>
+  <p>Communication cost: 1 Shamir sharing.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="xor"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">xor</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">share_a</span>,
+        <span class="sig-arg">share_b</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.xor">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="prss_share"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">prss_share</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">inputters</span>,
+        <span class="sig-arg">field</span>,
+        <span class="sig-arg">element</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.prss_share">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Creates pseudo-random secret sharings.</p>
+  <p>This protocol creates a secret sharing for each player in the subset 
+  of players specified in <code>inputters</code>. The protocol uses the 
+  pseudo-random secret sharing technique described in the paper &quot;Share
+  Conversion, Pseudorandom Secret-Sharing and Applications to Secure 
+  Computation&quot; by Ronald Cramer, Ivan Damg&#229;rd, and Yuval Ishai in 
+  Proc. of TCC 2005, LNCS 3378. <a 
+  href="http://www.cs.technion.ac.il/~yuvali/pubs/CDI05.ps" 
+  target="_top">Download</a>.</p>
+  <p>Communication cost: Each inputter does one broadcast.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>inputters</code></strong> (<code>list</code> of integers) - The ids of the players that will share a secret.</li>
+        <li><strong class="pname"><code>field</code></strong> (<a href="viff.field.FieldElement-class.html" 
+          class="link">FieldElement</a>) - The field over which to share all the secrets.</li>
+        <li><strong class="pname"><code>element</code></strong> (int, long, or None) - The secret that this player shares or <code>None</code> if this 
+          player is not in <code>inputters</code>.</li>
+    </ul></dd>
+    <dt>Returns: <code>List</code> of <code>Shares</code></dt>
+        <dd>A list of shares corresponding to the secrets submitted by the 
+          players in <code>inputters</code>.</dd>
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="prss_share_random"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">prss_share_random</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">field</span>,
+        <span class="sig-arg">binary</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.prss_share_random">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Generate shares of a uniformly random element from the field 
+  given.</p>
+  <p>If binary is True, a 0/1 element is generated. No player learns the 
+  value of the element.</p>
+  <p>Communication cost: none if binary=False, 1 open otherwise.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_shamir_share"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_shamir_share</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">number</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._shamir_share">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Share a FieldElement using Shamir sharing.</p>
+  <p>Returns a list of (id, share) pairs.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="shamir_share"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">shamir_share</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">inputters</span>,
+        <span class="sig-arg">field</span>,
+        <span class="sig-arg">number</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.shamir_share">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Secret share <code>number</code> over <code>field</code> using 
+  Shamir's method.</p>
+  <p>Returns a list of shares.</p>
+  <p>Communication cost: n elements transmitted.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="convert_bit_share"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">convert_bit_share</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">share</span>,
+        <span class="sig-arg">dst_field</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.convert_bit_share">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Convert a 0/1 share into dst_field.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="convert_bit_share_II"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">convert_bit_share_II</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">share</span>,
+        <span class="sig-arg">dst_field</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.convert_bit_share_II">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Convert a 0/1 share into dst_field.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="greater_than_equal"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">greater_than_equal</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">share_a</span>,
+        <span class="sig-arg">share_b</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.greater_than_equal">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Compute share_a &gt;= share_b.</p>
+  <p>Both arguments must be from the field given. The result is a GF256 
+  share.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_finish_greater_than_equal"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_finish_greater_than_equal</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">results</span>,
+        <span class="sig-arg">l</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._finish_greater_than_equal">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Finish the calculation.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_diamond"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_diamond</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">(top_a, bot_a)</span>,
+        <span class="sig-arg">(top_b, bot_b)</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._diamond">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>The &quot;diamond-operator&quot;.</p>
+  <p>Defined by</p>
+  <p>(x, X) `diamond` (0, Y) = (0, Y) (x, X) `diamond` (1, Y) = (x, X)</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_broadcast"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_broadcast</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">sender</span>,
+        <span class="sig-arg">message</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._broadcast">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Perform a Bracha broadcast.</p>
+  <p>A Bracha broadcast is reliable against an active adversary corrupting 
+  up to t &lt; n/3 of the players. For more details, see the paper &quot;An
+  asynchronous [(n-1)/3]-resilient consensus protocol&quot; by G. Bracha in
+  Proc. 3rd ACM Symposium on Principles of Distributed Computing, 1984, 
+  pages 154-162.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>sender</code></strong> - the sender of the broadcast message.</li>
+        <li><strong class="pname"><code>message</code></strong> - the broadcast message, used only by the sender.</li>
+    </ul></dd>
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="broadcast"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">broadcast</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">senders</span>,
+        <span class="sig-arg">message</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.broadcast">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Perform one or more Bracha broadcast(s).</p>
+  <p>The list of senders given will determine the subset of players who 
+  wish to broadcast a message. If this player wishes to broadcast, its id 
+  must be in the list of senders and the optional message parameter must be
+  used.</p>
+  <p>If the list of senders consists only of a single sender, the result 
+  will be a single element, otherwise it will be a list.</p>
+  <p>A Bracha broadcast is reliable against an active adversary corrupting 
+  up to t &lt; n/3 of the players. For more details, see the paper &quot;An
+  asynchronous [(n-1)/3]-resilient consensus protocol&quot; by G. Bracha in
+  Proc. 3rd ACM Symposium on Principles of Distributed Computing, 1984, 
+  pages 154-162.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>senders</code></strong> - the list of senders.</li>
+        <li><strong class="pname"><code>message</code></strong> - the broadcast message, used if this player is a sender.</li>
+    </ul></dd>
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="greater_than_equalII_preproc"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">greater_than_equalII_preproc</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">field</span>,
+        <span class="sig-arg">smallField</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.greater_than_equalII_preproc">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Preprocessing for greater_than_equalII.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="greater_than_equalII_online"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">greater_than_equalII_online</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">share_a</span>,
+        <span class="sig-arg">share_b</span>,
+        <span class="sig-arg">preproc</span>,
+        <span class="sig-arg">field</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.greater_than_equalII_online">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Compute share_a &gt;= share_b. Result is shared.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_finish_greater_than_equalII"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_finish_greater_than_equalII</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">c</span>,
+        <span class="sig-arg">field</span>,
+        <span class="sig-arg">smallField</span>,
+        <span class="sig-arg">s_bit</span>,
+        <span class="sig-arg">s_sign</span>,
+        <span class="sig-arg">mask</span>,
+        <span class="sig-arg">r_modl</span>,
+        <span class="sig-arg">r_bits</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._finish_greater_than_equalII">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Finish the calculation.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="greater_than_equalII"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">greater_than_equalII</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">share_a</span>,
+        <span class="sig-arg">share_b</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime.greater_than_equalII">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Compute share_a &gt;= share_b.</p>
+  <p>Both arguments must be of type field. The result is a field share.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_exchange_shares"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_exchange_shares</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">id</span>,
+        <span class="sig-arg">field_element</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._exchange_shares">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Exchange shares with another player.</p>
+  <p>We send the player our share and record a Deferred which will trigger 
+  when the share from the other side arrives.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_recombine"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_recombine</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">shares</span>,
+        <span class="sig-arg">threshold</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#Runtime._recombine">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Shamir recombine a list of deferred (id,share) pairs.</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@increment_pc</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== INSTANCE VARIABLE DETAILS ==================== -->
+<a name="section-InstanceVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="program_counter"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">program_counter</h3>
+  <p>Current program counter.</p>
+  <p>Whenever a share is sent over the network, it must be uniquely 
+  identified so that the receiving player known what operation the share is
+  a result of. This is done by associating a <a 
+  name="index-program_counter"></a><i class="indexterm">program counter</i>
+  with each operation.</p>
+  <p>Keeping the program counter synchronized between all players ought to 
+  be easy, but because of the asynchronous nature of network protocols, all
+  players might not reach the same parts of the program at the same 
+  time.</p>
+  <p>Consider two players <i class="math">A</i> and <i class="math">B</i> 
+  who are both waiting on the variables <code>a</code> and <code>b</code>. 
+  Callbacks have been added to <code>a</code> and <code>b</code>, and the 
+  question is what program counter the callbacks should use when sending 
+  data out over the network.</p>
+  <p>Let <i class="math">A</i> receive input for <code>a</code> and then 
+  for <code>b</code> a little later, and let <i class="math">B</i> receive 
+  the inputs in reversed order so that the input for <code>b</code> arrives
+  first. The goal is to keep the program counters synchronized so that 
+  program counter <i class="math">x</i> refers to the same operation on all
+  players. Because the inputs arrive in different order at different 
+  players, incrementing a simple global counter is not enough.</p>
+  <p>Instead, a <i>tree</i> is made, which follows the tree of execution. 
+  At the top level the program counter starts at <code>[0]</code>. At the 
+  next operation it becomes <code>[1]</code>, and so on. If a callback is 
+  scheduled (see <a href="viff.runtime.Runtime-class.html#callback" 
+  class="link">callback</a>) at program counter <code>[x, y, z]</code>, any
+  calls it makes will be numbered <code>[x, y, z, 1]</code>, then <code>[x,
+  y, z, 2]</code>, and so on.</p>
+  <p>Maintaining such a tree of program counters ensures that different 
+  parts of the program execution never reuses the same program counter for 
+  different variables.</p>
+  <p>The <a href="viff.runtime-module.html#increment_pc" 
+  class="link">increment_pc</a> decorator is responsible for dynamically 
+  building the tree as the execution unfolds and <a 
+  href="viff.runtime.Runtime-class.html#callback" class="link">callback</a>
+  is responsible for scheduling callbacks with the correct program 
+  counter.</p>
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd><code>list</code> of integers.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="incoming_data"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">incoming_data</h3>
+  <p>Data expected to be received in the future.</p>
+  <p>Shares from other players are put here, either as an empty Deferred if
+  we are waiting on input from the player, or as a succeeded Deferred if 
+  input is received from the other player before we are ready to use 
+  it.</p>
+  <p>When we have a share to exchange with another player, <a 
+  href="viff.runtime.Runtime-class.html#_exchange_shares" class="link" 
+  onclick="show_private();">_exchange_shares</a> is used. If we are ahead 
+  of the other player, it sets up a Deferred waiting for the players input.
+  It is <a href="viff.runtime.ShareExchanger-class.html#stringReceived" 
+  class="link">ShareExchanger.stringReceived</a> that triggers this 
+  deferred when the input eventually arrives. If the other player has 
+  already sent us its input, then <a 
+  href="viff.runtime.ShareExchanger-class.html#stringReceived" 
+  class="link">ShareExchanger.stringReceived</a> has set up a succeeded 
+  Deferred which <a href="viff.runtime.Runtime-class.html#_exchange_shares"
+  class="link" onclick="show_private();">_exchange_shares</a> can simply 
+  return.</p>
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd><code>dict</code> from <code>(program_counter, player_id)</code> to 
+      deferred data.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="num_players"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">num_players</h3>
+  <p>Number of known players.</p>
+  <p>Equal to <code>len(players)</code>, but storing it here is more 
+  direct.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Wed Mar 12 20:49:08 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
