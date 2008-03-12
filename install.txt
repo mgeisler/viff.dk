@@ -42,8 +42,8 @@ This describes installation of VIFF on Windows XP Proffesional Version
 1) Download and install the latest version of Python from
    `www.python.org`_, currently Python 2.5.
 
-2) Include the path to your Python installation (e.g. C:\\Python25\\)
-   in the PATH system environment variable. One way to edit this
+2) Include the path to your Python installation (e.g. ``C:\Python25\``)
+   in the ``PATH`` system environment variable. One way to edit this
    environment variable is by right-clicking My Computer in the Start
    menu, selecting Properties, Advanced, and then pressing the
    Environment Variables button.
@@ -68,14 +68,14 @@ This describes installation of VIFF on Windows XP Proffesional Version
    localhost: Player 1 will run on port 9001, player 2 on port 9002,
    and player 3 on port 9003.
 
-   a) Go to the viff/apps directory and generate the the config file
+   a) Go to the ``viff/apps/`` directory and generate the the config file
       for this setup by entering
       
       .. sourcecode:: sh
 
 	 python generate-config-files.py -n 3 -t 1 localhost:9001 localhost:9002 localhost:9003
 
-   b) Open three separate command prompts and go to the viff/apps
+   b) Open three separate command prompts and go to the ``viff/apps/``
       directory in each. In the first, type
 
       .. sourcecode:: sh
