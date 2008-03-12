@@ -187,6 +187,19 @@ table.docinfo  th.docinfo-name {
   padding-left: 0;
 }
 
+a.toc-backref {
+  text-decoration: none;
+  color: inherit;
+}
+
+div.topic {
+  margin: 0.5em 0em;
+}
+
+p.topic-title {
+  font-weight: bold;
+}
+
 
 /* Docutils does not (yet) have support for multiple style sheets, so
  * we include the Pygments rules here. The rules are generated using
