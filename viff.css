@@ -9,6 +9,30 @@ p {
   margin-bottom: 0.25em;
 }
 
+ol, ul {
+  margin: 0.5em 0em;
+}
+
+ol.arabic {
+  list-style: decimal;
+}
+
+ol.loweralpha {
+  list-style: lower-alpha;
+}
+
+ol.upperalpha {
+  list-style: upper-alpha;
+}
+
+ol.lowerroman {
+  list-style: lower-roman;
+}
+
+ol.upperroman {
+  list-style: upper-roman;
+}
+
 li {
   text-align: left;
   margin-bottom: 0.5em;
