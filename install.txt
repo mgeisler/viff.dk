@@ -36,7 +36,92 @@ platforms on which we `test VIFF`_.
 Windows
 -------
 
-(To be written…)
+This describes installation of VIFF on Windows XP Proffesional Version
+2002 SP2.
+
+1) Download and install the latest version of Python from
+   `www.python.org`_, currently Python 2.5.
+
+2) Include the path to your Python installation (e.g. C:\\Python25\\)
+   in the PATH system environment variable. One way to edit this
+   environment variable is by right-clicking My Computer in the Start
+   menu, selecting Properties, Advanced, and then pressing the
+   Environment Variables button.
+
+3) Download and install Twisted from `www.twistedmatrix.com`_.
+
+4) Download the configobj.zip file from
+   `here`_ and enter
+
+   .. sourcecode:: sh
+
+      python setup.py install
+
+   from the folder where you unzipped the files.
+
+5) Download and install GMPY from `http://code.google.com/p/gmpy/`_.
+
+6) This should be enough to run viff with non-secured channels. To
+   verify the installation so far, try out one of the applications.
+   We will run the millionaires example with three players and a
+   threshold of one. For this test, we will let all players run on
+   localhost: Player 1 will run on port 9001, player 2 on port 9002,
+   and player 3 on port 9003.
+
+   a) Go to the viff/apps directory and generate the the config file
+      for this setup by entering
+      
+      .. sourcecode:: sh
+
+	 python generate-config-files.py -n 3 -t 1 localhost:9001 localhost:9002 localhost:9003
+
+   b) Open three separate command prompts and go to the viff/apps
+      directory in each. In the first, type
+
+      .. sourcecode:: sh
+
+	 python millionaires.py --no-tls player-3.ini
+
+      in the second, type
+
+      .. sourcecode:: sh	
+
+	 python millionaires.py --no-tls player-2.ini
+
+      and in the last, type
+
+      .. sourcecode:: sh
+
+	 python millionaires.py --no-tls player-1.ini
+
+      Note that the order in wich you start the players is important:
+      The players must start in reverse order, e.g. the last player
+      first. If the installation works, you should see something like
+      this from e.g. player 3:
+    
+      .. sourcecode:: sh
+
+	 C:\viff\apps> python millionaires.py --no-tls player-3.ini 
+	 Seeding random generator with random seed 7416
+	 Not using TLS
+	 I am Millionaire 3 and I am worth 20 millions.
+	 From poorest to richest:
+	   Millionaire 2
+	   Millionaire 3 (20 millions)
+	   Millionaire 1
+	 Initiating shutdown sequence.
+
+7) In order to secure the channels between the players using TLS, you
+   need to download and install Python-gnutils. Hovever, we haven't
+   had the time to test installation of this on Windows yet. Feel free
+   to contribute with details about this by sending an email to the
+   `viff mailing list`_.
+
+.. _www.python.org: http://www.python.org
+.. _www.twistedmatrix.com: http://www.twistedmatrix.com
+.. _here: http://voidspace.org.uk/python/configobj.html
+.. _http://code.google.com/p/gmpy/: http://code.google.com/p/gmpy/
+.. _viff mailing list: mailto:viff-devel@viff.dk
 
 Mac OS X
 --------
