@@ -179,9 +179,10 @@ get VIFF working! The list is archived locally_, at Gmane_ (where you
 can read/post over `NNTP using a newsreader`__) and at `The Mail
 Archive`__.
 
-VIFF is developed by `Martin Geisler`_, `Mikkel Krøigård`_, and `Tomas
-Toft`_. Other contributors are very welcome! Please come to the
-`mailing list`_ and talk to us if you want to help in any way.
+VIFF is developed by `Martin Geisler`_, `Mikkel Krøigård`_, `Tomas
+Toft`_, and `Thomas Jakobsen`_. Other contributors are very welcome!
+Please come to the `mailing list`_ and talk to us if you want to help
+in any way.
 
 .. _mailing list:
 .. _VIFF-devel mailing list: http://lists.viff.dk/listinfo.cgi/
@@ -194,5 +195,6 @@ Toft`_. Other contributors are very welcome! Please come to the
 .. _Martin Geisler: http://www.daimi.au.dk/~mg/
 .. _Mikkel Krøigård: http://www.daimi.au.dk/~mk/
 .. _Tomas Toft: http://dinapigen.dk/TOMAS/
+.. _Thomas Jakobsen: http://www.daimi.au.dk/~mas
 
 .. include:: layout.rst
