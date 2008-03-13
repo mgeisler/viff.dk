@@ -151,8 +151,8 @@ div.news li {
 }
 
 div.highlight {
- margin: 0.5em 0em;
-  padding: 1em;
+  margin: 0.25em 0em;
+  padding: 0.5em;
   background-color: #EEE;
   border: thin solid #CCC;
 }
