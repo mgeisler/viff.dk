@@ -136,58 +136,9 @@ You can also download a release below:
   of the classic Yao millionaires example from 1982 which started this
   field of research.
 
-  Details:
+  See the NEWS__ file for more details.
 
-  * Bracha broadcast, which is a reliable broadcast mechanism against
-    active adversaries, has been implemented. Secure broadcast is a
-    building block that is often used in active security scenarios.
-
-  * Asymmetric Shamir sharing. It is now possible to specify that just
-    a subset of the players should provide input to a Shamir sharing.
-    This change is not backwards compatible with version 0.3 or
-    earlier. Adapting old programs is easy:
-
-    .. sourcecode:: python
-
-       a, b, c = rt.shamir_share(Zp(input))
-       # should be changed to:
-       a, b, c = rt.shamir_share([1, 2, 3], Zp, input)
-
-    where Zp is a field and rt is a Runtime.
-
-  * Asymmetric pseudo-random secret sharing. As the asymmetric Shamir
-    sharing above, this is not backwards compatible. This can be fixed
-    by changing statements such as e.g.
-
-    .. sourcecode:: python
-
-       a, b, c = rt.prss_share(Zp(input))
-       # to this:
-       a, b, c = rt.prss_share([1, 2, 3], Zp, input)
-
-    where ``Zp`` is a field and ``rt`` is a Runtime.
-
-  * Asymmetric open protocol, meaning that it is now possible to
-    specify that only a subset of the players should receive the
-    opened secret. This change is not backwards compatible in cases,
-    where threshold is explicitly passed as a parameter. To correct
-    this, name the threshold parameter, e.g. change
-
-    .. sourcecode:: python
-
-       result = rt.open(sharing, rt.threshold * 2)
-       # to this:
-       result = rt.open(sharing, threshold=rt.threshold * 2)
-
-  * Overloaded exclusive-or operations on Share instances. Given two
-    shares a and b, one can now do
-
-    .. sourcecode:: python
-
-       c = a ^ b
-
-    to obtain the exclusive-or. This works for both GF256 shares and Zp
-    shares, though the two types must not be mixed.
+  .. __: http://hg.viff.dk/viff/raw-file/0.4/NEWS
 
 * **viff-0.3**: tar.bz2__, tar.gz__, zip__, released on December 27th 2007.
 
