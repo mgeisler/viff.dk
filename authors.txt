@@ -9,6 +9,7 @@ to the repository):
 * Tomas Toft
 * Mikkel Krøigård <mk@daimi.au.dk>
 * Thomas Pelle Jakobsen <mas@daimi.au.dk>
+* Jakob Illeborg Pagter
 
 If you have been forgotten, then please checkout the website
 repository, add yourself to the list and `send us a patch`_!
