@@ -12,3 +12,4 @@ syntax: regexp
 ^\.feed-cache$
 ^tmp$
 ^builds$
+^awffull$
