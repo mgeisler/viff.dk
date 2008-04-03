@@ -57,17 +57,19 @@ platform where Python runs (succesfully tested on Linux, Windows, and
 Mac OS X). Please see the `installation guide`_ for details on the
 requirements.
 
-VIFF is Free Software, licensed under the `GNU GPL`_. This means that
+VIFF is Free Software, licensed under the `GNU LGPL`_. This means that
 you can download and use it for free and modify it to suit your needs.
 You are free to redistribute your modifications as long as you do it
-together with the modified source.
+together with the modified source. You are allowed to build
+applications (commercial or not) that use VIFF without having to
+license them under the LGPL.
 
 .. _secure multi-party computations: http://en.wikipedia.org/wiki/
                                      Secure_multiparty_computation
 .. _Python: http://python.org/
 .. _Twisted: http://twistedmatrix.com/
 .. _installation guide: install.html
-.. _GNU GPL: http://hg.viff.dk/viff/raw-file/tip/COPYING
+.. _GNU LGPL: http://hg.viff.dk/viff/raw-file/tip/COPYING.LIB
 
 Use Cases
 ~~~~~~~~~
