@@ -109,8 +109,10 @@ a RSS_ or Atom_ feed with updates.
 .. _RSS: http://hg.viff.dk/viff/rss-log
 .. _Atom: http://hg.viff.dk/viff/atom-log
 
-The repository should be mostly stable and a snapshot can be
-downloaded here:
+The repository should be mostly stable (you can check the BuildBot_ if
+you are unsure) and a snapshot can be downloaded here:
+
+.. _BuildBot: http://buildbot.viff.dk/waterfall
 
 * **viff-tip**: tar.bz2__, tar.gz__, zip__.
 
