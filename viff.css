@@ -150,6 +150,16 @@ div.news li {
   background-color: #FCC;
 }
 
+.orange {
+  border-color: #FFB266;
+  background-color: #FFD4AA;
+}
+
+.orange:hover {
+  border-color: #FFC388;
+  background-color: #FFE6CC;
+}
+
 div.highlight {
   margin: 0.25em 0em;
   padding: 0.5em;
