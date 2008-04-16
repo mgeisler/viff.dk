@@ -42,8 +42,7 @@ Windows
 This describes installation of VIFF on Windows XP Proffesional Version
 2002 SP2.
 
-1) Download and install the latest version of Python from
-   `www.python.org`_, currently Python 2.5.
+1) Download and install Python_.
 
 2) Include the path to your Python installation (e.g. ``C:\Python25\``)
    in the ``PATH`` system environment variable. One way to edit this
@@ -51,16 +50,15 @@ This describes installation of VIFF on Windows XP Proffesional Version
    menu, selecting Properties, Advanced, and then pressing the
    Environment Variables button.
 
-3) Download and install Twisted from `www.twistedmatrix.com`_.
+3) Download and install Twisted_.
 
-4) Download the configobj.zip file from
-   `here`_ and enter::
+4) Download ConfigObj_ and enter::
 
       python setup.py install
 
    from the folder where you unzipped the files.
 
-5) Download and install GMPY from `http://code.google.com/p/gmpy/`_.
+5) Download and install GMPY_.
 
 6) This should be enough to run VIFF with non-secured channels. To
    verify the installation so far, try out one of the applications.
@@ -108,10 +106,10 @@ This describes installation of VIFF on Windows XP Proffesional Version
    to contribute with details about this by sending an email to the
    `VIFF mailing list`_.
 
-.. _www.python.org: http://www.python.org
-.. _www.twistedmatrix.com: http://www.twistedmatrix.com
-.. _here: http://voidspace.org.uk/python/configobj.html
-.. _http://code.google.com/p/gmpy/: http://code.google.com/p/gmpy/
+.. _Python: http://python.org/
+.. _Twisted: http://twistedmatrix.com/
+.. _ConfigObj: http://voidspace.org.uk/python/configobj.html
+.. _GMPY: http://code.google.com/p/gmpy/
 .. _viff mailing list: mailto:viff-devel@viff.dk
 
 Mac OS X
