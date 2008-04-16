@@ -15,7 +15,7 @@ bignum arithmetic. You can find these components here:
 :ConfigObj:      http://voidspace.org.uk/python/configobj.html
 :GMPY:           http://code.google.com/p/gmpy/
 
-VIFF has been succesfully tested with the following versions:
+VIFF has been successfully tested with the following versions:
 
 :Python:         2.4.1 and 2.5.0
 :Twisted:        2.5.0
@@ -39,7 +39,7 @@ platforms on which we `test VIFF`_.
 Windows
 -------
 
-This describes installation of VIFF on Windows XP Proffesional Version
+This describes installation of VIFF on Windows XP Professional Version
 2002 SP2.
 
 1) Download and install Python_.
@@ -101,7 +101,7 @@ This describes installation of VIFF on Windows XP Proffesional Version
 	 Initiating shutdown sequence.
 
 7) In order to secure the channels between the players using TLS, you
-   need to download and install Python-gnutls_. Hovever, we haven't
+   need to download and install Python-gnutls_. However, we haven't
    had the time to test installation of this on Windows yet. Feel free
    to contribute with details about this by sending an email to the
    `VIFF mailing list`_.
