@@ -65,10 +65,13 @@ This describes installation of VIFF on Windows XP Professional Version
    localhost: Player 1 will run on port 9001, player 2 on port 9002,
    and player 3 on port 9003.
 
-   a) Go to the ``viff/apps/`` directory and generate the the config file
-      for this setup by entering::
+   a) Go to the ``viff/apps/`` directory and generate the the config
+      file for this setup by entering::
 
-	 python generate-config-files.py -n 3 -t 1 localhost:9001 localhost:9002 localhost:9003
+	 python generate-config-files.py -n 3 -t 1
+         localhost:9001 localhost:9002 localhost:9003
+
+      Both lines should be entered as a single line.
 
    b) Open three separate command prompts and go to the ``viff/apps/``
       directory in each. In the first, type::
