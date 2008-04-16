@@ -209,21 +209,22 @@ there. Consult the documentation for your shell to learn how
 environment variables are set.
 
 
-.. _report back: mailto:viff-devel@viff.dk
+.. _report back:
+.. _VIFF mailing list:
+.. _let us know: viff-devel@viff.dk
+
 .. _test VIFF: http://buildbot.viff.dk/
 .. _Python: http://python.org/
 .. _Twisted: http://twistedmatrix.com/
 .. _ConfigObj: http://voidspace.org.uk/python/configobj.html
 .. _GMPY: http://code.google.com/p/gmpy/
 .. _python-gnutls: http://pypi.python.org/pypi/python-gnutls/
-.. _VIFF mailing list: mailto:viff-devel@viff.dk
 .. _MacPython: http://www.pythonmac.org
 .. _XCode: http://developer.apple.com/tools/xcode/
 .. _gnutls: http://www.gnu.org/software/gnutls/manual/gnutls.html
             #Downloading-and-Installing
 .. _package manager: `Using a Package Manager`_
 .. _from source: `Installing from Source`_
-.. _let us know: viff-devel@viff.dk
 
 .. header:: `Return to the VIFF homepage <index.html>`__.
 .. include:: layout.rst
