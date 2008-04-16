@@ -54,9 +54,7 @@ This describes installation of VIFF on Windows XP Proffesional Version
 3) Download and install Twisted from `www.twistedmatrix.com`_.
 
 4) Download the configobj.zip file from
-   `here`_ and enter
-
-   .. sourcecode:: bat
+   `here`_ and enter::
 
       python setup.py install
 
@@ -72,37 +70,27 @@ This describes installation of VIFF on Windows XP Proffesional Version
    and player 3 on port 9003.
 
    a) Go to the ``viff/apps/`` directory and generate the the config file
-      for this setup by entering
-      
-      .. sourcecode:: bat
+      for this setup by entering::
 
 	 python generate-config-files.py -n 3 -t 1 localhost:9001 localhost:9002 localhost:9003
 
    b) Open three separate command prompts and go to the ``viff/apps/``
-      directory in each. In the first, type
-
-      .. sourcecode:: bat
+      directory in each. In the first, type::
 
 	 python millionaires.py --no-tls player-3.ini
 
-      in the second, type
-
-      .. sourcecode:: bat
+      in the second, type::
 
 	 python millionaires.py --no-tls player-2.ini
 
-      and in the last, type
-
-      .. sourcecode:: bat
+      and in the last, type::
 
 	 python millionaires.py --no-tls player-1.ini
 
       Note that the order in wich you start the players is important:
       The players must start in reverse order, e.g. the last player
       first. If the installation works, you should see something like
-      this from e.g. player 3:
-    
-      .. sourcecode:: bat
+      this from e.g. player 3::
 
 	 C:\viff\apps> python millionaires.py --no-tls player-3.ini 
 	 Seeding random generator with random seed 7416
@@ -138,9 +126,7 @@ This describes installation of VIFF on Max OS X 10.5.
 2) Install Twisted from source (http://twistedmatrix.com/). Notice
    again that Mac OS X comes with a pre-installed version of Twisted,
    but this is not the full Twisted installation. After installation
-   change your ``PYTHONPATH`` (in your ``~/.bash_profile``) to
-
-   .. sourcecode:: sh
+   change your ``PYTHONPATH`` (in your ``~/.bash_profile``) to::
 
       PATH="/Library/Python/2.5/site-packages:${PATH}"
 
@@ -184,9 +170,7 @@ Using a Package Manager
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Debian Lenny (testing)
-  You can install all dependencies by the command
-
-  .. sourcecode:: sh
+  You can install all dependencies by the command::
 
      aptitude install python-twisted-core python-gnutls \
                       python-configobj python-gmpy
@@ -213,31 +197,23 @@ Installing from Source
 If you do not have permission to use the package manager or simply
 prefer to install from source, then (assuming that Python is already
 installed) one can easily install VIFF and its dependencies by
-downloading and unpacking each of them and executing
-
-.. sourcecode:: sh
+downloading and unpacking each of them and executing::
 
    python setup.py install --home=$HOME/opt
 
 That will install everything under the given prefix. With the above
-command the Python modules are installed into
-
-.. sourcecode:: sh
+command the Python modules are installed into::
 
    $HOME/opt/lib/python
 
-and some programs are installed into
-
-.. sourcecode:: sh
+and some programs are installed into::
 
    $HOME/opt/bin
 
 You should add the first directory to the ``PYTHONPATH`` environment
 variable and the latter to the ``PATH`` environment variable.
 
-Bash uses can normally do this by adding
-
-.. sourcecode:: bash
+Bash uses can normally do this by adding::
 
    export PYTHONPATH=$PYTHONPATH:$HOME/opt/lib/python
    export PATH=$PATH:$HOME/opt/bin

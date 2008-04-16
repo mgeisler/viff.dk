@@ -160,7 +160,7 @@ div.news li {
   background-color: #FFE6CC;
 }
 
-div.highlight {
+div.highlight, pre.literal-block {
   margin: 0.25em 0em;
   padding: 0.5em;
   background-color: #EEE;
