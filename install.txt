@@ -117,13 +117,14 @@ Mac OS X
 
 This describes installation of VIFF on Max OS X 10.5.
 
-1) Install the full MacPython_ version 2.5 (the Python-installation
-   which comes with Mac OS X is not entirely up-to-date).
+1) Download and install the full MacPython_ version 2.5 (the
+   Python-installation which comes with Mac OS X is not entirely
+   up-to-date).
 
-2) Install Twisted_ from source. Notice again that Mac OS X comes with
-   a pre-installed version of Twisted, but this is not the full
-   Twisted installation. After installation change your ``PYTHONPATH``
-   (in your ``~/.bash_profile``) to::
+2) Download and Install Twisted_ from source. Notice again that Mac OS
+   X comes with a pre-installed version of Twisted, but this is not
+   the full Twisted installation. After installation change your
+   ``PYTHONPATH`` (in your ``~/.bash_profile``) to::
 
       PATH="/Library/Python/2.5/site-packages:${PATH}"
 
@@ -134,9 +135,13 @@ This describes installation of VIFF on Max OS X 10.5.
    b) Install gnutls_ (and required packages) from source.
    c) Install python-gnutls_.
 
-4) Install ConfigObj_.
+4) Download ConfigObj_ and enter::
 
-5) Install GMPY_ following the instructions in
+      python setup.py install
+
+   from the folder where you unzipped the files.
+
+5) Download and install GMPY_ following the instructions in
    ``gmpy-1.02.macosx.README.txt`` (under Downloads).
 
 6) Install VIFF from source (see below). If you prefer you can just
