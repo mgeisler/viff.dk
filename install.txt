@@ -117,9 +117,8 @@ Mac OS X
 
 This describes installation of VIFF on Max OS X 10.5.
 
-1) Install the full MacPython 2.5 MacPython_ (the
-   Python-installation which comes with Mac OS X is not entirely
-   up-to-date).
+1) Install the full MacPython_ version 2.5 (the Python-installation
+   which comes with Mac OS X is not entirely up-to-date).
 
 2) Install Twisted_ from source. Notice again that Mac OS X comes with
    a pre-installed version of Twisted, but this is not the full
