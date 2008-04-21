@@ -47,9 +47,7 @@ If it fails with an ImportError, then please double-check that your
 ``PYTHONPATH`` is setup correctly.
 
 Now simply execute ``trial viff`` to run the unit tests. You should
-get output similar to this:
-
-.. sourcecode:: text
+get output similar to this::
 
   % trial viff
   Seeding random generator with random seed 4658
