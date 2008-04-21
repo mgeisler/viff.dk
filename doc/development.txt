@@ -25,9 +25,7 @@ offered by Mercurial.
 .. _Mercurial: http://www.selenic.com/mercurial/
 
 After installing Mercurial you can checkout a copy of the source using
-this command line:
-
-.. sourcecode:: text
+this command line::
 
    hg clone http://hg.viff.dk/viff/
 
@@ -52,9 +50,7 @@ Alternatively, you can setup a Mercurial repository where one of the
 developers can ``hg pull`` from. You can do this by uploading your
 clone on some public web server (any webserver works for this since
 the developers can pull using ``hg pull static-http://...``) or by
-running
-
-.. sourcecode:: text
+running::
 
    hg serve -p 8000
 
@@ -63,9 +59,7 @@ http://hg.viff.dk/viff/. The default port number is 8000, so you can
 leave that out.
 
 A final option is the patchbomb_ extension for Mercurial, which will
-allow you to use
-
-.. sourcecode:: text
+allow you to use::
 
    hg email -t viff-devel@viff.dk -o
 
@@ -114,9 +108,7 @@ case you push and pop patches.
 To get started you will want to import the normal changesets into MQ.
 Let us suppose you found an error in revision 430 (use ``hg view`` or
 ``hg log`` to find the revision numbers). You then want to import
-revision 430 and the following changesets into MQ with this command:
-
-.. sourcecode:: text
+revision 430 and the following changesets into MQ with this command::
 
    hg qimport -r 430:tip
 
@@ -126,32 +118,24 @@ series with ``hg qseries``. When importing changesets revision N is
 called ``N.diff`` in the patch series.
 
 What we want is to pop off the other patches so that ``430.diff`` is
-the topmost patch. This is done with:
-
-.. sourcecode:: text
+the topmost patch. This is done with::
 
    hg qgoto 430.diff
 
 This updates your working directory to look exactly like it did when
 you originally committed revision 430! You can now edit the files to
-correct the error you found, and when you are done you run:
-
-.. sourcecode:: text
+correct the error you found, and when you are done you run::
 
    hg qrefresh
 
 to refresh the patch in ``430.diff``. You can use ``hg qrefresh -e``
 to edit the commit message too. Now comes the fun part — you must now
-push the the other patches back on the stack with:
-
-.. sourcecode:: text
+push the the other patches back on the stack with::
 
    hg qpush -a
 
 If this goes well with no complaints, then you can delete the patches
-again with
-
-.. sourcecode:: text
+again with::
 
    hg qdelete -r qbase:qtip
 
