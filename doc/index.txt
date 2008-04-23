@@ -15,7 +15,7 @@ API Documentation
 
   Available `online`__.
 
-  .. __: http://viff.dk/api/
+  .. __: http://viff.dk/api/latest/
 
 * The code examples includes in the ``apps/`` directory also contains
   many hints on best practices with VIFF. The ``apps/millionaires.py``
