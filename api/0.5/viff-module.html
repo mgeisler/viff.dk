@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>viff</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;viff
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="viff-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PACKAGE DESCRIPTION ==================== -->
+<h1 class="epydoc">Package viff</h1><p class="nomargin-top"><span class="codelink"><a href="viff-pysrc.html">source&nbsp;code</a></span></p>
+<p>Virtual Ideal Functionality Framework.</p>
+  <p>VIFF is a Python framework for writing multi-party computations (MPC) 
+  in an easy, efficient, and secure way.</p>
+  <h1 class="heading">Overview</h1>
+    <p>VIFF allows you to write a program which will interact with other 
+    programs in order to execute a joint computation. This is called a 
+    multi-party computation, MPC for short.</p>
+    <p>The programs will implement what we call a virtual ideal 
+    functionality (IF). The idea is that the behavior of the programs 
+    should be indistinguishable from the behavior of programs interacting 
+    with a so-called ideal functionality. An ideal functionality is a 
+    player that cannot be corrupted, also known as a trusted third party 
+    (TTP).</p>
+    <p>Interacting with an IF is easy: all players give their inputs to the
+    IF, which computes the results. The results are then distributed to the
+    correct players. The inputs and the results are sent over secure 
+    channels, and since the IF cannot be corrupted, this ideal protocol 
+    must be secure.</p>
+    <p>In the real world there is no IF, but VIFF allows you to implement a
+    virtual ideal functionality. The behavior of a bunch of programs using 
+    VIFF is indistinguishable from program running in the ideal world. It 
+    is indistinguishable in the sense that everything that can happen in 
+    the real world protocol could happen in the ideal world too. And since 
+    no attacks can occur in the ideal world, no attacks can occur in the 
+    real world as well. Such a multi-party computation (MPC) is called a 
+    secure multi-party computation (SMPC).</p>
+    <h2 class="heading">Security Assumptions</h2>
+      <p>Please note that like all cryptographic systems, VIFF is only 
+      secure as long as certain assumptions are fulfilled. These 
+      assumptions include:</p>
+      <ul>
+        <li>
+          The adversary can only corrupt up to a certain threshold of the 
+          total number of players. The threshold will normally be 1/2 of 
+          the players, so for three players, at most one player may be 
+          corrupted (there must be an honest majority).
+        </li>
+        <li>
+          The adversary is computationally bounded. The protocols used by 
+          VIFF rely on certain computational hardness assumptions, and 
+          therefore only polynomial time adversaries are allowed.
+        </li>
+        <li>
+          The adversary is passive. Being passive means that the adversary 
+          only monitors the network traffic, but still follows the 
+          protocol. We plan to add support for active (Byzantine) 
+          adversaries in a future version.
+        </li>
+      </ul>
+      <p>The precise assumptions for each protocol will eventually be 
+      included in the documentation for the corresponding method, but this 
+      has not yet been done.</p>
+  <h1 class="heading">Architecture</h1>
+    <p>VIFF consists of several modules. The <a 
+    href="viff.runtime-module.html" class="link">runtime</a> module 
+    contains the <a href="viff.runtime.Runtime-class.html" 
+    class="link">Runtime</a> and <a href="viff.runtime.Share-class.html" 
+    class="link">Share</a> classes, in which the main functionality is 
+    implemented. The <a href="viff.field-module.html" 
+    class="link">field</a> module contains implementations of finite fields
+    --- these are the values inside the shares. Other modules provide 
+    support functions.</p>
+    <h2 class="heading">Layers</h2>
+      <p>The main functionality in VIFF is implemented in the <a 
+      href="viff.runtime.Runtime-class.html" class="link">Runtime</a> 
+      class. This class offers methods to do addition, multiplication, etc.
+      These methods operate on <a href="viff.runtime.Share-class.html" 
+      class="link">Share</a> instances.</p>
+      <p>Shares hold either <a href="viff.field-module.html#GF" 
+      class="link">field.GF</a> or <a href="viff.field.GF256-class.html" 
+      class="link">GF256</a> elements and are created from the 
+      <code>shamir_share</code> or <code>prss_share</code> Runtime methods.
+      Shares overload the standard arithmetic operators, so you can write 
+      <code>a + b - c * d</code> with four shares, and it will be 
+      translated correctly into the appropriate method calls on the Runtime
+      instance associated with the shares.</p>
+      <p>A field element contain the concrete value on which we do 
+      calculations. This is just a normal Python (long) integer. The value 
+      is wrapped in an object that will keep track of doing modulo 
+      reductions as appropriate.</p>
+      <p>So in a nutshell, VIFF has these layers:</p>
+      <ul>
+        <li>
+          Top-level layer for application programs: There you manipulate 
+          Python integers or <a href="viff.runtime.Share-class.html" 
+          class="link">Share</a> instances.
+        </li>
+        <li>
+          Runtime layer: The runtime deals with Python integers or shares.
+        </li>
+        <li>
+          Field elements: Deals with arithmetic over Python integers, but 
+          with modulo reductions as needed.
+        </li>
+      </ul>
+  <h1 class="heading">Getting into VIFF</h1>
+    <p>As explained above, the main functionality in VIFF is the <a 
+    href="viff.runtime.Runtime-class.html" class="link">Runtime</a> class, 
+    so please start there. Also, be sure to checkout the example 
+    applications distributed in the <code>apps</code> directory.</p>
+
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        <a href="mailto:viff-devel@viff.dk" target="_top">VIFF Development 
+        Team</a>
+      </p>
+      <p><strong>See Also:</strong>
+        <a href="http://viff.dk/" target="_top">http://viff.dk/</a>
+      </p>
+      <p><strong>Version:</strong>
+        0.5
+      </p>
+      <p><strong>License:</strong>
+        GNU LGPL
+      </p>
+</div><!-- ==================== SUBMODULES ==================== -->
+<a name="section-Submodules"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Submodules</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Submodules"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr><td class="summary">
+  <ul class="nomargin">
+    <li> <strong class="uidlink"><a href="viff.comparison-module.html">viff.comparison</a></strong>: <em class="summary">Comparison protocols.</em>    </li>
+    <li> <strong class="uidlink"><a href="viff.config-module.html">viff.config</a></strong>: <em class="summary">Functions for loading and saving player configurations.</em>    </li>
+    <li> <strong class="uidlink"><a href="viff.field-module.html">viff.field</a></strong>: <em class="summary">Modeling of Galois (finite) fields.</em>    </li>
+    <li> <strong class="uidlink"><a href="viff.matrix-module.html">viff.matrix</a></strong>: <em class="summary">Matrix operations.</em>    </li>
+    <li> <strong class="uidlink"><a href="viff.prss-module.html">viff.prss</a></strong>: <em class="summary">Methods for pseudo-random secret sharing.</em>    </li>
+    <li> <strong class="uidlink"><a href="viff.runtime-module.html">viff.runtime</a></strong>: <em class="summary">VIFF runtime.</em>    </li>
+    <li> <strong class="uidlink"><a href="viff.shamir-module.html">viff.shamir</a></strong>: <em class="summary">Shamir secret sharing and recombination.</em>    </li>
+    <li> <strong class="uidlink"><a href="viff.util-module.html">viff.util</a></strong>: <em class="summary">Miscellaneous utility functions.</em>    </li>
+  </ul></td></tr>
+</table>
+
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Mon Apr 28 20:24:20 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
