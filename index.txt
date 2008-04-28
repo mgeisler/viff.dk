@@ -7,7 +7,7 @@
 .. raw:: html
 
   <div id="links">
-    <a class="green" href="#releases">Download VIFF 0.5rc1</a>
+    <a class="green" href="#releases">Download VIFF 0.5</a>
     <a class="blue"
         href="http://lists.viff.dk/listinfo.cgi/viff-devel-viff.dk">Join
     the mailing list</a>
@@ -123,12 +123,12 @@ you are unsure) and a snapshot can be downloaded here:
 
 You can also download a release below:
 
-* **viff-0.5rc1**: tar.bz2__, tar.gz__, zip__, exe__, released on April 23rd 2008.
+* **viff-0.5**: tar.bz2__, tar.gz__, zip__, exe__, released on April 28th 2008.
 
-  .. __: http://viff.dk/release/viff-0.5rc1.tar.bz2
-  .. __: http://viff.dk/release/viff-0.5rc1.tar.gz
-  .. __: http://viff.dk/release/viff-0.5rc1.zip
-  .. __: http://viff.dk/release/viff-0.5rc1.win32.exe
+  .. __: http://viff.dk/release/viff-0.5.tar.bz2
+  .. __: http://viff.dk/release/viff-0.5.tar.gz
+  .. __: http://viff.dk/release/viff-0.5.zip
+  .. __: http://viff.dk/release/viff-0.5.win32.exe
 
   Added preliminary support for preprocessing and an efficient
   multiplication protocol which is secure against active adversaries.
@@ -136,12 +136,14 @@ You can also download a release below:
   mixin classes provide different comparison protocols. Several
   coercion problems were fixed. The ``Runtime.callback`` method was
   renamed to ``Runtime.schedule_callback``. VIFF was tested on Python
-  2.6 and some small problems were fixed. A new example program was
-  added and the documentation was updated.
+  2.6 and some small problems were fixed. If python-gnutls is
+  unavailable, players now automatically fallback to TCP connections.
+  The installation guide was updated for Windows Vista. A new example
+  program was added and the documentation was updated.
 
   See the NEWS__ file for more details.
 
-  .. __: http://hg.viff.dk/viff/raw-file/0.5rc1/NEWS
+  .. __: http://hg.viff.dk/viff/raw-file/0.5/NEWS
 
 * **viff-0.4**: tar.bz2__, tar.gz__, zip__, exe__, released on March 12th 2008.
 
