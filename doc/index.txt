@@ -35,7 +35,7 @@ February 21st, 2008:
 
   Available as PDF__.
 
-  .. __: mg-progress-report-talk.pdf
+  .. __: http://viff.dk/files/mg-progress-report-talk.pdf
 
 January 15th, 2008:
   PhD Progress Report by Martin Geisler. The second part of the report
@@ -44,7 +44,7 @@ January 15th, 2008:
 
   Available as PDF__.
 
-  .. __: mg-progress-report.pdf
+  .. __: http://viff.dk/files/mg-progress-report.pdf
 
 September 20th, 2007:
   VIFF Design Talk given by Martin Geisler at a SIMAP_ meeting. The
@@ -54,7 +54,7 @@ September 20th, 2007:
   Available as PDF__.
 
   .. _SIMAP: http://simap.dk/
-  .. __: design-talk.pdf
+  .. __: http://viff.dk/files/design-talk.pdf
 
 Please `send us`__ any presentations or programs you make.
 
