@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>viff.runtime.ShareList</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="viff-module.html">Package&nbsp;viff</a> ::
+        <a href="viff.runtime-module.html">Module&nbsp;runtime</a> ::
+        Class&nbsp;ShareList
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="viff.runtime.ShareList-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class ShareList</h1><p class="nomargin-top"><span class="codelink"><a href="viff.runtime-pysrc.html#ShareList">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="class_hierarchy_for_sharelist" name="class_hierarchy_for_sharelist">
+<area shape="rect" href="javascript:void(0);" title="twisted.internet.defer.Deferred" alt="" coords="5,5,197,32"/>
+<area shape="rect" href="viff.runtime.Share&#45;class.html" title="Share" alt="" coords="73,61,129,88"/>
+<area shape="rect" href="viff.runtime.ShareList&#45;class.html" title="ShareList" alt="" coords="64,117,139,144"/>
+</map>
+  <img src="class_hierarchy_for_sharelist.gif" alt='' usemap="#class_hierarchy_for_sharelist" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>Create a share that waits on a number of other shares.</p>
+<p>Roughly modelled after the Twisted <tt class="rst-docutils literal"><span class="pre">DeferredList</span></tt>
+class. The advantage of this class is that it is a <tt class="rst-docutils literal"><span class="pre">Share</span></tt>
+(not just a <tt class="rst-docutils literal"><span class="pre">Deferred</span></tt>) and that it can be made to trigger
+when a certain threshold of the shares are ready. This example
+shows how the <tt class="rst-docutils literal"><span class="pre">pprint</span></tt> callback is triggered when <em>a</em> and
+<em>c</em> are ready:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> pprint <span class="py-keyword">import</span> pprint
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> viff.field <span class="py-keyword">import</span> GF256
+<span class="py-prompt">&gt;&gt;&gt; </span>a = Share(None, GF256)
+<span class="py-prompt">&gt;&gt;&gt; </span>b = Share(None, GF256)
+<span class="py-prompt">&gt;&gt;&gt; </span>c = Share(None, GF256)
+<span class="py-prompt">&gt;&gt;&gt; </span>shares = ShareList([a, b, c], threshold=2)
+<span class="py-prompt">&gt;&gt;&gt; </span>shares.addCallback(pprint)           <span class="py-comment"># doctest: +ELLIPSIS</span>
+<span class="py-output">&lt;ShareList at 0x...&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>a.callback(10)
+<span class="py-prompt">&gt;&gt;&gt; </span>c.callback(20)
+<span class="py-output">[(True, 10), None, (True, 20)]</span></pre>
+<p>The <tt class="rst-docutils literal"><span class="pre">pprint</span></tt> function is called with a list of pairs. The first
+component of each pair is a boolean indicating if the callback or
+errback method was called on the corresponding <tt class="rst-docutils literal"><span class="pre">Share</span></tt>, and
+the second component is the value given to the callback/errback.</p>
+<p>If a threshold less than the full number of shares is used, some
+of the pairs may be missing and <tt class="rst-docutils literal"><span class="pre">None</span></tt> is used instead. In
+the example above the <em>b</em> share arrived later than <em>a</em> and <em>c</em>,
+and so the list contains a <tt class="rst-docutils literal"><span class="pre">None</span></tt> on its place.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime.ShareList-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">shares</span>,
+        <span class="summary-sig-arg">threshold</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Initialize a share list.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#ShareList.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_callback_fired"></a><span class="summary-sig-name">_callback_fired</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">result</span>,
+        <span class="summary-sig-arg">index</span>,
+        <span class="summary-sig-arg">success</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#ShareList._callback_fired">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="viff.runtime.Share-class.html">Share</a></code></b>:
+      <code><a href="viff.runtime.Share-class.html#__add__">__add__</a></code>,
+      <code><a href="viff.runtime.Share-class.html#__ge__">__ge__</a></code>,
+      <code><a href="viff.runtime.Share-class.html#__gt__">__gt__</a></code>,
+      <code><a href="viff.runtime.Share-class.html#__le__">__le__</a></code>,
+      <code><a href="viff.runtime.Share-class.html#__lt__">__lt__</a></code>,
+      <code><a href="viff.runtime.Share-class.html#__mul__">__mul__</a></code>,
+      <code><a href="viff.runtime.Share-class.html#__radd__">__radd__</a></code>,
+      <code><a href="viff.runtime.Share-class.html#__rmul__">__rmul__</a></code>,
+      <code><a href="viff.runtime.Share-class.html#__rsub__">__rsub__</a></code>,
+      <code><a href="viff.runtime.Share-class.html#__rxor__">__rxor__</a></code>,
+      <code><a href="viff.runtime.Share-class.html#__sub__">__sub__</a></code>,
+      <code><a href="viff.runtime.Share-class.html#__xor__">__xor__</a></code>,
+      <code><a href="viff.runtime.Share-class.html#clone">clone</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.internet.defer.Deferred</code></b>:
+      <code>__repr__</code>,
+      <code>__str__</code>,
+      <code>addBoth</code>,
+      <code>addCallback</code>,
+      <code>addCallbacks</code>,
+      <code>addErrback</code>,
+      <code>callback</code>,
+      <code>chainDeferred</code>,
+      <code>errback</code>,
+      <code>pause</code>,
+      <code>setTimeout</code>,
+      <code>unpause</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.internet.defer.Deferred</code></b> (private):
+      <code>_continue</code>,
+      <code>_runCallbacks</code>,
+      <code>_startRunCallbacks</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.internet.defer.Deferred</code></b>:
+      <code>callbacks</code>,
+      <code>called</code>,
+      <code>paused</code>,
+      <code>result</code>,
+      <code>timeoutCall</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>twisted.internet.defer.Deferred</code></b> (private):
+      <code>_debugInfo</code>,
+      <code>_runningCallbacks</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">shares</span>,
+        <span class="sig-arg">threshold</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#ShareList.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initialize a share list.</p>
+<p>The list of shares must be non-empty and if a threshold is
+given, it must hold that <tt class="rst-docutils literal"><span class="pre">0</span> <span class="pre">&lt;</span> <span class="pre">threshold</span> <span class="pre">&lt;=</span> <span class="pre">len(shares)</span></tt>. The
+default threshold is <tt class="rst-docutils literal"><span class="pre">len(shares)</span></tt>.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Wed May 28 18:49:35 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
