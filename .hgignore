@@ -5,8 +5,8 @@ syntax: regexp
 ~$
 \.orig$
 
-# Ignore *.html files except in api
-^(?!api/).*\.html$
+# Ignore *.html files except in api/ and doc/
+^(?!api/|doc/).*\.html$
 
 # Ignored directories
 ^\.feed-cache$
