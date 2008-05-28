@@ -8,5 +8,9 @@ RewriteBase  /
 # Rewrite /docs/ to /doc/.
 RewriteRule  ^docs(.*)$  doc$1 [R=permanent]
 
+# Moved documents.
+RewriteRule  ^install.html$  doc/latest/install.html [R=permanent]
+RewriteRule  ^authors.html$  doc/latest/authors.html [R=permanent]
+
 # Forbid Python files from being downloaded (or worse: executed!).
 RewriteRule  ^.*\.py$ [F]
