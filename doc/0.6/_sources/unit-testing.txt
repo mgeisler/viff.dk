@@ -1,8 +1,7 @@
 .. -*- coding: utf-8 -*-
 
-==============
- Unit Testing
-==============
+Unit Testing
+============
 
 VIFF employs a set of unit tests to help developers catch regressions
 and to ensure the correctness of the implementation. The code is
@@ -287,6 +286,3 @@ Deferreds into one that you can return to Trial. Just make sure that
 your final Deferred depends on all other Deferreds so that you do not
 leave lingering Deferreds behind. Trial will complain loudly if you
 do, so it should be easy to spot.
-
-
-.. include:: layout.rst
