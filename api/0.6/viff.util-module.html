@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>viff.util</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="viff-module.html">Package&nbsp;viff</a> ::
+        Module&nbsp;util
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="viff.util-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module util</h1><p class="nomargin-top"><span class="codelink"><a href="viff.util-pysrc.html">source&nbsp;code</a></span></p>
+Miscellaneous utility functions. This module contains various
+utility functions used in all parts of the VIFF code. The most
+important is the <tt class="rst-docutils literal"><span class="pre">rand</span></tt> random generator which is seeded with a
+known seed each time. Using this generator for all random numbers
+ensures that a protocol run can be reproduced at a later time.
+
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.util-module.html#wrapper" class="summary-sig-name">wrapper</a>(<span class="summary-sig-arg">func</span>)</span><br />
+      Decorator used for wrapper functions.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.util-pysrc.html#wrapper">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="deprecation"></a><span class="summary-sig-name">deprecation</span>(<span class="summary-sig-arg">message</span>)</span><br />
+      Issue a deprecation warning.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.util-pysrc.html#deprecation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.util-module.html#dlift" class="summary-sig-name">dlift</a>(<span class="summary-sig-arg">func</span>)</span><br />
+      Lift a function to handle deferred arguments.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.util-pysrc.html#dlift">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.util-module.html#dprint" class="summary-sig-name">dprint</a>(<span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Lifted wrapper function.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.util-pysrc.html#dprint">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.util-module.html#clone_deferred" class="summary-sig-name">clone_deferred</a>(<span class="summary-sig-arg">original</span>)</span><br />
+      Clone a Deferred.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.util-pysrc.html#clone_deferred">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.util-module.html#find_prime" class="summary-sig-name">find_prime</a>(<span class="summary-sig-arg">lower_bound</span>,
+        <span class="summary-sig-arg">blum</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Find a prime above a lower bound.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.util-pysrc.html#find_prime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="_seed"></a><span class="summary-name">_seed</span> = <code title="1778">1778</code><br />
+      Seed for <tt class="rst-docutils literal"><span class="pre">rand</span></tt>.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="viff.util-module.html#rand" class="summary-name">rand</a> = <code title="random.Random(_seed)">random.Random(_seed)</code><br />
+      Random number generator used by all VIFF code.
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="wrapper"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">wrapper</span>(<span class="sig-arg">func</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.util-pysrc.html#wrapper">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Decorator used for wrapper functions.</p>
+<p>It is important to use this decorator on any wrapper functions in
+order to ensure that they end up with correct <tt class="rst-docutils literal"><span class="pre">__name__</span></tt> and
+<tt class="rst-docutils literal"><span class="pre">__doc__</span></tt> attributes.</p>
+<p>In addition, if the environment variable <tt class="rst-docutils literal"><span class="pre">VIFF_NO_WRAP</span></tt> is
+defined, then the wrapper functions will be turned into functions
+that <em>do not</em> wrap -- instead they let their argument function
+through unchanged. This is done so that epydoc and Sphinx can see
+the true function arguments when generating documentation. Just
+remember that your code will break if <tt class="rst-docutils literal"><span class="pre">VIFF_NO_WRAP</span></tt> is
+set, so it should only be used when documentation is being
+generated.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="dlift"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">dlift</span>(<span class="sig-arg">func</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.util-pysrc.html#dlift">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Lift a function to handle deferred arguments.</p>
+<p>Use this as a decorator. The decorated function accepts the same
+arguments as the original function, but arguments for the lifted
+function can be Deferreds. The return value of the lifted function
+will always be a Deferred.</p>
+<p>Keyword arguments are not lifted.</p>
+<p>As an example, here is how to define a lazy addition and
+multiplication which works for integers (deferred or not):</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>@dlift
+<span class="py-more">... </span><span class="py-keyword">def</span> <span class="py-defname">add</span>(a, b):
+<span class="py-more">... </span>    return a + b
+<span class="py-more">...</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>@dlift
+<span class="py-more">... </span><span class="py-keyword">def</span> <span class="py-defname">mul</span>(a, b):
+<span class="py-more">... </span>    return a * b
+<span class="py-more">...</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>x = Deferred()
+<span class="py-prompt">&gt;&gt;&gt; </span>y = Deferred()
+<span class="py-prompt">&gt;&gt;&gt; </span>z = mul(add(x, 10), y)
+<span class="py-prompt">&gt;&gt;&gt; </span>x.callback(5)
+<span class="py-prompt">&gt;&gt;&gt; </span>y.callback(10)
+<span class="py-prompt">&gt;&gt;&gt; </span>z                                         <span class="py-comment"># doctest: +ELLIPSIS</span>
+<span class="py-output">&lt;DeferredList at 0x...  current result: 150&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="dprint"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">dprint</span>(<span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.util-pysrc.html#dprint">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  Lifted wrapper function.
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@dlift</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="clone_deferred"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clone_deferred</span>(<span class="sig-arg">original</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.util-pysrc.html#clone_deferred">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Clone a Deferred.</p>
+<p>The returned clone will fire with the same result as the original
+<tt class="rst-docutils literal"><span class="pre">Deferred</span></tt>, but will otherwise be independent.</p>
+<p>It is an error to call <tt class="rst-docutils literal"><span class="pre">callback</span></tt> on the clone as it will
+result in an <tt class="rst-docutils literal"><span class="pre">AlreadyCalledError</span></tt> when the original
+<tt class="rst-docutils literal"><span class="pre">Deferred</span></tt> is triggered.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>x = Deferred()
+<span class="py-prompt">&gt;&gt;&gt; </span>x.addCallback(<span class="py-keyword">lambda</span> result: result * 10) <span class="py-comment"># doctest: +ELLIPSIS</span>
+<span class="py-output">&lt;Deferred at 0x...&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>y = clone_deferred(x)
+<span class="py-prompt">&gt;&gt;&gt; </span>y.addCallback(<span class="py-keyword">lambda</span> result: result + 1)  <span class="py-comment"># doctest: +ELLIPSIS</span>
+<span class="py-output">&lt;Deferred at 0x...&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>x.addCallback(<span class="py-keyword">lambda</span> result: result + 2)  <span class="py-comment"># doctest: +ELLIPSIS</span>
+<span class="py-output">&lt;Deferred at 0x...&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>x.callback(1)
+<span class="py-prompt">&gt;&gt;&gt; </span>x                                         <span class="py-comment"># doctest: +ELLIPSIS</span>
+<span class="py-output">&lt;Deferred at 0x...  current result: 12&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>y                                         <span class="py-comment"># doctest: +ELLIPSIS</span>
+<span class="py-output">&lt;Deferred at 0x...  current result: 11&gt;</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="find_prime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">find_prime</span>(<span class="sig-arg">lower_bound</span>,
+        <span class="sig-arg">blum</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.util-pysrc.html#find_prime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Find a prime above a lower bound.</p>
+<p>If a prime is given as the lower bound, then this prime is
+returned:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>find_prime(37)
+<span class="py-output">37L</span></pre>
+<p>The bound can be a Python expression as a string. This makes it
+easy for users to specify command line arguments that generates
+primes of a particular bit length:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>find_prime(<span class="py-string">&quot;2**100&quot;</span>) <span class="py-comment"># 100 bit prime</span>
+<span class="py-output">1267650600228229401496703205653L</span></pre>
+<p>Blum primes (a prime p such that p % 4 == 3) can be found as well:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>find_prime(12)
+<span class="py-output">13L</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>find_prime(12, blum=True)
+<span class="py-output">19L</span></pre>
+<p>If the bound is negative, 2 (the smallest prime) is returned:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>find_prime(-100)
+<span class="py-output">2L</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="rand"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">rand</h3>
+  <p>Random number generator used by all VIFF code.</p>
+<p>The generator is by default initialized with a random seed,
+unless the environment variable <tt class="rst-docutils literal"><span class="pre">SEED</span></tt> is set to a value, in
+which case that value is used instead. If <tt class="rst-docutils literal"><span class="pre">SEED</span></tt> is defined,
+but empty, then no seed is used and a protocol cannot be
+reproduced exactly.</p>
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+random.Random(_seed)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Wed May 28 18:49:33 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
