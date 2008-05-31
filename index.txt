@@ -230,7 +230,7 @@ Please see the `installation guide`_ and the `VIFF API
 documentation`__ in addition to the documentation included in the
 files above.
 
-.. __: http://viff.dk/api/
+.. __: http://viff.dk/api/latest/
 
 Contact
 ~~~~~~~
