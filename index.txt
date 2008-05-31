@@ -96,9 +96,7 @@ Releases
 ~~~~~~~~
 
 The latest version of the VIFF source code can be obtained using
-Mercurial_ by the command:
-
-.. sourcecode:: text
+Mercurial_ by the command::
 
   hg clone http://hg.viff.dk/viff/
 
