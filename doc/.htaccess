@@ -3,11 +3,7 @@ RewriteEngine on
 
 RewriteBase  /doc/
 
-# Redirect non-existing files to the latest/*.
+# Redirect non-existing files to the tip/*.
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule !^(latest|[0-9](\.[0-9])*)/.*$  - [chain]
-RewriteRule  ^(.*)$ latest/$1 [redirect=permanent]
-
-# Rewrite latest/* to the actual release number.
-RewriteRule ^latest(.*)$ 0.6$1 [redirect]
+RewriteRule  ^(.*)$ tip/$1
