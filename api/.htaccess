@@ -3,7 +3,10 @@ RewriteEngine on
 
 RewriteBase  /api/
 
+RewriteRule ^latest/(.*)$ $1 [L,R=permanent]
+
 # Redirect non-existing files to the tip/*.
+RewriteCond %{REQUEST_URI} !^/api/tip/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule  ^(.*)$ tip/$1
