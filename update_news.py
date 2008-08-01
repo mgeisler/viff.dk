@@ -113,6 +113,12 @@ if __name__ == "__main__":
     #tip_age = age(repository_data.entries[0].updated_parsed)
     #now = strftime("%Y-%m-%d %H:%M UTC", gmtime())
 
+    logging.info("Rewriting Gmane links")
+    for entry in viff_devel_data.entries:
+        entry.link = entry.link.replace("http://permalink.gmane.org/",
+                                        "http://article.gmane.org/")
+
+
     count = 4
     repository_entries = repository_data.entries[:count]
     viff_devel_entries = [e for e in viff_devel_data.entries
