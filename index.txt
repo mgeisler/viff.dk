@@ -67,7 +67,7 @@ license them under the LGPL.
                                      Secure_multiparty_computation
 .. _Python: http://python.org/
 .. _Twisted: http://twistedmatrix.com/
-.. _installation guide: doc/latest/install.html
+.. _installation guide: doc/install.html
 .. _GNU LGPL: http://hg.viff.dk/viff/raw-file/tip/COPYING.LIB
 
 Use Cases
@@ -228,7 +228,7 @@ Please see the `installation guide`_ and the `VIFF API
 documentation`__ in addition to the documentation included in the
 files above.
 
-.. __: http://viff.dk/api/latest/
+.. __: http://viff.dk/api/index.html
 
 Contact
 ~~~~~~~
@@ -252,6 +252,6 @@ you want to help in any way.
 .. __: nntp://news.gmane.org/gmane.comp.cryptography.viff.devel
 .. __: http://www.mail-archive.com/viff-devel@viff.dk/
 
-.. _development team: doc/latest/authors.html
+.. _development team: doc/authors.html
 
 .. include:: layout.rst
