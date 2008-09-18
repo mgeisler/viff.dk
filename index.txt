@@ -8,7 +8,7 @@
 
   <div id="links">
     <a class="green" href="#releases">Download VIFF 0.6</a>
-    <a class="blue" href="doc/mailinglists.html">Mailing lists</a>
+    <a class="blue" href="doc/contact.html">Contact</a>
     <a class="orange" href="doc/index.html">Documentation</a>
     <a class="red" href="http://tracker.viff.dk">Report bugs</a>
   </div>
