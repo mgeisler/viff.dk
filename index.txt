@@ -129,9 +129,9 @@ You can also download a release below:
   PyOpenSSL is now used instead of GnuTLS and this enables secure
   connections on Windows. The code dealing with starting a player has
   been made much more robust and players can now be started in any
-  order. Player can now also be reliably shutdown. New runtime based
-  on homomorphic Paillier encryption supports just two players. Added
-  a new protocol for equality testing with secret shared result.
+  order. Players can now also be reliably shutdown. A new runtime
+  based on homomorphic Paillier encryption supports just two players.
+  Added a new protocol for equality testing with secret shared result.
 
   See the NEWS__ file for more details.
 
