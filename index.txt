@@ -40,7 +40,7 @@ computations`_ in a clean and easy way. Current features include:
 * secret sharing based on Shamir and pseudo-random secret sharing
   (PRSS).
 
-* addition, multiplication, exclusive-or of shares.
+* secure addition, multiplication, and exclusive-or of shares.
 
 * comparison of secret shared |Zp| inputs, with secret |Zp| or |GF256|
   output.
