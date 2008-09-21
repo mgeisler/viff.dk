@@ -7,7 +7,7 @@
 .. raw:: html
 
   <div id="links">
-    <a class="green" href="#releases">Download VIFF 0.6</a>
+    <a class="green" href="#releases">Download VIFF 0.7</a>
     <a class="blue" href="doc/contact.html">Contact</a>
     <a class="orange" href="doc/index.html">Documentation</a>
     <a class="red" href="http://tracker.viff.dk">Report bugs</a>
@@ -118,6 +118,24 @@ you are unsure) and a snapshot can be downloaded here:
 .. __: http://hg.viff.dk/viff/archive/tip.zip
 
 You can also download a release below:
+
+* **viff-0.7**: tar.bz2__, tar.gz__, zip__, exe__, released on September 21st 2008.
+
+  .. __: http://viff.dk/release/viff-0.7.tar.bz2
+  .. __: http://viff.dk/release/viff-0.7.tar.gz
+  .. __: http://viff.dk/release/viff-0.7.zip
+  .. __: http://viff.dk/release/viff-0.7.win32.exe
+
+  PyOpenSSL is now used instead of GnuTLS and this enables secure
+  connections on Windows. The code dealing with starting a player has
+  been made much more robust and players can now be started in any
+  order. Player can now also be reliably shutdown. New runtime based
+  on homomorphic Paillier encryption supports just two players. Added
+  a new protocol for equality testing with secret shared result.
+
+  See the NEWS__ file for more details.
+
+  .. __: http://hg.viff.dk/viff/raw-file/0.7/NEWS
 
 * **viff-0.6**: tar.bz2__, tar.gz__, zip__, exe__, released on May 28th 2008.
 
