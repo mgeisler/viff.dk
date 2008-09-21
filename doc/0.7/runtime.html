@@ -1,0 +1,484 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Runtime Module &mdash; VIFF v0.7 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+          URL_ROOT:    '',
+          VERSION:     '0.7',
+          COLLAPSE_MODINDEX: false,
+          FILE_SUFFIX: ''
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/interface.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="contents" title="Global table of contents" href="contents.html" />
+    <link rel="index" title="Global index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VIFF v0.7 documentation" href="index.html" />
+    <link rel="up" title="Implementation" href="implementation.html" />
+    <link rel="next" title="Actively Secure Protocols" href="active.html" />
+    <link rel="prev" title="Matrix Module" href="matrix.html" />
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="active.html" title="Actively Secure Protocols"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="matrix.html" title="Matrix Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="module-viff.runtime">
+<h1 id="module-viff.runtime">Runtime Module<a class="headerlink" href="#module-viff.runtime" title="Permalink to this headline">¶</a></h1>
+<p>VIFF runtime. This is where the virtual ideal functionality is
+hiding! The runtime is responsible for sharing inputs, handling
+communication, and running the calculations.</p>
+<p>Each player participating in the protocol will instantiate a
+<a title="viff.runtime.Runtime" class="reference internal" href="#viff.runtime.Runtime"><tt class="xref docutils literal"><span class="pre">Runtime</span></tt></a> object and use it for the calculations.</p>
+<p>The Runtime returns <a title="viff.runtime.Share" class="reference internal" href="#viff.runtime.Share"><tt class="xref docutils literal"><span class="pre">Share</span></tt></a> objects for most operations, and
+these can be added, subtracted, and multiplied as normal thanks to
+overloaded arithmetic operators. The runtime will take care of
+scheduling things correctly behind the scenes.</p>
+<dl class="class">
+<dt id="viff.runtime.Share">
+<!--[viff.runtime.Share]-->class <tt class="descclassname">viff.runtime.</tt><tt class="descname">Share</tt><big>(</big><em>runtime</em>, <em>field</em>, <em>value=None</em><big>)</big><a class="headerlink" href="#viff.runtime.Share" title="Permalink to this definition">¶</a></dt>
+<dd><p>A shared number.</p>
+<p>The <a title="viff.runtime.Runtime" class="reference internal" href="#viff.runtime.Runtime"><tt class="xref docutils literal"><span class="pre">Runtime</span></tt></a> operates on shares, represented by this class.
+Shares are asynchronous in the sense that they promise to attain a
+value at some point in the future.</p>
+<p>Shares overload the arithmetic operations so that <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></tt>
+will create a new share <em>x</em>, which will eventually contain the
+sum of <em>a</em> and <em>b</em>. Each share is associated with a
+<a title="viff.runtime.Runtime" class="reference internal" href="#viff.runtime.Runtime"><tt class="xref docutils literal"><span class="pre">Runtime</span></tt></a> and the arithmetic operations simply call back to
+that runtime.</p>
+<dl class="method">
+<dt id="viff.runtime.Share.clone">
+<!--[viff.runtime.Share.clone]--><tt class="descname">clone</tt><big>(</big><big>)</big><a class="headerlink" href="#viff.runtime.Share.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clone a share.</p>
+<p>Works like <tt class="xref docutils literal"><span class="pre">util.clone_deferred()</span></tt> except that it returns a new
+<a title="viff.runtime.Share" class="reference internal" href="#viff.runtime.Share"><tt class="xref docutils literal"><span class="pre">Share</span></tt></a> instead of a <tt class="xref docutils literal"><span class="pre">Deferred</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="viff.runtime.ShareList">
+<!--[viff.runtime.ShareList]-->class <tt class="descclassname">viff.runtime.</tt><tt class="descname">ShareList</tt><big>(</big><em>shares</em>, <em>threshold=None</em><big>)</big><a class="headerlink" href="#viff.runtime.ShareList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a share that waits on a number of other shares.</p>
+<p>Roughly modelled after the Twisted <tt class="xref docutils literal"><span class="pre">DeferredList</span></tt>
+class. The advantage of this class is that it is a <a title="viff.runtime.Share" class="reference internal" href="#viff.runtime.Share"><tt class="xref docutils literal"><span class="pre">Share</span></tt></a>
+(not just a <tt class="xref docutils literal"><span class="pre">Deferred</span></tt>) and that it can be made to trigger
+when a certain threshold of the shares are ready. This example
+shows how the <tt class="xref docutils literal"><span class="pre">pprint()</span></tt> callback is triggered when <em>a</em> and
+<em>c</em> are ready:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">from</span> <span class="nn">viff.field</span> <span class="k">import</span> <span class="n">GF256</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Share</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">GF256</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">Share</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">GF256</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">Share</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">GF256</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shares</span> <span class="o">=</span> <span class="n">ShareList</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shares</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">pprint</span><span class="p">)</span>           <span class="c"># doctest: +ELLIPSIS</span>
+<span class="go">&lt;ShareList at 0x...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="mf">20</span><span class="p">)</span>
+<span class="go">[(True, 10), None, (True, 20)]</span>
+</pre></div>
+<p>The <tt class="xref docutils literal"><span class="pre">pprint()</span></tt> function is called with a list of pairs. The first
+component of each pair is a boolean indicating if the callback or
+errback method was called on the corresponding <a title="viff.runtime.Share" class="reference internal" href="#viff.runtime.Share"><tt class="xref docutils literal"><span class="pre">Share</span></tt></a>, and
+the second component is the value given to the callback/errback.</p>
+<p>If a threshold less than the full number of shares is used, some
+of the pairs may be missing and <tt class="xref xref docutils literal"><span class="pre">None</span></tt> is used instead. In
+the example above the <em>b</em> share arrived later than <em>a</em> and <em>c</em>,
+and so the list contains a <tt class="xref xref docutils literal"><span class="pre">None</span></tt> on its place.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="viff.runtime.ShareExchanger">
+<!--[viff.runtime.ShareExchanger]-->class <tt class="descclassname">viff.runtime.</tt><tt class="descname">ShareExchanger</tt><a class="headerlink" href="#viff.runtime.ShareExchanger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send and receive shares.</p>
+<p>All players are connected by pair-wise connections and this
+Twisted protocol is one such connection. It is used to send and
+receive shares from one other player.</p>
+<p>The <tt class="xref docutils literal"><span class="pre">marshal</span></tt> module is used for converting the data to bytes
+for the network and to convert back again to structured data.</p>
+<dl class="attribute">
+<dt id="viff.runtime.ShareExchanger.incoming_data">
+<!--[viff.runtime.ShareExchanger.incoming_data]--><tt class="descname">incoming_data</tt><a class="headerlink" href="#viff.runtime.ShareExchanger.incoming_data" title="Permalink to this definition">¶</a></dt>
+<dd>Data from our peer is put here, either as an empty
+<tt class="xref docutils literal"><span class="pre">Deferred</span></tt> if we are waiting on input from the player,
+or the data itself if data is received from the other player
+before we are ready to use it.</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.ShareExchanger.sendShare">
+<!--[viff.runtime.ShareExchanger.sendShare]--><tt class="descname">sendShare</tt><big>(</big><em>program_counter</em>, <em>share</em><big>)</big><a class="headerlink" href="#viff.runtime.ShareExchanger.sendShare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a share.</p>
+<p>The program counter and the share are marshalled and sent to
+the peer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.ShareExchanger.loseConnection">
+<!--[viff.runtime.ShareExchanger.loseConnection]--><tt class="descname">loseConnection</tt><big>(</big><big>)</big><a class="headerlink" href="#viff.runtime.ShareExchanger.loseConnection" title="Permalink to this definition">¶</a></dt>
+<dd>Disconnect this protocol instance.</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.runtime.increment_pc">
+<!--[viff.runtime.increment_pc]--><tt class="descclassname">viff.runtime.</tt><tt class="descname">increment_pc</tt><big>(</big><em>method</em><big>)</big><a class="headerlink" href="#viff.runtime.increment_pc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make <em>method</em> automatically increment the program counter.</p>
+<p>Adding this decorator to a <a title="viff.runtime.Runtime" class="reference internal" href="#viff.runtime.Runtime"><tt class="xref docutils literal"><span class="pre">Runtime</span></tt></a> method will ensure
+that the program counter is incremented correctly when entering
+the method.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.runtime.preprocess">
+<!--[viff.runtime.preprocess]--><tt class="descclassname">viff.runtime.</tt><tt class="descname">preprocess</tt><big>(</big><em>generator</em><big>)</big><a class="headerlink" href="#viff.runtime.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Track calls to this method.</p>
+<p>The decorated method will be replaced with a proxy method which
+first tries to get the data needed from
+<tt class="xref docutils literal"><span class="pre">BasicRuntime._pool</span></tt>, and if that fails it falls back to the
+original method.</p>
+<p>The <em>generator</em> method is only used to record where the data
+should be generated from, the method is not actually called. This
+must be the name of the method (a string) and not the method
+itself.</p>
+<p>See also <a class="reference external" href="preprocessing.html#preprocessing"><em>Preprocessing</em></a> for more background information.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.runtime.create_runtime">
+<!--[viff.runtime.create_runtime]--><tt class="descclassname">viff.runtime.</tt><tt class="descname">create_runtime</tt><big>(</big><em>id</em>, <em>players</em>, <em>threshold</em>, <em>options=None</em>, <em>runtime_class=&lt;class viff.runtime.Runtime at 0xa6a5e6c&gt;</em><big>)</big><a class="headerlink" href="#viff.runtime.create_runtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a <a title="viff.runtime.Runtime" class="reference internal" href="#viff.runtime.Runtime"><tt class="xref docutils literal"><span class="pre">Runtime</span></tt></a> and connect to the other players.</p>
+<p>This function should be used in normal programs instead of
+instantiating the Runtime directly. This function makes sure that
+the Runtime is correctly connected to the other players.</p>
+<p>The return value is a Deferred which will trigger when the runtime
+is ready. Add your protocol as a callback on this Deferred using
+code like this:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">protocol</span><span class="p">(</span><span class="n">runtime</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">shamir_share</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">3</span><span class="p">],</span> <span class="n">Zp</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span>
+
+    <span class="n">a</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+    <span class="n">dprint</span><span class="p">(</span><span class="s">&quot;Opened a: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">dprint</span><span class="p">(</span><span class="s">&quot;Opened b: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">dprint</span><span class="p">(</span><span class="s">&quot;Opened c: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+    <span class="n">runtime</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">pre_runtime</span> <span class="o">=</span> <span class="n">create_runtime</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">players</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span>
+<span class="n">pre_runtime</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span>
+</pre></div>
+<p>This is the general template which VIFF programs should follow.
+Please see the example applications for more examples.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="viff.runtime.BasicRuntime">
+<!--[viff.runtime.BasicRuntime]-->class <tt class="descclassname">viff.runtime.</tt><tt class="descname">BasicRuntime</tt><big>(</big><em>player</em>, <em>threshold</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#viff.runtime.BasicRuntime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basic VIFF runtime with no crypto.</p>
+<p>This runtime contains only the most basic operations needed such
+as the program counter, the list of other players, etc.</p>
+<dl class="attribute">
+<dt id="viff.runtime.BasicRuntime.id">
+<!--[viff.runtime.BasicRuntime.id]--><tt class="descname">id</tt><a class="headerlink" href="#viff.runtime.BasicRuntime.id" title="Permalink to this definition">¶</a></dt>
+<dd>Player ID. This is an integer in the range 1&#8211;<em>n</em> for <em>n</em>
+players.</dd></dl>
+
+<dl class="attribute">
+<dt id="viff.runtime.BasicRuntime.threshold">
+<!--[viff.runtime.BasicRuntime.threshold]--><tt class="descname">threshold</tt><a class="headerlink" href="#viff.runtime.BasicRuntime.threshold" title="Permalink to this definition">¶</a></dt>
+<dd>Default threshold used by <a title="viff.runtime.Runtime.shamir_share" class="reference internal" href="#viff.runtime.Runtime.shamir_share"><tt class="xref docutils literal"><span class="pre">Runtime.shamir_share()</span></tt></a>,
+<a title="viff.runtime.Runtime.open" class="reference internal" href="#viff.runtime.Runtime.open"><tt class="xref docutils literal"><span class="pre">Runtime.open()</span></tt></a>, and others.</dd></dl>
+
+<dl class="attribute">
+<dt id="viff.runtime.BasicRuntime.program_counter">
+<!--[viff.runtime.BasicRuntime.program_counter]--><tt class="descname">program_counter</tt><a class="headerlink" href="#viff.runtime.BasicRuntime.program_counter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whenever a share is sent over the network, it must be
+uniquely identified so that the receiving player known what
+operation the share is a result of. This is done by
+associating a <em>program counter</em> with each operation.</p>
+<p>Keeping the program counter synchronized between all players
+ought to be easy, but because of the asynchronous nature of
+network protocols, all players might not reach the same parts
+of the program at the same time.</p>
+<p>Consider two players <em>A</em> and <em>B</em> who are both waiting on the
+variables <em>a</em> and <em>b</em>. Callbacks have been added to <em>a</em> and
+<em>b</em>, and the question is what program counter the callbacks
+should use when sending data out over the network.</p>
+<p>Let <em>A</em> receive input for <em>a</em> and then for <em>b</em> a little
+later, and let <em>B</em> receive the inputs in reversed order so
+that the input for <em>b</em> arrives first. The goal is to keep the
+program counters synchronized so that program counter <em>x</em>
+refers to the same operation on all players. Because the
+inputs arrive in different order at different players,
+incrementing a simple global counter is not enough.</p>
+<p>Instead, a <em>tree</em> is made, which follows the tree of
+execution. At the top level the program counter starts at
+<tt class="docutils literal"><span class="pre">[0]</span></tt>. At the next operation it becomes <tt class="docutils literal"><span class="pre">[1]</span></tt>, and so on.
+If a callback is scheduled (see <a title="viff.runtime.BasicRuntime.schedule_callback" class="reference internal" href="#viff.runtime.BasicRuntime.schedule_callback"><tt class="xref docutils literal"><span class="pre">schedule_callback()</span></tt></a>) at
+program counter <tt class="docutils literal"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></tt>, any calls it makes will be
+numbered <tt class="docutils literal"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">1]</span></tt>, then <tt class="docutils literal"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">2]</span></tt>, and so on.</p>
+<p>Maintaining such a tree of program counters ensures that
+different parts of the program execution never reuses the
+same program counter for different variables.</p>
+<p>The <a title="viff.runtime.increment_pc" class="reference internal" href="#viff.runtime.increment_pc"><tt class="xref docutils literal"><span class="pre">increment_pc()</span></tt></a> decorator is responsible for
+dynamically building the tree as the execution unfolds and
+<a title="viff.runtime.BasicRuntime.schedule_callback" class="reference internal" href="#viff.runtime.BasicRuntime.schedule_callback"><tt class="xref docutils literal"><span class="pre">schedule_callback()</span></tt></a> is responsible for scheduling
+callbacks with the correct program counter.</p>
+<p>See <a class="reference external" href="program-counters.html#program-counters"><em>Program Counters</em></a> for more background information.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="viff.runtime.BasicRuntime.add_options">
+<!--[viff.runtime.BasicRuntime.add_options]--><tt class="descname">add_options</tt><a class="headerlink" href="#viff.runtime.BasicRuntime.add_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.BasicRuntime.preprocess">
+<!--[viff.runtime.BasicRuntime.preprocess]--><tt class="descname">preprocess</tt><big>(</big><em>program</em><big>)</big><a class="headerlink" href="#viff.runtime.BasicRuntime.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate preprocess material.</p>
+<p>The <em>program</em> specifies which methods to call and with which
+arguments. The generator methods called must adhere to the
+following interface:</p>
+<ul class="simple">
+<li>They must return a <tt class="docutils literal"><span class="pre">(int,</span> <span class="pre">Deferred)</span></tt> tuple where the
+<tt class="docutils literal"><span class="pre">int</span></tt> tells us how many items of pre-processed data the
+<tt class="xref docutils literal"><span class="pre">Deferred</span></tt> will yield.</li>
+<li>The Deferred must yield a list of the promissed length.</li>
+<li>The list contains the actual data. This data can be either a
+Deferred or a tuple of Deferreds.</li>
+</ul>
+<p>The <tt class="xref docutils literal"><span class="pre">ActiveRuntime.generate_triples()</span></tt> method is an
+example of a method fulfilling this interface.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.BasicRuntime.schedule_callback">
+<!--[viff.runtime.BasicRuntime.schedule_callback]--><tt class="descname">schedule_callback</tt><big>(</big><em>deferred</em>, <em>func</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#viff.runtime.BasicRuntime.schedule_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Schedule a callback on a deferred with the correct program
+counter.</p>
+<p>If a callback depends on the current program counter, then use
+this method to schedule it instead of simply calling
+addCallback directly. Simple callbacks that are independent of
+the program counter can still be added directly to the
+Deferred as usual.</p>
+<p>Any extra arguments are passed to the callback as with
+<tt class="xref docutils literal"><span class="pre">addCallback()</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.BasicRuntime.shutdown">
+<!--[viff.runtime.BasicRuntime.shutdown]--><tt class="descname">shutdown</tt><big>(</big><big>)</big><a class="headerlink" href="#viff.runtime.BasicRuntime.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shutdown the runtime.</p>
+<p>All connections are closed and the runtime cannot be used
+again after this has been called.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.BasicRuntime.wait_for">
+<!--[viff.runtime.BasicRuntime.wait_for]--><tt class="descname">wait_for</tt><big>(</big><em>*vars</em><big>)</big><a class="headerlink" href="#viff.runtime.BasicRuntime.wait_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make the runtime wait for the variables given.</p>
+<p>The runtime is shut down when all variables are calculated.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="viff.runtime.Runtime">
+<!--[viff.runtime.Runtime]-->class <tt class="descclassname">viff.runtime.</tt><tt class="descname">Runtime</tt><big>(</big><em>player</em>, <em>threshold</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#viff.runtime.Runtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>The VIFF runtime.</p>
+<p>The runtime is used for sharing values (<a title="viff.runtime.Runtime.shamir_share" class="reference internal" href="#viff.runtime.Runtime.shamir_share"><tt class="xref docutils literal"><span class="pre">shamir_share()</span></tt></a> or
+<a title="viff.runtime.Runtime.prss_share" class="reference internal" href="#viff.runtime.Runtime.prss_share"><tt class="xref docutils literal"><span class="pre">prss_share()</span></tt></a>) into <a title="viff.runtime.Share" class="reference internal" href="#viff.runtime.Share"><tt class="xref docutils literal"><span class="pre">Share</span></tt></a> object and opening such
+shares (<a title="viff.runtime.Runtime.open" class="reference internal" href="#viff.runtime.Runtime.open"><tt class="xref docutils literal"><span class="pre">open()</span></tt></a>) again. Calculations on shares is normally
+done through overloaded arithmetic operations, but it is also
+possible to call <a title="viff.runtime.Runtime.add" class="reference internal" href="#viff.runtime.Runtime.add"><tt class="xref docutils literal"><span class="pre">add()</span></tt></a>, <a title="viff.runtime.Runtime.mul" class="reference internal" href="#viff.runtime.Runtime.mul"><tt class="xref docutils literal"><span class="pre">mul()</span></tt></a>, etc. directly if one
+prefers.</p>
+<p>Each player in the protocol uses a <a title="viff.runtime.Runtime" class="reference internal" href="#viff.runtime.Runtime"><tt class="xref docutils literal"><span class="pre">Runtime</span></tt></a> object. To
+create an instance and connect it correctly with the other
+players, please use the <a title="viff.runtime.create_runtime" class="reference internal" href="#viff.runtime.create_runtime"><tt class="xref docutils literal"><span class="pre">create_runtime()</span></tt></a> function instead of
+instantiating a Runtime directly. The <a title="viff.runtime.create_runtime" class="reference internal" href="#viff.runtime.create_runtime"><tt class="xref docutils literal"><span class="pre">create_runtime()</span></tt></a>
+function will take care of setting up network connections and
+return a <tt class="xref docutils literal"><span class="pre">Deferred</span></tt> which triggers with the
+<a title="viff.runtime.Runtime" class="reference internal" href="#viff.runtime.Runtime"><tt class="xref docutils literal"><span class="pre">Runtime</span></tt></a> object when it is ready.</p>
+<dl class="method">
+<dt id="viff.runtime.Runtime.add">
+<!--[viff.runtime.Runtime.add]--><tt class="descname">add</tt><big>(</big><em>share_a</em>, <em>share_b</em><big>)</big><a class="headerlink" href="#viff.runtime.Runtime.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Addition of shares.</p>
+<p>Communication cost: none.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.Runtime.mul">
+<!--[viff.runtime.Runtime.mul]--><tt class="descname">mul</tt><big>(</big><em>share_a</em>, <em>share_b</em><big>)</big><a class="headerlink" href="#viff.runtime.Runtime.mul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiplication of shares.</p>
+<p>Communication cost: 1 Shamir sharing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.Runtime.open">
+<!--[viff.runtime.Runtime.open]--><tt class="descname">open</tt><big>(</big><em>share</em>, <em>receivers=None</em>, <em>threshold=None</em><big>)</big><a class="headerlink" href="#viff.runtime.Runtime.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a secret sharing.</p>
+<p>The <em>receivers</em> are the players that will eventually obtain
+the opened result. The default is to let everybody know the
+result. By default the <tt class="xref docutils literal"><span class="pre">threshold</span></tt> + 1 shares are
+reconstructed, but <em>threshold</em> can be used to override this.</p>
+<p>Communication cost: every player sends one share to each
+receiving player.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.Runtime.prss_double_share">
+<!--[viff.runtime.Runtime.prss_double_share]--><tt class="descname">prss_double_share</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#viff.runtime.Runtime.prss_double_share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a double-sharing using PRSS.</p>
+<p>The pair of shares will have degree t and 2t where t is the
+default threshold for the runtime.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.Runtime.prss_shamir_share_bit_double">
+<!--[viff.runtime.Runtime.prss_shamir_share_bit_double]--><tt class="descname">prss_shamir_share_bit_double</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#viff.runtime.Runtime.prss_shamir_share_bit_double" title="Permalink to this definition">¶</a></dt>
+<dd>Shamir share a random bit over <em>field</em> and GF256.</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.Runtime.prss_share">
+<!--[viff.runtime.Runtime.prss_share]--><tt class="descname">prss_share</tt><big>(</big><em>inputters</em>, <em>field</em>, <em>element=None</em><big>)</big><a class="headerlink" href="#viff.runtime.Runtime.prss_share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates pseudo-random secret sharings.</p>
+<p>This protocol creates a secret sharing for each player in the
+subset of players specified in <em>inputters</em>. Each inputter
+provides an integer. The result is a list of shares, one for
+each inputter.</p>
+<p>The protocol uses the pseudo-random secret sharing technique
+described in the paper &#8220;Share Conversion, Pseudorandom
+Secret-Sharing and Applications to Secure Computation&#8221; by
+Ronald Cramer, Ivan Damgård, and Yuval Ishai in Proc. of TCC
+2005, LNCS 3378. <a class="reference external" href="http://www.cs.technion.ac.il/~yuvali/pubs/CDI05.ps">Download</a></p>
+<p>Communication cost: Each inputter does one broadcast.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.Runtime.prss_share_bit_double">
+<!--[viff.runtime.Runtime.prss_share_bit_double]--><tt class="descname">prss_share_bit_double</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#viff.runtime.Runtime.prss_share_bit_double" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share a random bit over <em>field</em> and GF256.</p>
+<p>The protocol is described in &#8220;Efficient Conversion of
+Secret-shared Values Between Different Fields&#8221; by Ivan Damgård
+and Rune Thorbek available as <a class="reference external" href="http://eprint.iacr.org/2008/221">Cryptology ePrint Archive,
+Report 2008/221</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.Runtime.prss_share_random">
+<!--[viff.runtime.Runtime.prss_share_random]--><tt class="descname">prss_share_random</tt><big>(</big><em>field</em>, <em>binary=False</em><big>)</big><a class="headerlink" href="#viff.runtime.Runtime.prss_share_random" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate shares of a uniformly random element from the field given.</p>
+<p>If binary is True, a 0/1 element is generated. No player
+learns the value of the element.</p>
+<p>Communication cost: none if binary=False, 1 open otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.Runtime.prss_share_zero">
+<!--[viff.runtime.Runtime.prss_share_zero]--><tt class="descname">prss_share_zero</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#viff.runtime.Runtime.prss_share_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate shares of the zero element from the field given.</p>
+<p>Communication cost: none.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.Runtime.shamir_share">
+<!--[viff.runtime.Runtime.shamir_share]--><tt class="descname">shamir_share</tt><big>(</big><em>inputters</em>, <em>field</em>, <em>number=None</em>, <em>threshold=None</em><big>)</big><a class="headerlink" href="#viff.runtime.Runtime.shamir_share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Secret share <em>number</em> over <em>field</em> using Shamir&#8217;s method.</p>
+<p>The number is shared using polynomial of degree <em>threshold</em>
+(defaults to <tt class="xref docutils literal"><span class="pre">threshold</span></tt>). Returns a list of shares
+unless there is only one inputter in which case the
+share is returned directly.</p>
+<p>Communication cost: n elements transmitted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.runtime.Runtime.sub">
+<!--[viff.runtime.Runtime.sub]--><tt class="descname">sub</tt><big>(</big><em>share_a</em>, <em>share_b</em><big>)</big><a class="headerlink" href="#viff.runtime.Runtime.sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subtraction of shares.</p>
+<p>Communication cost: none.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="matrix.html" title="previous chapter">Matrix Module</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="active.html" title="next chapter">Actively Secure Protocols</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/runtime.txt">Show Source</a></li>
+            </ul>
+            <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="active.html" title="Actively Secure Protocols"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="matrix.html" title="Matrix Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Sep 21, 2008.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>

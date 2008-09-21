@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Bibliography &mdash; VIFF v0.7 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+          URL_ROOT:    '',
+          VERSION:     '0.7',
+          COLLAPSE_MODINDEX: false,
+          FILE_SUFFIX: ''
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/interface.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="contents" title="Global table of contents" href="contents.html" />
+    <link rel="index" title="Global index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VIFF v0.7 documentation" href="index.html" />
+    <link rel="next" title="Contact" href="contact.html" />
+    <link rel="prev" title="Presentations" href="presentations.html" />
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="contact.html" title="Contact"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="presentations.html" title="Presentations"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7 documentation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="bibliography">
+<h1 id="bibliography">Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This list is far from complete. If you find more relevant
+references then please <a class="reference external" href="mailto:viff-devel&#37;&#52;&#48;viff&#46;dk">send us a mail</a> with the information.</p>
+</div>
+<p>The algorithms used by VIFF are published in various academic papers.
+Here we will try to point out which parts of the code uses which
+papers.</p>
+<ul class="simple">
+<li>The <tt class="docutils literal"><span class="pre">viff.shamir</span></tt> module is obviously based on <a class="citation-reference" href="#shamir79" id="id2">[Shamir79]</a>.</li>
+<li><tt class="docutils literal"><span class="pre">apps/millionaires.py</span></tt>: Inspired by <a class="citation-reference" href="#yao82" id="id3">[Yao82]</a>.</li>
+<li>The default comparison operation (<tt class="docutils literal"><span class="pre">Runtime.greater_than_equal</span></tt>) is
+based on the comparison protocol from <a class="citation-reference" href="#toft05" id="id4">[Toft05]</a>.</li>
+<li>Broadcast (<tt class="docutils literal"><span class="pre">Runtime.broadcast</span></tt>) is based on the original paper by
+<a class="citation-reference" href="#bracha84" id="id5">[Bracha84]</a> and on the explanation by <a class="citation-reference" href="#cachin05" id="id6">[Cachin05]</a>.</li>
+<li>The pseudo-random secret sharing (PRSS) in <tt class="docutils literal"><span class="pre">viff.prss</span></tt> is
+described in <a class="citation-reference" href="#cdi05" id="id7">[CDI05]</a>. The
+<a title="viff.runtime.Runtime.prss_share_bit_double" class="reference external" href="runtime.html#viff.runtime.Runtime.prss_share_bit_double"><tt class="xref docutils literal"><span class="pre">viff.runtime.Runtime.prss_share_bit_double()</span></tt></a> method uses a
+protocol described in <a class="citation-reference" href="#damg-rd08" id="id8">[Damgård08]</a>.</li>
+<li>The protocol for equality testing with secret shared result is from
+<a class="citation-reference" href="#nishide07" id="id9">[Nishide07]</a>.</li>
+</ul>
+<table class="docutils citation" frame="void" id="bracha84" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[Bracha84]</a></td><td>G. Bracha, <em>An asynchronous [(n-1)/3]-resilient
+consensus protocol</em>, Proc 3rd ACM Symposium on Principles of
+Distributed Computing (PODC), 1984, 154-162.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="cachin05" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[Cachin05]</a></td><td>Christian Cachin, <em>Security and Fault-tolerance in
+Distributed Systems</em>, ETHZ, 2005, <a class="reference external" href="http://www.zurich.ibm.com/~cca/sft05/agreement.pdf">PDF</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="cdi05" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[CDI05]</a></td><td>Ronald Cramer, Ivan Damgård, and Yuval Ishai, <em>Share
+Conversion, Pseudorandom Secret-Sharing and Applications to Secure
+Computation</em>, Proc of TCC 2005, LNCS 3378, <a class="reference external" href="http://www.cs.technion.ac.il/~yuvali/pubs/CDI05.ps">PS</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="damg-rd08" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[Damgård08]</a></td><td>Ivan Damgård and Rune Thorbek, <em>Efficient Conversion of
+Secret-shared Values Between Different Fields</em>, Cryptology ePrint
+Archive: <a class="reference external" href="http://eprint.iacr.org/2008/221">Report 2008/221</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="nishide07" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[Nishide07]</a></td><td>Takashi Nishide and Kazuo Ohta, <em>Constant-Round
+Multiparty Computation for Interval Test, Equality Test, and
+Comparison</em>, IEICE Transactions, 90-A (5): 960-968.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="shamir79" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[Shamir79]</a></td><td>Adi Shamir, <em>How to share a secret</em>, Communications of
+the ACM, 22 (11): 612-613.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="toft05" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[Toft05]</a></td><td>Tomas Toft, <em>Secure Integer Computation with Applications
+in Economics</em>, PhD Progress Report, July 2005, <a class="reference external" href="http://www.daimi.au.dk/~tomas/publications/progress.pdf">PDF</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="yao82" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[Yao82]</a></td><td>Andrew Chi-Chih Yao, <em>Protocols for Secure Computations</em>,
+FOCS 1982, 160-164.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="presentations.html" title="previous chapter">Presentations</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="contact.html" title="next chapter">Contact</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/bibliography.txt">Show Source</a></li>
+            </ul>
+            <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="contact.html" title="Contact"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="presentations.html" title="Presentations"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7 documentation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Sep 21, 2008.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Actively Secure Protocols &mdash; VIFF v0.7 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+          URL_ROOT:    '',
+          VERSION:     '0.7',
+          COLLAPSE_MODINDEX: false,
+          FILE_SUFFIX: ''
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/interface.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="contents" title="Global table of contents" href="contents.html" />
+    <link rel="index" title="Global index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VIFF v0.7 documentation" href="index.html" />
+    <link rel="up" title="Implementation" href="implementation.html" />
+    <link rel="next" title="Paillier Crypto System" href="paillier.html" />
+    <link rel="prev" title="Runtime Module" href="runtime.html" />
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="paillier.html" title="Paillier Crypto System"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="runtime.html" title="Runtime Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="module-viff.active">
+<h1 id="module-viff.active">Actively Secure Protocols<a class="headerlink" href="#module-viff.active" title="Permalink to this headline">¶</a></h1>
+<p>Actively secure protocols.</p>
+<dl class="class">
+<dt id="viff.active.ActiveRuntime">
+<!--[viff.active.ActiveRuntime]-->class <tt class="descclassname">viff.active.</tt><tt class="descname">ActiveRuntime</tt><big>(</big><em>player</em>, <em>threshold</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#viff.active.ActiveRuntime" title="Permalink to this definition">¶</a></dt>
+<dd>Default mix of <a title="viff.active.BasicActiveRuntime" class="reference internal" href="#viff.active.BasicActiveRuntime"><tt class="xref docutils literal"><span class="pre">BasicActiveRuntime</span></tt></a> and
+<a title="viff.active.TriplesPRSSMixin" class="reference internal" href="#viff.active.TriplesPRSSMixin"><tt class="xref docutils literal"><span class="pre">TriplesPRSSMixin</span></tt></a>.</dd></dl>
+
+<dl class="class">
+<dt id="viff.active.BasicActiveRuntime">
+<!--[viff.active.BasicActiveRuntime]-->class <tt class="descclassname">viff.active.</tt><tt class="descname">BasicActiveRuntime</tt><big>(</big><em>player</em>, <em>threshold</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#viff.active.BasicActiveRuntime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basic runtime secure against active adversaries.</p>
+<p>This class depends on either
+<a title="viff.active.TriplesHyperinvertibleMatricesMixin" class="reference internal" href="#viff.active.TriplesHyperinvertibleMatricesMixin"><tt class="xref docutils literal"><span class="pre">TriplesHyperinvertibleMatricesMixin</span></tt></a> or
+<a title="viff.active.TriplesPRSSMixin" class="reference internal" href="#viff.active.TriplesPRSSMixin"><tt class="xref docutils literal"><span class="pre">TriplesPRSSMixin</span></tt></a> to provide a <tt class="xref docutils literal"><span class="pre">get_triple()</span></tt> method.</p>
+<p>Instead of using this class directly, one should probably use
+<a title="viff.active.ActiveRuntime" class="reference internal" href="#viff.active.ActiveRuntime"><tt class="xref docutils literal"><span class="pre">ActiveRuntime</span></tt></a> instead.</p>
+<dl class="method">
+<dt id="viff.active.BasicActiveRuntime.mul">
+<!--[viff.active.BasicActiveRuntime.mul]--><tt class="descname">mul</tt><big>(</big><em>share_x</em>, <em>share_y</em><big>)</big><a class="headerlink" href="#viff.active.BasicActiveRuntime.mul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiplication of shares.</p>
+<p>Preprocessing: 1 multiplication triple.
+Communication: 2 openings.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="viff.active.BrachaBroadcastMixin">
+<!--[viff.active.BrachaBroadcastMixin]-->class <tt class="descclassname">viff.active.</tt><tt class="descname">BrachaBroadcastMixin</tt><a class="headerlink" href="#viff.active.BrachaBroadcastMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bracha broadcast mixin class. This mixin class adds a
+<a title="viff.active.BrachaBroadcastMixin.broadcast" class="reference internal" href="#viff.active.BrachaBroadcastMixin.broadcast"><tt class="xref docutils literal"><span class="pre">broadcast()</span></tt></a> method which can be used for a reliable
+broadcast.</p>
+<dl class="method">
+<dt id="viff.active.BrachaBroadcastMixin.broadcast">
+<!--[viff.active.BrachaBroadcastMixin.broadcast]--><tt class="descname">broadcast</tt><big>(</big><em>senders</em>, <em>message=None</em><big>)</big><a class="headerlink" href="#viff.active.BrachaBroadcastMixin.broadcast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform one or more Bracha broadcast(s).</p>
+<p>The list of <em>senders</em> given will determine the subset of players
+who wish to broadcast a message. If this player wishes to
+broadcast, its ID must be in the list of senders and the
+optional <em>message</em> parameter must be used.</p>
+<p>If the list of senders consists only of a single sender, the
+result will be a single element, otherwise it will be a list.</p>
+<p>A Bracha broadcast is reliable against an active adversary
+corrupting up to t &lt; n/3 of the players. For more details, see
+the paper &#8220;An asynchronous [(n-1)/3]-resilient consensus
+protocol&#8221; by G. Bracha in Proc. 3rd ACM Symposium on
+Principles of Distributed Computing, 1984, pages 154-162.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="viff.active.TriplesHyperinvertibleMatricesMixin">
+<!--[viff.active.TriplesHyperinvertibleMatricesMixin]-->class <tt class="descclassname">viff.active.</tt><tt class="descname">TriplesHyperinvertibleMatricesMixin</tt><a class="headerlink" href="#viff.active.TriplesHyperinvertibleMatricesMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixin class which generates multiplication triples using
+hyperinvertible matrices.</p>
+<dl class="method">
+<dt id="viff.active.TriplesHyperinvertibleMatricesMixin.double_share_random">
+<!--[viff.active.TriplesHyperinvertibleMatricesMixin.double_share_random]--><tt class="descname">double_share_random</tt><big>(</big><em>T</em>, <em>d1</em>, <em>d2</em>, <em>field</em><big>)</big><a class="headerlink" href="#viff.active.TriplesHyperinvertibleMatricesMixin.double_share_random" title="Permalink to this definition">¶</a></dt>
+<dd><p>Double-share a random secret using two polynomials.</p>
+<p>The guarantee is that a number of shares are made and out of
+those, the <em>T</em> that are returned by this method will be correct
+double-sharings of a random number using <em>d1</em> and <em>d2</em> as the
+polynomial degrees.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.active.TriplesHyperinvertibleMatricesMixin.generate_triples">
+<!--[viff.active.TriplesHyperinvertibleMatricesMixin.generate_triples]--><tt class="descname">generate_triples</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#viff.active.TriplesHyperinvertibleMatricesMixin.generate_triples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate multiplication triples.</p>
+<p>These are random numbers <em>a</em>, <em>b</em>, and <em>c</em> such that <tt class="docutils literal"><span class="pre">c</span> <span class="pre">=</span>
+<span class="pre">ab</span></tt>. This function can be used in pre-processing.</p>
+<p>Returns a tuple with the number of triples generated and a
+Deferred which will yield a list of 3-tuples.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.active.TriplesHyperinvertibleMatricesMixin.single_share_random">
+<!--[viff.active.TriplesHyperinvertibleMatricesMixin.single_share_random]--><tt class="descname">single_share_random</tt><big>(</big><em>T</em>, <em>degree</em>, <em>field</em><big>)</big><a class="headerlink" href="#viff.active.TriplesHyperinvertibleMatricesMixin.single_share_random" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share a random secret.</p>
+<p>The guarantee is that a number of shares are made and out of
+those, the <em>T</em> that are returned by this method will be
+correct sharings of a random number using <em>degree</em> as the
+polynomial degree.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="viff.active.TriplesPRSSMixin">
+<!--[viff.active.TriplesPRSSMixin]-->class <tt class="descclassname">viff.active.</tt><tt class="descname">TriplesPRSSMixin</tt><a class="headerlink" href="#viff.active.TriplesPRSSMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixin class for generating multiplication triples using PRSS.</p>
+<dl class="method">
+<dt id="viff.active.TriplesPRSSMixin.generate_triples">
+<!--[viff.active.TriplesPRSSMixin.generate_triples]--><tt class="descname">generate_triples</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#viff.active.TriplesPRSSMixin.generate_triples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a multiplication triple using PRSS.</p>
+<p>These are random numbers <em>a</em>, <em>b</em>, and <em>c</em> such that <tt class="docutils literal"><span class="pre">c</span> <span class="pre">=</span>
+<span class="pre">ab</span></tt>. This function can be used in pre-processing.</p>
+<p>Returns a tuple with the number of triples generated (1) and a
+Deferred which will yield a singleton-list with a 3-tuple.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="runtime.html" title="previous chapter">Runtime Module</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="paillier.html" title="next chapter">Paillier Crypto System</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/active.txt">Show Source</a></li>
+            </ul>
+            <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="paillier.html" title="Paillier Crypto System"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="runtime.html" title="Runtime Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Sep 21, 2008.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>
