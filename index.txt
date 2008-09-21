@@ -47,7 +47,7 @@ computations`_ in a clean and easy way. Current features include:
 
 * automatic parallel (asynchronous) execution.
 
-* secure communication using TLS (the successor to SSL).
+* secure communication using SSL.
 
 * cute mascot :-)
 
