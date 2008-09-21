@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Utility Functions Module &mdash; VIFF v0.7 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+          URL_ROOT:    '',
+          VERSION:     '0.7',
+          COLLAPSE_MODINDEX: false,
+          FILE_SUFFIX: ''
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/interface.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="contents" title="Global table of contents" href="contents.html" />
+    <link rel="index" title="Global index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VIFF v0.7 documentation" href="index.html" />
+    <link rel="up" title="Implementation" href="implementation.html" />
+    <link rel="next" title="Finite Fields Module" href="field.html" />
+    <link rel="prev" title="Implementation" href="implementation.html" />
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="field.html" title="Finite Fields Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="implementation.html" title="Implementation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="module-viff.util">
+<h1 id="module-viff.util">Utility Functions Module<a class="headerlink" href="#module-viff.util" title="Permalink to this headline">¶</a></h1>
+<p>Miscellaneous utility functions. This module contains various
+utility functions used in all parts of the VIFF code. The most
+important is the <a title="viff.util.rand" class="reference internal" href="#viff.util.rand"><tt class="xref docutils literal"><span class="pre">rand</span></tt></a> random generator which is seeded with a
+known seed each time. Using this generator for all random numbers
+ensures that a protocol run can be reproduced at a later time.</p>
+<dl class="envvar">
+<dt id="envvar-SEED">
+<tt class="descname">SEED</tt><a class="headerlink" href="#envvar-SEED" title="Permalink to this definition">¶</a></dt>
+<dd>The <a title="viff.util.rand" class="reference internal" href="#viff.util.rand"><tt class="xref docutils literal"><span class="pre">rand</span></tt></a> random generator is seeded using this
+environment variable, if it is defined.</dd></dl>
+
+<dl class="data">
+<dt id="viff.util.rand">
+<!--[viff.util.rand]--><tt class="descclassname">viff.util.</tt><tt class="descname">rand</tt><a class="headerlink" href="#viff.util.rand" title="Permalink to this definition">¶</a></dt>
+<dd><p>All VIFF code uses this random number generator for all
+randomness needed.</p>
+<p>The generator is by default initialized with a random seed,
+unless the environment variable <span class="target" id="index-1"></span><a class="reference internal" href="#envvar-SEED"><strong class="xref">SEED</strong></a> is set to a
+value, in which case that value is used instead. If
+<span class="target" id="index-2"></span><a class="reference internal" href="#envvar-SEED"><strong class="xref">SEED</strong></a> is defined, but empty, then no seed is used and a
+protocol run cannot be reproduced exactly.</p>
+</dd></dl>
+
+<dl class="envvar">
+<dt id="envvar-VIFF_NO_WRAP">
+<tt class="descname">VIFF_NO_WRAP</tt><a class="headerlink" href="#envvar-VIFF_NO_WRAP" title="Permalink to this definition">¶</a></dt>
+<dd>Setting this environment variable to any value will turn
+<a title="viff.util.wrapper" class="reference internal" href="#viff.util.wrapper"><tt class="xref docutils literal"><span class="pre">wrapper()</span></tt></a> into a no-op.</dd></dl>
+
+<dl class="function">
+<dt id="viff.util.clone_deferred">
+<!--[viff.util.clone_deferred]--><tt class="descclassname">viff.util.</tt><tt class="descname">clone_deferred</tt><big>(</big><em>original</em><big>)</big><a class="headerlink" href="#viff.util.clone_deferred" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clone a Deferred.</p>
+<p>The returned clone will fire with the same result as the original
+<tt class="xref docutils literal"><span class="pre">Deferred</span></tt>, but will otherwise be independent.</p>
+<p>It is an error to call <tt class="xref docutils literal"><span class="pre">callback()</span></tt> on the clone as it will
+result in an <tt class="xref docutils literal"><span class="pre">AlreadyCalledError</span></tt> when the original
+<tt class="xref docutils literal"><span class="pre">Deferred</span></tt> is triggered.</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Deferred</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="k">lambda</span> <span class="n">result</span><span class="p">:</span> <span class="n">result</span> <span class="o">*</span> <span class="mf">10</span><span class="p">)</span> <span class="c"># doctest: +ELLIPSIS</span>
+<span class="go">&lt;Deferred at 0x...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">clone_deferred</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="k">lambda</span> <span class="n">result</span><span class="p">:</span> <span class="n">result</span> <span class="o">+</span> <span class="mf">1</span><span class="p">)</span>  <span class="c"># doctest: +ELLIPSIS</span>
+<span class="go">&lt;Deferred at 0x...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="k">lambda</span> <span class="n">result</span><span class="p">:</span> <span class="n">result</span> <span class="o">+</span> <span class="mf">2</span><span class="p">)</span>  <span class="c"># doctest: +ELLIPSIS</span>
+<span class="go">&lt;Deferred at 0x...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>                                         <span class="c"># doctest: +ELLIPSIS</span>
+<span class="go">&lt;Deferred at 0x...  current result: 12&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>                                         <span class="c"># doctest: +ELLIPSIS</span>
+<span class="go">&lt;Deferred at 0x...  current result: 11&gt;</span>
+</pre></div>
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.util.deprecation">
+<!--[viff.util.deprecation]--><tt class="descclassname">viff.util.</tt><tt class="descname">deprecation</tt><big>(</big><em>message</em><big>)</big><a class="headerlink" href="#viff.util.deprecation" title="Permalink to this definition">¶</a></dt>
+<dd>Issue a deprecation warning.</dd></dl>
+
+<dl class="function">
+<dt id="viff.util.dlift">
+<!--[viff.util.dlift]--><tt class="descclassname">viff.util.</tt><tt class="descname">dlift</tt><big>(</big><em>func</em><big>)</big><a class="headerlink" href="#viff.util.dlift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lift a function to handle deferred arguments.</p>
+<p>Use this as a decorator. The decorated function accepts the same
+arguments as the original function, but arguments for the lifted
+function can be Deferreds. The return value of the lifted function
+will always be a Deferred.</p>
+<p>Keyword arguments are not lifted.</p>
+<p>As an example, here is how to define a lazy addition and
+multiplication which works for integers (deferred or not):</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nd">@dlift</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dlift</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Deferred</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Deferred</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">mul</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">10</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>                                         <span class="c"># doctest: +ELLIPSIS</span>
+<span class="go">&lt;DeferredList at 0x...  current result: 150&gt;</span>
+</pre></div>
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.util.dprint">
+<!--[viff.util.dprint]--><tt class="descclassname">viff.util.</tt><tt class="descname">dprint</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#viff.util.dprint" title="Permalink to this definition">¶</a></dt>
+<dd>Lifted wrapper function.</dd></dl>
+
+<dl class="function">
+<dt id="viff.util.find_prime">
+<!--[viff.util.find_prime]--><tt class="descclassname">viff.util.</tt><tt class="descname">find_prime</tt><big>(</big><em>lower_bound</em>, <em>blum=False</em><big>)</big><a class="headerlink" href="#viff.util.find_prime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a prime above a lower bound.</p>
+<p>If a prime is given as the lower bound, then this prime is
+returned:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">find_prime</span><span class="p">(</span><span class="mf">37</span><span class="p">)</span>
+<span class="go">37L</span>
+</pre></div>
+<p>The bound can be a Python expression as a string. This makes it
+easy for users to specify command line arguments that generates
+primes of a particular bit length:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">find_prime</span><span class="p">(</span><span class="s">&quot;2**100&quot;</span><span class="p">)</span> <span class="c"># 100 bit prime</span>
+<span class="go">1267650600228229401496703205653L</span>
+</pre></div>
+<p>Blum primes (a prime p such that p % 4 == 3) can be found as well:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">find_prime</span><span class="p">(</span><span class="mf">12</span><span class="p">)</span>
+<span class="go">13L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">find_prime</span><span class="p">(</span><span class="mf">12</span><span class="p">,</span> <span class="n">blum</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">19L</span>
+</pre></div>
+<p>If the bound is negative, 2 (the smallest prime) is returned:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">find_prime</span><span class="p">(</span><span class="o">-</span><span class="mf">100</span><span class="p">)</span>
+<span class="go">2L</span>
+</pre></div>
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.util.find_random_prime">
+<!--[viff.util.find_random_prime]--><tt class="descclassname">viff.util.</tt><tt class="descname">find_random_prime</tt><big>(</big><em>k</em><big>)</big><a class="headerlink" href="#viff.util.find_random_prime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a random <em>k</em> bit prime number.</p>
+<p>The prime may have fewer, but no more, than <em>k</em> significant bits:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="mf">2</span> <span class="o">&lt;=</span> <span class="n">find_random_prime</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">2</span><span class="o">**</span><span class="mf">10</span>
+<span class="go">True</span>
+</pre></div>
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.util.wrapper">
+<!--[viff.util.wrapper]--><tt class="descclassname">viff.util.</tt><tt class="descname">wrapper</tt><big>(</big><em>func</em><big>)</big><a class="headerlink" href="#viff.util.wrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator used for wrapper functions.</p>
+<p>It is important to use this decorator on any wrapper functions in
+order to ensure that they end up with correct <tt class="xref docutils literal"><span class="pre">__name__</span></tt> and
+<tt class="xref docutils literal"><span class="pre">__doc__</span></tt> attributes.</p>
+<p>In addition, if the environment variable <span class="target" id="index-3"></span><a class="reference internal" href="#envvar-VIFF_NO_WRAP"><strong class="xref">VIFF_NO_WRAP</strong></a> is
+defined, then the wrapper functions will be turned into functions
+that <em>do not</em> wrap &#8211; instead they let their argument function
+through unchanged. This is done so that epydoc and Sphinx can see
+the true function arguments when generating documentation. Just
+remember that your code will break if <span class="target" id="index-4"></span><a class="reference internal" href="#envvar-VIFF_NO_WRAP"><strong class="xref">VIFF_NO_WRAP</strong></a> is
+set, so it should only be used when documentation is being
+generated.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="implementation.html" title="previous chapter">Implementation</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="field.html" title="next chapter">Finite Fields Module</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/util.txt">Show Source</a></li>
+            </ul>
+            <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="field.html" title="Finite Fields Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="implementation.html" title="Implementation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Sep 21, 2008.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>

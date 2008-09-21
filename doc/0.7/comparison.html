@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Comparison protocols &mdash; VIFF v0.7 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+          URL_ROOT:    '',
+          VERSION:     '0.7',
+          COLLAPSE_MODINDEX: false,
+          FILE_SUFFIX: ''
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/interface.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="contents" title="Global table of contents" href="contents.html" />
+    <link rel="index" title="Global index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VIFF v0.7 documentation" href="index.html" />
+    <link rel="up" title="Implementation" href="implementation.html" />
+    <link rel="next" title="PRSS Module" href="prss.html" />
+    <link rel="prev" title="Paillier Crypto System" href="paillier.html" />
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="prss.html" title="PRSS Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="paillier.html" title="Paillier Crypto System"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="comparison-protocols">
+<h1 id="comparison-protocols">Comparison protocols<a class="headerlink" href="#comparison-protocols" title="Permalink to this headline">¶</a></h1>
+<p>Two comparison protocols have been implemented in VIFF. They are
+available in the classes <tt class="xref docutils literal"><span class="pre">ComparisonToft05Mixin</span></tt> and
+<tt class="xref docutils literal"><span class="pre">ComparisonToft07Mixin</span></tt>. Both protocols have been designed by
+Tomas Toft.</p>
+<p>The classes are <em>mixin</em> classes which means that they are meant to be
+used (&#8220;mixed&#8221;) with other classes to build a finished usable class.
+Two standard &#8220;flavors&#8221; are provided in the <tt class="xref docutils literal"><span class="pre">Toft05Runtime</span></tt> and
+<tt class="xref docutils literal"><span class="pre">Toft07Runtime</span></tt>.</p>
+<dl class="class">
+<dt id="viff.comparison.ComparisonToft05Mixin">
+<!--[viff.comparison.ComparisonToft05Mixin]-->class <tt class="descclassname">viff.comparison.</tt><tt class="descname">ComparisonToft05Mixin</tt><a class="headerlink" href="#viff.comparison.ComparisonToft05Mixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Comparison by Tomas Toft, 2005.</p>
+<dl class="method">
+<dt id="viff.comparison.ComparisonToft05Mixin.greater_than_equal">
+<!--[viff.comparison.ComparisonToft05Mixin.greater_than_equal]--><tt class="descname">greater_than_equal</tt><big>(</big><em>share_a</em>, <em>share_b</em><big>)</big><a class="headerlink" href="#viff.comparison.ComparisonToft05Mixin.greater_than_equal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute <tt class="docutils literal"><span class="pre">share_a</span> <span class="pre">&gt;=</span> <span class="pre">share_b</span></tt>.</p>
+<p>Both arguments must be from the same field. The result is a
+<a title="viff.field.GF256" class="reference external" href="field.html#viff.field.GF256"><tt class="xref docutils literal"><span class="pre">GF256</span></tt></a> share.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Warning:</th><td class="field-body">The result type (<a title="viff.field.GF256" class="reference external" href="field.html#viff.field.GF256"><tt class="xref docutils literal"><span class="pre">viff.field.GF256</span></tt></a>) is different
+from the argument types (general field elements).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="viff.comparison.Toft05Runtime">
+<!--[viff.comparison.Toft05Runtime]-->class <tt class="descclassname">viff.comparison.</tt><tt class="descname">Toft05Runtime</tt><big>(</big><em>player</em>, <em>threshold</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#viff.comparison.Toft05Runtime" title="Permalink to this definition">¶</a></dt>
+<dd>Default mix of <tt class="xref docutils literal"><span class="pre">ComparisonToft05Mixin</span></tt> and
+<a title="viff.runtime.Runtime" class="reference external" href="runtime.html#viff.runtime.Runtime"><tt class="xref docutils literal"><span class="pre">Runtime</span></tt></a>.</dd></dl>
+
+<dl class="class">
+<dt id="viff.comparison.ComparisonToft07Mixin">
+<!--[viff.comparison.ComparisonToft07Mixin]-->class <tt class="descclassname">viff.comparison.</tt><tt class="descname">ComparisonToft07Mixin</tt><a class="headerlink" href="#viff.comparison.ComparisonToft07Mixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Efficient comparison by Tomas Toft 2007. This mixin provides a
+<tt class="xref docutils literal"><span class="pre">greater_than_equal()</span></tt> method which can compare Zp field
+elements and gives a secret result shared over Zp.</p>
+<dl class="method">
+<dt id="viff.comparison.ComparisonToft07Mixin.greater_than_equal">
+<!--[viff.comparison.ComparisonToft07Mixin.greater_than_equal]--><tt class="descname">greater_than_equal</tt><big>(</big><em>share_a</em>, <em>share_b</em><big>)</big><a class="headerlink" href="#viff.comparison.ComparisonToft07Mixin.greater_than_equal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute <tt class="docutils literal"><span class="pre">share_a</span> <span class="pre">&gt;=</span> <span class="pre">share_b</span></tt>.</p>
+<p>Both arguments must be shares from the same field. The result
+is a new 0/1 share from the field.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="viff.comparison.Toft07Runtime">
+<!--[viff.comparison.Toft07Runtime]-->class <tt class="descclassname">viff.comparison.</tt><tt class="descname">Toft07Runtime</tt><big>(</big><em>player</em>, <em>threshold</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#viff.comparison.Toft07Runtime" title="Permalink to this definition">¶</a></dt>
+<dd>Default mix of <tt class="xref docutils literal"><span class="pre">ComparisonToft07Mixin</span></tt> and
+<a title="viff.runtime.Runtime" class="reference external" href="runtime.html#viff.runtime.Runtime"><tt class="xref docutils literal"><span class="pre">Runtime</span></tt></a>.</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="paillier.html" title="previous chapter">Paillier Crypto System</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="prss.html" title="next chapter">PRSS Module</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/comparison.txt">Show Source</a></li>
+            </ul>
+            <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="prss.html" title="PRSS Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="paillier.html" title="Paillier Crypto System"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Sep 21, 2008.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>
