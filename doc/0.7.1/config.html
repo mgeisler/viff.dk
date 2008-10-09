@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Config Module &mdash; VIFF v0.7.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+          URL_ROOT:    '',
+          VERSION:     '0.7.1',
+          COLLAPSE_MODINDEX: false,
+          FILE_SUFFIX: '.html'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="contents" title="Global table of contents" href="contents.html" />
+    <link rel="index" title="Global index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VIFF v0.7.1 documentation" href="index.html" />
+    <link rel="up" title="Implementation" href="implementation.html" />
+    <link rel="next" title="Background Information" href="background.html" />
+    <link rel="prev" title="PRSS Module" href="prss.html" />
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="background.html" title="Background Information"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="prss.html" title="PRSS Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7.1 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="module-viff.config">
+<h1>Config Module<a class="headerlink" href="#module-viff.config" title="Permalink to this headline">¶</a></h1>
+<p>Functions for loading and saving player configurations. Each player
+participating in a protocol execution must know some information about
+the other players, namely their hostname and port number. The player
+also needs to know something about itself, namely the keys used for
+pseudo-random secret sharing (PRSS).</p>
+<p>The <a title="viff.config.Player" class="reference" href="#viff.config.Player"><tt class="xref docutils literal"><span class="pre">Player</span></tt></a> class encapsulates this information. Generating a
+player configuration is done using the <a title="viff.config.generate_configs" class="reference" href="#viff.config.generate_configs"><tt class="xref docutils literal"><span class="pre">generate_configs()</span></tt></a>
+function. The <tt class="docutils literal"><span class="pre">generate_config_files.py</span></tt> script uses that
+function to generate a player config and save it in a number of
+<tt class="docutils literal"><span class="pre">.ini</span></tt> files. Such a <tt class="docutils literal"><span class="pre">.ini</span></tt> file can be loaded with the
+<a title="viff.config.load_config" class="reference" href="#viff.config.load_config"><tt class="xref docutils literal"><span class="pre">load_config()</span></tt></a> function.</p>
+<dl class="class">
+<dt id="viff.config.Player">
+<!--[viff.config.Player]-->class <tt class="descclassname">viff.config.</tt><tt class="descname">Player</tt><big>(</big><em>id</em>, <em>host</em>, <em>port</em>, <em>pubkey</em>, <em>seckey=None</em>, <em>keys=None</em>, <em>dealer_keys=None</em><big>)</big><a class="headerlink" href="#viff.config.Player" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper for information about a player in the protocol.</p>
+<dl class="attribute">
+<dt id="viff.config.Player.id">
+<!--[viff.config.Player.id]--><tt class="descname">id</tt><a class="headerlink" href="#viff.config.Player.id" title="Permalink to this definition">¶</a></dt>
+<dt id="viff.config.Player.host">
+<tt class="descname">host</tt><a class="headerlink" href="#viff.config.Player.host" title="Permalink to this definition">¶</a></dt>
+<dt id="viff.config.Player.port">
+<tt class="descname">port</tt><a class="headerlink" href="#viff.config.Player.port" title="Permalink to this definition">¶</a></dt>
+<dd>ID, hostname, and portnumber of the player.</dd></dl>
+
+<dl class="method">
+<dt id="viff.config.Player.prfs">
+<!--[viff.config.Player.prfs]--><tt class="descname">prfs</tt><big>(</big><em>modulus</em><big>)</big><a class="headerlink" href="#viff.config.Player.prfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve PRSS PRFs.</p>
+<p>The pseudo-random functions are used when this player is part
+of a pseudo-random secret sharing for sharing an element
+random to all players.</p>
+<p>Return a mapping from player subsets to <a title="viff.prss.PRF" class="reference" href="prss.html#viff.prss.PRF"><tt class="xref docutils literal"><span class="pre">viff.prss.PRF</span></tt></a>
+instances.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.config.Player.dealer_prfs">
+<!--[viff.config.Player.dealer_prfs]--><tt class="descname">dealer_prfs</tt><big>(</big><em>modulus</em><big>)</big><a class="headerlink" href="#viff.config.Player.dealer_prfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve dealer PRSS PRFs.</p>
+<p>The pseudo-random functions are used when this player is the
+dealer in a pseudo-random secret sharing.</p>
+<p>Return a mapping from player subsets to <a title="viff.prss.PRF" class="reference" href="prss.html#viff.prss.PRF"><tt class="xref docutils literal"><span class="pre">viff.prss.PRF</span></tt></a>
+instances.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.config.generate_configs">
+<!--[viff.config.generate_configs]--><tt class="descclassname">viff.config.</tt><tt class="descname">generate_configs</tt><big>(</big><em>n</em>, <em>t</em>, <em>addresses=None</em>, <em>prefix=None</em>, <em>skip_prss=False</em><big>)</big><a class="headerlink" href="#viff.config.generate_configs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate player configurations.</p>
+<p>Generates <em>n</em> configuration objects with a threshold of <em>t</em>. The
+<em>addresses</em> is an optional list of <tt class="docutils literal"><span class="pre">(host,</span> <span class="pre">port)</span></tt> pairs and
+<em>prefix</em> is a filename prefix. One can avoid generating keys for
+PRSS by setting <em>skip_prss</em> to True. This is useful when the
+number of players is large.</p>
+<p>The configurations are returned as <tt class="xref docutils literal"><span class="pre">ConfigObj</span></tt> instances
+and can be saved to disk if desired.</p>
+<p>Returns a mapping from player ID to player configuration.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.config.load_config">
+<!--[viff.config.load_config]--><tt class="descclassname">viff.config.</tt><tt class="descname">load_config</tt><big>(</big><em>source</em><big>)</big><a class="headerlink" href="#viff.config.load_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a player configuration file.</p>
+<p>Configuration files are simple INI-files containing information
+(hostname and port number) about the other players in the
+protocol.</p>
+<p>One of the players own the config file and for this player
+additional information on PRSS keys is available.</p>
+<p>Returns the owner ID and a mapping of player IDs to
+<a title="viff.config.Player" class="reference" href="#viff.config.Player"><tt class="xref docutils literal"><span class="pre">Player</span></tt></a> instances.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="prss.html" title="previous chapter">PRSS Module</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="background.html" title="next chapter">Background Information</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/config.txt">Show Source</a></li>
+            </ul>
+            <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="background.html" title="Background Information"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="prss.html" title="PRSS Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7.1 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Oct 09, 2008.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>

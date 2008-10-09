@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Paillier Crypto System &mdash; VIFF v0.7.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+          URL_ROOT:    '',
+          VERSION:     '0.7.1',
+          COLLAPSE_MODINDEX: false,
+          FILE_SUFFIX: '.html'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="contents" title="Global table of contents" href="contents.html" />
+    <link rel="index" title="Global index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VIFF v0.7.1 documentation" href="index.html" />
+    <link rel="up" title="Implementation" href="implementation.html" />
+    <link rel="next" title="Comparison protocols" href="comparison.html" />
+    <link rel="prev" title="Actively Secure Protocols" href="active.html" />
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="comparison.html" title="Comparison protocols"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="active.html" title="Actively Secure Protocols"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7.1 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="module-viff.paillier">
+<h1>Paillier Crypto System<a class="headerlink" href="#module-viff.paillier" title="Permalink to this headline">¶</a></h1>
+<p>Paillier crypto system and two-party runtime.</p>
+<p>The <a title="viff.paillier.PaillierRuntime" class="reference" href="#viff.paillier.PaillierRuntime"><tt class="xref docutils literal"><span class="pre">PaillierRuntime</span></tt></a> is a special two-player runtime based on
+the homomorphic Paillier crypto system.</p>
+<p>From the paper &#8220;Public-Key Cryptosystems Based on Composite Degree
+Residuosity Classes&#8221; by Pascal Paillier in EUROCRYPT 1999, 223-238.</p>
+<dl class="class">
+<dt id="viff.paillier.PaillierRuntime">
+<!--[viff.paillier.PaillierRuntime]-->class <tt class="descclassname">viff.paillier.</tt><tt class="descname">PaillierRuntime</tt><big>(</big><em>player</em>, <em>threshold</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two-player runtime based on the Paillier crypto system.</p>
+<dl class="method">
+<dt id="viff.paillier.PaillierRuntime.add">
+<!--[viff.paillier.PaillierRuntime.add]--><tt class="descname">add</tt><big>(</big><em>share_a</em>, <em>share_b</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Addition of shares.</p>
+<p>Communication cost: none.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.paillier.PaillierRuntime.mul">
+<!--[viff.paillier.PaillierRuntime.mul]--><tt class="descname">mul</tt><big>(</big><em>share_a</em>, <em>share_b</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime.mul" title="Permalink to this definition">¶</a></dt>
+<dd>Multiplication of shares.</dd></dl>
+
+<dl class="method">
+<dt id="viff.paillier.PaillierRuntime.open">
+<!--[viff.paillier.PaillierRuntime.open]--><tt class="descname">open</tt><big>(</big><em>share</em>, <em>receivers=None</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime.open" title="Permalink to this definition">¶</a></dt>
+<dd>Open <em>share</em> to <em>receivers</em> (defaults to both players).</dd></dl>
+
+<dl class="method">
+<dt id="viff.paillier.PaillierRuntime.prss_share_random">
+<!--[viff.paillier.PaillierRuntime.prss_share_random]--><tt class="descname">prss_share_random</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime.prss_share_random" title="Permalink to this definition">¶</a></dt>
+<dd>Generate a share of a uniformly random element.</dd></dl>
+
+<dl class="method">
+<dt id="viff.paillier.PaillierRuntime.share">
+<!--[viff.paillier.PaillierRuntime.share]--><tt class="descname">share</tt><big>(</big><em>inputters</em>, <em>field</em>, <em>number=None</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime.share" title="Permalink to this definition">¶</a></dt>
+<dd>Share <em>number</em> additively.</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.paillier.encrypt">
+<!--[viff.paillier.encrypt]--><tt class="descclassname">viff.paillier.</tt><tt class="descname">encrypt</tt><big>(</big><em>m</em>, <em>(n</em>, <em>g)</em><big>)</big><a class="headerlink" href="#viff.paillier.encrypt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="viff.paillier.decrypt">
+<!--[viff.paillier.decrypt]--><tt class="descclassname">viff.paillier.</tt><tt class="descname">decrypt</tt><big>(</big><em>c</em>, <em>(n</em>, <em>g</em>, <em>lm)</em><big>)</big><a class="headerlink" href="#viff.paillier.decrypt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="active.html" title="previous chapter">Actively Secure Protocols</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="comparison.html" title="next chapter">Comparison protocols</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/paillier.txt">Show Source</a></li>
+            </ul>
+            <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="comparison.html" title="Comparison protocols"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="active.html" title="Actively Secure Protocols"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7.1 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Oct 09, 2008.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>

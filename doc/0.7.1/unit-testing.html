@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Unit Testing &mdash; VIFF v0.7.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+          URL_ROOT:    '',
+          VERSION:     '0.7.1',
+          COLLAPSE_MODINDEX: false,
+          FILE_SUFFIX: '.html'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="contents" title="Global table of contents" href="contents.html" />
+    <link rel="index" title="Global index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VIFF v0.7.1 documentation" href="index.html" />
+    <link rel="next" title="Presentations" href="presentations.html" />
+    <link rel="prev" title="Developer&#8217;s Guide" href="development.html" />
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="presentations.html" title="Presentations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="development.html" title="Developer&#8217;s Guide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7.1 documentation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="unit-testing">
+<h1>Unit Testing<a class="headerlink" href="#unit-testing" title="Permalink to this headline">¶</a></h1>
+<p>VIFF employs a set of unit tests to help developers catch regressions
+and to ensure the correctness of the implementation. The code is
+continuously tested using a <a class="reference" href="http://buildbot.net/">BuildBot</a> and the results are available
+<a class="reference" href="http://buildbot.viff.dk/">online</a>. If you see warnings or errors from the unit tests on the
+<a class="reference" href="http://buildbot.viff.dk/waterfall">BuildBot waterfall page</a>, then please take it as an invitation to
+fix them!</p>
+<p>When using Twisted it is natural to use its unit testing framework
+called <a class="reference" href="http://twistedmatrix.com/trac/wiki/TwistedTrial">Trial</a>. Trial has the big advantage over normal testing
+frameworks that it understands Twisted&#8217;s <a class="reference" href="http://twistedmatrix.com/projects/core/documentation/howto/defer.html">Deferreds</a> — if a unit test
+returns a Deferred, Trial waits for it to trigger before it declares
+the test a success or failure. Please refer to this <a class="reference" href="http://twistedmatrix.com/trac/browser/branches/trial-tutorial-2443/doc/core/howto/trial.xhtml?format=raw">tutorial</a> for more
+information.</p>
+<div class="section" id="running-the-unit-tests">
+<h2>Running the Unit Tests<a class="headerlink" href="#running-the-unit-tests" title="Permalink to this headline">¶</a></h2>
+<p>To run the VIFF unit tests you must make sure that <tt class="docutils literal"><span class="pre">import</span> <span class="pre">viff</span></tt>
+works correctly in Python. In other words, you must make sure that
+VIFF is installed or that the root of your source tree is in
+<tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt>. You can test this by changing to some unrelated
+directory, starting an interactive Python session and run:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">import</span> <span class="nn">viff</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">viff</span><span class="o">.</span><span class="n">__version__</span>
+<span class="go">0.3</span>
+</pre></div>
+<p>If it fails with an ImportError, then please double-check that your
+<tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt> is setup correctly.</p>
+<p>Now simply execute <tt class="docutils literal"><span class="pre">trial</span> <span class="pre">viff</span></tt> to run the unit tests. You should
+get output similar to this:</p>
+<pre>% trial viff
+Seeding random generator with random seed 4658
+Running 65 tests.
+viff.test.test_active_runtime
+  ActiveRuntimeTest
+    test_broadcast ...                                           [OK]
+viff.test.test_basic_runtime
+  ProgramCounterTest
+    test_callback ...                                            [OK]
+    test_complex_operation ...                                   [OK]
+    test_initial_value ...                                       [OK]
+    test_multiple_callbacks ...                             [SKIPPED]
+    test_nested_calls ...                                        [OK]
+    test_simple_operation ...                                    [OK]
+viff.test.test_field
+  GF256TestCase
+    test_add ...                                                 [OK]
+    test_construct ...                                           [OK]
+    test_div ...                                                 [OK]
+    test_field ...                                               [OK]
+    test_invert ...                                              [OK]
+    test_mul ...                                                 [OK]
+    test_neg ...                                                 [OK]
+    test_pow ...                                                 [OK]
+    test_str ...                                                 [OK]
+    test_sub ...                                                 [OK]
+    test_xor ...                                                 [OK]
+  GFpElementTestCase
+    test_add ...                                                 [OK]
+    test_bit ...                                                 [OK]
+    test_div ...                                                 [OK]
+    test_field ...                                               [OK]
+    test_invert ...                                              [OK]
+    test_mul ...                                                 [OK]
+    test_neg ...                                                 [OK]
+    test_sqrt ...                                                [OK]
+    test_str ...                                                 [OK]
+    test_sub ...                                                 [OK]
+doctest
+  DocTestCase
+    field ...                                                    [OK]
+    GF ...                                                       [OK]
+    __eq__ ...                                                   [OK]
+    __init__ ...                                                 [OK]
+    __nonzero__ ...                                              [OK]
+    __radd__ ...                                                 [OK]
+    __rmul__ ...                                                 [OK]
+viff.test.test_prss
+  PRSSTestCase
+    test_generate_subsets ...                                    [OK]
+doctest
+  DocTestCase
+    PRF ...                                                      [OK]
+    __call__ ...                                                 [OK]
+    __init__ ...                                                 [OK]
+    generate_subsets ...                                         [OK]
+    prss ...                                                     [OK]
+viff.test.test_runtime
+  RuntimeTest
+    test_add ...                                                 [OK]
+    test_add_coerce ...                                          [OK]
+    test_convert_bit_share ...                                   [OK]
+    test_greater_than ...                                        [OK]
+    test_greater_than_equal ...                                  [OK]
+    test_greater_than_equalII ...                                [OK]
+    test_less_than ...                                           [OK]
+    test_less_than_equal ...                                     [OK]
+    test_mul ...                                                 [OK]
+    test_open ...                                                [OK]
+    test_open_no_mutate ...                                      [OK]
+    test_prss_share_bit ...                                      [OK]
+    test_prss_share_int ...                                      [OK]
+    test_prss_share_random_bit ...                               [OK]
+    test_prss_share_random_int ...                               [OK]
+    test_shamir_share ...                                        [OK]
+    test_shamir_share_asymmetric ...                             [OK]
+    test_sub ...                                                 [OK]
+    test_sub_coerce ...                                          [OK]
+    test_xor ...                                                 [OK]
+doctest
+  DocTestCase
+    share ...                                                    [OK]
+    clone_deferred ...                                           [OK]
+    dlift ...                                                    [OK]
+    find_prime ...                                               [OK]
+
+=====================================================================
+[SKIPPED]: viff.test.test_basic_runtime.ProgramCounterTest.
+test_multiple_callbacks
+
+TODO: Scheduling callbacks fails to increment program counter!
+---------------------------------------------------------------------
+Ran 65 tests in 18.305s
+
+PASSED (skips=1, successes=64)</pre>
+<p>Lots of success! But one of the tests was skipped — we do this when we
+have a test which represents a known problem. Otherwise every test run
+would be cluttered with long of traceback messages, making it
+difficult to notice new <em>unexpected</em> failures.</p>
+</div>
+<div class="section" id="writing-unit-tests">
+<h2>Writing Unit Tests<a class="headerlink" href="#writing-unit-tests" title="Permalink to this headline">¶</a></h2>
+<p>The unit tests live in the <tt class="docutils literal"><span class="pre">viff.test</span></tt> package. There you will find
+a number of modules, which in turn contain classes inheriting from
+<tt class="docutils literal"><span class="pre">twisted.trial.unittest.TestCase</span></tt>. Trial recognizes these classes
+and will execute methods starting with <tt class="docutils literal"><span class="pre">test</span></tt>.</p>
+<div class="section" id="simple-tests">
+<h3>Simple Tests<a class="headerlink" href="#simple-tests" title="Permalink to this headline">¶</a></h3>
+<p>Adding a new unit test can be as simple as defining a new method in a
+suitable class. The method will want to assert certain things during
+the test, and for that Trial offers a large number of convenient
+methods such as <tt class="docutils literal"><span class="pre">assertEqual</span></tt>, <tt class="docutils literal"><span class="pre">assertTrue</span></tt>, and so on. The full
+reference is available <a class="reference" href="http://twistedmatrix.com/documents/current/api/twisted.trial.unittest._Assertions.html">online</a>. Notice that they describe the
+methods under names like <tt class="docutils literal"><span class="pre">failUnlessSomething</span></tt> which is aliased to
+<tt class="docutils literal"><span class="pre">assertSomething</span></tt>. So far all the VIFF unit tests use the
+<tt class="docutils literal"><span class="pre">assertSomething</span></tt> style, but you are welcome to use the other if you
+prefer.</p>
+<p>A simple example of a unit test is <tt class="docutils literal"><span class="pre">viff.test.test_field</span></tt> which
+looks like this (heavily abbreviated):</p>
+<div class="highlight"><pre><span class="sd">&quot;&quot;&quot;Tests for viff.field.&quot;&quot;&quot;</span>
+
+<span class="k">from</span> <span class="nn">viff.field</span> <span class="k">import</span> <span class="n">GF</span><span class="p">,</span> <span class="n">GF256</span>
+<span class="k">from</span> <span class="nn">twisted.trial.unittest</span> <span class="k">import</span> <span class="n">TestCase</span>
+
+<span class="c">#: Declare doctests for Trial.</span>
+<span class="n">__doctests__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;viff.field&#39;</span><span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">GFpElementTestCase</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Tests for elements from a Zp field.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize Zp to Z31.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">field</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mf">31</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_invert</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test inverse operation, including inverting zero.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">ZeroDivisionError</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="mf">0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="mf">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="mf">1</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">test_sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test extraction of square roots.&quot;&quot;&quot;</span>
+        <span class="n">square</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="mf">4</span><span class="p">)</span><span class="o">**</span><span class="mf">2</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">square</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">root</span><span class="o">**</span><span class="mf">2</span><span class="p">,</span> <span class="n">square</span><span class="p">)</span>
+</pre></div>
+<p>This demonstrates the most important features in a simple unit test:</p>
+<ul class="simple">
+<li>First the needed definitions are imported as normal.</li>
+<li>Setting the <tt class="docutils literal"><span class="pre">__doctest__</span></tt> field makes Trial run the <a class="reference" href="http://docs.python.org/lib/module-doctest.html">doctests</a> in
+the named module.</li>
+<li>A class is defined which inherit from <tt class="docutils literal"><span class="pre">TestCase</span></tt>.</li>
+<li>A <tt class="docutils literal"><span class="pre">setUp</span></tt> method is used to collect preperations that are needed
+for every test.</li>
+<li>Several test methods are defined. They make use of the assertions
+offered by Trial.</li>
+</ul>
+</div>
+<div class="section" id="tests-involving-a-viff-runtime">
+<h3>Tests Involving a VIFF Runtime<a class="headerlink" href="#tests-involving-a-viff-runtime" title="Permalink to this headline">¶</a></h3>
+<p>Trial really shines when it comes to testing that involves networking.
+First, it allows us to forget about the networking — the network
+connections are replaced by direct method calls on the receiver&#8217;s
+transport. This makes the test repeatable unlike if real network
+connections were used since they may fail if they cannot bind to the
+wanted port number.</p>
+<p>In VIFF the <tt class="docutils literal"><span class="pre">util.py</span></tt> file contains the logic needed to connect a
+number of Runtime instances in this way. All you need to do is to
+create a subclass of RuntimeTestCase and decorate the test methods
+with <tt class="docutils literal"><span class="pre">protocol</span></tt> like this example (abbreviated from
+<tt class="docutils literal"><span class="pre">viff.test.test_active_runtime</span></tt>):</p>
+<div class="highlight"><pre><span class="k">from</span> <span class="nn">viff.test.util</span> <span class="k">import</span> <span class="n">RuntimeTestCase</span><span class="p">,</span> <span class="n">protocol</span>
+
+<span class="k">class</span> <span class="nc">ActiveRuntimeTest</span><span class="p">(</span><span class="n">RuntimeTestCase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Test for active security.&quot;&quot;&quot;</span>
+
+    <span class="c">#: Number of players.</span>
+    <span class="n">num_players</span> <span class="o">=</span> <span class="mf">4</span>
+
+    <span class="nd">@protocol</span>
+    <span class="k">def</span> <span class="nf">test_broadcast</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">runtime</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test Bracha broadcast.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">runtime</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="mf">1</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">broadcast</span><span class="p">([</span><span class="mf">1</span><span class="p">],</span> <span class="s">&quot;Hello world!&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">runtime</span><span class="o">.</span><span class="n">broadcast</span><span class="p">([</span><span class="mf">1</span><span class="p">])</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">,</span> <span class="s">&quot;Hello world!&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+<p>By decorating <tt class="docutils literal"><span class="pre">test_broadcast</span></tt> with <tt class="docutils literal"><span class="pre">protocol</span></tt> we ensure that the
+method will be called with a Runtime instance. Furthermore, the method
+will be called <tt class="docutils literal"><span class="pre">num_player</span></tt> times, each time with another Runtime
+instance. The net result is that the test behaves just like if four
+players had started four programs containing the method body.</p>
+<p>In the method you can branch on <tt class="docutils literal"><span class="pre">runtime.id</span></tt>. This is needed in the
+typical case where you want only one of the parties to input something
+to a calculation.</p>
+<p>In this example all four parties get an <tt class="docutils literal"><span class="pre">x</span></tt> which will eventually
+contain the string &#8220;Hello World&#8221;. Using Trial we can return <tt class="docutils literal"><span class="pre">x</span></tt> and
+Trial will then wait for <tt class="docutils literal"><span class="pre">x</span></tt> to trigger before declaring the test a
+success or failure. We have attached <tt class="docutils literal"><span class="pre">self.assertEquals</span></tt> as a
+callback on <tt class="docutils literal"><span class="pre">x</span></tt> with an extra argument of &#8220;Hello World&#8221;. This means
+that when <tt class="docutils literal"><span class="pre">x</span></tt> eventually triggers, the assertion is run and the test
+finishes.</p>
+<p>This is the real power of Trial. You can do some calculations and
+finish by returning a Deferred (and remember that Shares are Deferreds
+in VIFF). The value of this Deferred is not important, it is only
+important that it triggers when the test is done. You will often need
+to use <tt class="docutils literal"><span class="pre">twisted.internet.defer.gatherResults</span></tt> to combine several
+Deferreds into one that you can return to Trial. Just make sure that
+your final Deferred depends on all other Deferreds so that you do not
+leave lingering Deferreds behind. Trial will complain loudly if you
+do, so it should be easy to spot.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3>Table Of Contents</h3>
+            <ul>
+<li><a class="reference" href="">Unit Testing</a><ul>
+<li><a class="reference" href="#running-the-unit-tests">Running the Unit Tests</a></li>
+<li><a class="reference" href="#writing-unit-tests">Writing Unit Tests</a><ul>
+<li><a class="reference" href="#simple-tests">Simple Tests</a></li>
+<li><a class="reference" href="#tests-involving-a-viff-runtime">Tests Involving a VIFF Runtime</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="development.html" title="previous chapter">Developer&#8217;s Guide</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="presentations.html" title="next chapter">Presentations</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/unit-testing.txt">Show Source</a></li>
+            </ul>
+            <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="presentations.html" title="Presentations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="development.html" title="Developer&#8217;s Guide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7.1 documentation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Oct 09, 2008.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>

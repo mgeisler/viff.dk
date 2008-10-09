@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Finite Fields Module &mdash; VIFF v0.7.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+          URL_ROOT:    '',
+          VERSION:     '0.7.1',
+          COLLAPSE_MODINDEX: false,
+          FILE_SUFFIX: '.html'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="contents" title="Global table of contents" href="contents.html" />
+    <link rel="index" title="Global index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VIFF v0.7.1 documentation" href="index.html" />
+    <link rel="up" title="Implementation" href="implementation.html" />
+    <link rel="next" title="Shamir Module" href="shamir.html" />
+    <link rel="prev" title="Utility Functions Module" href="util.html" />
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="shamir.html" title="Shamir Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="util.html" title="Utility Functions Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7.1 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="module-viff.field">
+<h1>Finite Fields Module<a class="headerlink" href="#module-viff.field" title="Permalink to this headline">¶</a></h1>
+<p>Modeling of Galois (finite) fields. The GF function creates classes
+which implements Galois (finite) fields of prime order whereas the
+<a title="viff.field.GF256" class="reference" href="#viff.field.GF256"><tt class="xref docutils literal"><span class="pre">GF256</span></tt></a> class implements the the GF(2^8) field with
+characteristic 2.</p>
+<p>All fields work the same: instantiate an object from a field to get
+hold of an element of that field. Elements implement the normal
+arithmetic one would expect: addition, multiplication, etc.</p>
+<p>Defining a field:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Zp</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mf">19</span><span class="p">)</span>
+</pre></div>
+<p>Defining field elements:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Zp</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Zp</span><span class="p">(</span><span class="mf">15</span><span class="p">)</span>
+</pre></div>
+<p>Addition and subtraction (with modulo reduction):</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="go">{6}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+<span class="go">{14}</span>
+</pre></div>
+<p>Exponentiation:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">**</span><span class="mf">3</span>
+<span class="go">{12}</span>
+</pre></div>
+<p>Square roots can be found for elements based on GF fields with a Blum
+prime modulus (see <a title="viff.field.GF" class="reference" href="#viff.field.GF"><tt class="xref docutils literal"><span class="pre">GF()</span></tt></a> for more information):</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span>
+<span class="go">{3}</span>
+</pre></div>
+<p>Field elements from different fields cannot be mixed, you will get a
+type error if you try:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Zq</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mf">17</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">Zq</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">+</span> <span class="n">z</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="nc">TypeError: unsupported operand type(s) for +</span>: <span class="n-Identifier">&#39;GFElement&#39; and &#39;GFElement&#39;</span>
+</pre></div>
+<p>The reason for the slightly confusing error message is that <tt class="docutils literal"><span class="pre">x</span></tt> and
+<tt class="docutils literal"><span class="pre">z</span></tt> are instances of two <em>different</em> classes called <tt class="docutils literal"><span class="pre">GFElement</span></tt>.</p>
+<dl class="class">
+<dt id="viff.field.FieldElement">
+<!--[viff.field.FieldElement]-->class <tt class="descclassname">viff.field.</tt><tt class="descname">FieldElement</tt><a class="headerlink" href="#viff.field.FieldElement" title="Permalink to this definition">¶</a></dt>
+<dd>Common base class for elements.</dd></dl>
+
+<dl class="class">
+<dt id="viff.field.GF256">
+<!--[viff.field.GF256]-->class <tt class="descclassname">viff.field.</tt><tt class="descname">GF256</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#viff.field.GF256" title="Permalink to this definition">¶</a></dt>
+<dd><p>Models an element of the GF(2^8) field.</p>
+<dl class="attribute">
+<dt id="viff.field.GF256.modulus">
+<!--[viff.field.GF256.modulus]--><tt class="descname">modulus</tt><a class="headerlink" href="#viff.field.GF256.modulus" title="Permalink to this definition">¶</a></dt>
+<dd>Field modulus, always 256.</dd></dl>
+
+<dl class="method">
+<dt id="viff.field.GF256.__sub__">
+<!--[viff.field.GF256.__sub__]--><tt class="descname">__sub__</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#viff.field.GF256.__sub__" title="Permalink to this definition">¶</a></dt>
+<dt id="viff.field.GF256.__xor__">
+<tt class="descname">__xor__</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#viff.field.GF256.__xor__" title="Permalink to this definition">¶</a></dt>
+<dd>Subtraction and exclusive-or. Since GF(2^8) has
+characteristic 2, these two operations are identical to
+addition.</dd></dl>
+
+<dl class="method">
+<dt id="viff.field.GF256.__add__">
+<!--[viff.field.GF256.__add__]--><tt class="descname">__add__</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#viff.field.GF256.__add__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add this and another GF256 element.</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">GF256</span><span class="p">(</span><span class="mf">0</span><span class="n">x01</span><span class="p">)</span> <span class="o">+</span> <span class="n">GF256</span><span class="p">(</span><span class="mf">0</span><span class="n">x01</span><span class="p">)</span>
+<span class="go">[0]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">GF256</span><span class="p">(</span><span class="mf">0</span><span class="n">x01</span><span class="p">)</span> <span class="o">+</span> <span class="n">GF256</span><span class="p">(</span><span class="mf">0</span><span class="n">x02</span><span class="p">)</span>
+<span class="go">[3]</span>
+</pre></div>
+<p>Adding integers works too, the other operand is coerced into a
+GF256 element automatically:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">GF256</span><span class="p">(</span><span class="mf">0</span><span class="n">x01</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1</span>
+<span class="go">[0]</span>
+</pre></div>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.field.GF256.__mul__">
+<!--[viff.field.GF256.__mul__]--><tt class="descname">__mul__</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#viff.field.GF256.__mul__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiply this and another GF256.</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">GF256</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">GF256</span><span class="p">(</span><span class="mf">47</span><span class="p">)</span>
+<span class="go">[0]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">GF256</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">GF256</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span>
+<span class="go">[6]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">GF256</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span> <span class="o">*</span> <span class="n">GF256</span><span class="p">(</span><span class="mf">32</span><span class="p">)</span>
+<span class="go">[54]</span>
+</pre></div>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.field.GF256.__pow__">
+<!--[viff.field.GF256.__pow__]--><tt class="descname">__pow__</tt><big>(</big><em>exponent</em><big>)</big><a class="headerlink" href="#viff.field.GF256.__pow__" title="Permalink to this definition">¶</a></dt>
+<dd>Exponentiation.</dd></dl>
+
+<dl class="method">
+<dt id="viff.field.GF256.__div__">
+<!--[viff.field.GF256.__div__]--><tt class="descname">__div__</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#viff.field.GF256.__div__" title="Permalink to this definition">¶</a></dt>
+<dd>Division.</dd></dl>
+
+<dl class="method">
+<dt id="viff.field.GF256.__neg__">
+<!--[viff.field.GF256.__neg__]--><tt class="descname">__neg__</tt><big>(</big><big>)</big><a class="headerlink" href="#viff.field.GF256.__neg__" title="Permalink to this definition">¶</a></dt>
+<dd>Negation.</dd></dl>
+
+<dl class="method">
+<dt id="viff.field.GF256.__invert__">
+<!--[viff.field.GF256.__invert__]--><tt class="descname">__invert__</tt><big>(</big><big>)</big><a class="headerlink" href="#viff.field.GF256.__invert__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invertion.</p>
+<p>Raises <tt class="xref docutils literal"><span class="pre">ZeroDivisionError</span></tt> if trying to inverse the zero
+element.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.field.GF256.__eq__">
+<!--[viff.field.GF256.__eq__]--><tt class="descname">__eq__</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#viff.field.GF256.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equality testing.</p>
+<p>Testing for equality with integers works as expected:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">GF256</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">10</span>
+<span class="go">True</span>
+</pre></div>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.field.GF256.__nonzero__">
+<!--[viff.field.GF256.__nonzero__]--><tt class="descname">__nonzero__</tt><big>(</big><big>)</big><a class="headerlink" href="#viff.field.GF256.__nonzero__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Truth value testing.</p>
+<p>Returns False if this element is zero, True otherwise. This
+allows GF256 elements to be used directly in Boolean formula:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">GF256</span><span class="p">(</span><span class="mf">0</span><span class="p">))</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="n">GF256</span><span class="p">(</span><span class="mf">1</span><span class="p">))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">GF256</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="ow">not</span> <span class="n">x</span>
+<span class="go">False</span>
+</pre></div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.field.GF">
+<!--[viff.field.GF]--><tt class="descclassname">viff.field.</tt><tt class="descname">GF</tt><big>(</big><em>modulus</em><big>)</big><a class="headerlink" href="#viff.field.GF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a Galois (finite) field with the given modulus.</p>
+<p>The modulus must be a prime:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Z23</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mf">23</span><span class="p">)</span> <span class="c"># works</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z10</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span> <span class="c"># not a prime</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="nc">ValueError</span>: <span class="n-Identifier">10 is not a prime</span>
+</pre></div>
+<p>A modulus of 256 is special since it returns the GF(2^8) field
+even though 256 is no prime:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">GF256</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mf">256</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">GF256</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+<span class="go">[1]</span>
+</pre></div>
+<p>Please note, that if you wish to calculate square roots, the
+modulus must be a Blum prime (congruent to 3 mod 4):</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">Z17</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mf">17</span><span class="p">)</span> <span class="c"># 17 % 4 == 1, so 17 is no Blum prime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Z17</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="nc">AssertionError</span>: <span class="n-Identifier">Cannot compute square root of {10} with modulus 17</span>
+</pre></div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="util.html" title="previous chapter">Utility Functions Module</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="shamir.html" title="next chapter">Shamir Module</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/field.txt">Show Source</a></li>
+            </ul>
+            <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="shamir.html" title="Shamir Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="util.html" title="Utility Functions Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7.1 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Oct 09, 2008.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>
