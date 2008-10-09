@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class Hierarchy</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Trees&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">&nbsp;</td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="class-tree.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<center><b>
+ [ <a href="module-tree.html">Module Hierarchy</a>
+ | <a href="class-tree.html">Class Hierarchy</a> ]
+</b></center><br />
+<h1 class="epydoc">Class Hierarchy</h1>
+<ul class="nomargin-top">
+    <li> <strong class="uidlink">twisted.internet.protocol.BaseProtocol</strong>:
+      <em class="summary">This is the abstract superclass of all protocols.</em>
+    <ul>
+    <li> <strong class="uidlink">twisted.internet.protocol.Protocol</strong>
+    <ul>
+    <li> <strong class="uidlink">twisted.protocols.basic.Int16StringReceiver</strong>:
+      <em class="summary">A receiver for int16-prefixed strings.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.runtime.ShareExchanger-class.html">viff.runtime.ShareExchanger</a></strong>:
+      <em class="summary">Send and receive shares.</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.runtime.BasicRuntime-class.html">viff.runtime.BasicRuntime</a></strong>:
+      <em class="summary">Basic VIFF runtime with no crypto.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.paillier.PaillierRuntime-class.html">viff.paillier.PaillierRuntime</a></strong>:
+      <em class="summary">Two-player runtime based on the Paillier crypto system.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.runtime.Runtime-class.html">viff.runtime.Runtime</a></strong>:
+      <em class="summary">The VIFF runtime.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.active.BasicActiveRuntime-class.html">viff.active.BasicActiveRuntime</a></strong>:
+      <em class="summary">Basic runtime secure against active adversaries.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.active.ActiveRuntime-class.html">viff.active.ActiveRuntime</a></strong>:
+      <em class="summary">Default mix of <tt class="rst-docutils literal"><span class="pre">BasicActiveRuntime</span></tt> and
+<tt class="rst-docutils literal"><span class="pre">TriplesPRSSMixin</span></tt>.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.comparison.ActiveToft05Runtime-class.html">viff.comparison.ActiveToft05Runtime</a></strong>:
+      <em class="summary">Default mix of <tt class="rst-docutils literal"><span class="pre">ComparisonToft05Mixin</span></tt> and
+<tt class="rst-docutils literal"><span class="pre">ActiveRuntime</span> <span class="pre">&lt;viff.runtime.ActiveRuntime&gt;</span></tt>.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.comparison.ActiveToft07Runtime-class.html">viff.comparison.ActiveToft07Runtime</a></strong>:
+      <em class="summary">Default mix of <tt class="rst-docutils literal"><span class="pre">ComparisonToft07Mixin</span></tt> and
+<tt class="rst-docutils literal"><span class="pre">ActiveRuntime</span> <span class="pre">&lt;viff.runtime.ActiveRuntime&gt;</span></tt>.</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.comparison.Toft05Runtime-class.html">viff.comparison.Toft05Runtime</a></strong>:
+      <em class="summary">Default mix of <tt class="rst-docutils literal"><span class="pre">ComparisonToft05Mixin</span></tt> and
+<tt class="rst-docutils literal"><span class="pre">Runtime</span> <span class="pre">&lt;viff.runtime.Runtime&gt;</span></tt>.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.comparison.Toft07Runtime-class.html">viff.comparison.Toft07Runtime</a></strong>:
+      <em class="summary">Default mix of <tt class="rst-docutils literal"><span class="pre">ComparisonToft07Mixin</span></tt> and
+<tt class="rst-docutils literal"><span class="pre">Runtime</span> <span class="pre">&lt;viff.runtime.Runtime&gt;</span></tt>.</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.active.BrachaBroadcastMixin-class.html">viff.active.BrachaBroadcastMixin</a></strong>:
+      <em class="summary">Bracha broadcast mixin class.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.comparison.ComparisonToft05Mixin-class.html">viff.comparison.ComparisonToft05Mixin</a></strong>:
+      <em class="summary">Comparison by Tomas Toft, 2005.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.comparison.ActiveToft05Runtime-class.html">viff.comparison.ActiveToft05Runtime</a></strong>:
+      <em class="summary">Default mix of <tt class="rst-rst-docutils literal rst-docutils literal"><span class="pre">ComparisonToft05Mixin</span></tt> and
+<tt class="rst-rst-docutils literal rst-docutils literal"><span class="pre">ActiveRuntime</span> <span class="pre">&lt;viff.runtime.ActiveRuntime&gt;</span></tt>.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.comparison.Toft05Runtime-class.html">viff.comparison.Toft05Runtime</a></strong>:
+      <em class="summary">Default mix of <tt class="rst-rst-docutils literal rst-docutils literal"><span class="pre">ComparisonToft05Mixin</span></tt> and
+<tt class="rst-rst-docutils literal rst-docutils literal"><span class="pre">Runtime</span> <span class="pre">&lt;viff.runtime.Runtime&gt;</span></tt>.</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.comparison.ComparisonToft07Mixin-class.html">viff.comparison.ComparisonToft07Mixin</a></strong>:
+      <em class="summary">Efficient comparison by Tomas Toft 2007.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.comparison.ActiveToft07Runtime-class.html">viff.comparison.ActiveToft07Runtime</a></strong>:
+      <em class="summary">Default mix of <tt class="rst-rst-docutils literal rst-docutils literal"><span class="pre">ComparisonToft07Mixin</span></tt> and
+<tt class="rst-rst-docutils literal rst-docutils literal"><span class="pre">ActiveRuntime</span> <span class="pre">&lt;viff.runtime.ActiveRuntime&gt;</span></tt>.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.comparison.Toft07Runtime-class.html">viff.comparison.Toft07Runtime</a></strong>:
+      <em class="summary">Default mix of <tt class="rst-rst-docutils literal rst-docutils literal"><span class="pre">ComparisonToft07Mixin</span></tt> and
+<tt class="rst-rst-docutils literal rst-docutils literal"><span class="pre">Runtime</span> <span class="pre">&lt;viff.runtime.Runtime&gt;</span></tt>.</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink">twisted.internet.defer.Deferred</strong>:
+      <em class="summary">This is a callback which will be put off until later.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.runtime.Share-class.html">viff.runtime.Share</a></strong>:
+      <em class="summary">A shared number.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.runtime.ShareList-class.html">viff.runtime.ShareList</a></strong>:
+      <em class="summary">Create a share that waits on a number of other shares.</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink">twisted.internet.protocol.Factory</strong>:
+      <em class="summary">This is a factory which produces protocols.</em>
+    <ul>
+    <li> <strong class="uidlink">twisted.internet.protocol.ClientFactory</strong>:
+      <em class="summary">A Protocol factory for clients.</em>
+    <ul>
+    <li> <strong class="uidlink">twisted.internet.protocol.ReconnectingClientFactory</strong>:
+      <em class="summary">My clients auto-reconnect with an exponential back-off.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.runtime.ShareExchangerFactory-class.html">viff.runtime.ShareExchangerFactory</a></strong>:
+      <em class="summary">Factory for creating ShareExchanger protocols.</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink">twisted.internet.protocol.ServerFactory</strong>:
+      <em class="summary">Subclass this to indicate that your protocol.Factory is only usable
+        for servers.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.runtime.ShareExchangerFactory-class.html">viff.runtime.ShareExchangerFactory</a></strong>:
+      <em class="summary">Factory for creating ShareExchanger protocols.</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.config.Player-class.html">viff.config.Player</a></strong>:
+      <em class="summary">Wrapper for information about a player in the protocol.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.equality.ProbabilisticEqualityMixin-class.html">viff.equality.ProbabilisticEqualityMixin</a></strong>:
+      <em class="summary">This class implements probabilistic constant-round secure 
+        equality-testing of secret shared numbers.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.active.TriplesHyperinvertibleMatricesMixin-class.html">viff.active.TriplesHyperinvertibleMatricesMixin</a></strong>:
+      <em class="summary">Mixin class which generates multiplication triples using
+hyperinvertible matrices.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.active.TriplesPRSSMixin-class.html">viff.active.TriplesPRSSMixin</a></strong>:
+      <em class="summary">Mixin class for generating multiplication triples using PRSS.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.active.ActiveRuntime-class.html">viff.active.ActiveRuntime</a></strong>:
+      <em class="summary">Default mix of <tt class="rst-rst-docutils literal rst-docutils literal"><span class="pre">BasicActiveRuntime</span></tt> and
+<tt class="rst-rst-docutils literal rst-docutils literal"><span class="pre">TriplesPRSSMixin</span></tt>.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.comparison.ActiveToft05Runtime-class.html">viff.comparison.ActiveToft05Runtime</a></strong>:
+      <em class="summary">Default mix of <tt class="rst-rst-rst-docutils literal rst-rst-docutils literal rst-docutils literal"><span class="pre">ComparisonToft05Mixin</span></tt> and
+<tt class="rst-rst-rst-docutils literal rst-rst-docutils literal rst-docutils literal"><span class="pre">ActiveRuntime</span> <span class="pre">&lt;viff.runtime.ActiveRuntime&gt;</span></tt>.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.comparison.ActiveToft07Runtime-class.html">viff.comparison.ActiveToft07Runtime</a></strong>:
+      <em class="summary">Default mix of <tt class="rst-rst-rst-docutils literal rst-rst-docutils literal rst-docutils literal"><span class="pre">ComparisonToft07Mixin</span></tt> and
+<tt class="rst-rst-rst-docutils literal rst-rst-docutils literal rst-docutils literal"><span class="pre">ActiveRuntime</span> <span class="pre">&lt;viff.runtime.ActiveRuntime&gt;</span></tt>.</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink">twisted.protocols.basic._PauseableMixin</strong>
+    <ul>
+    <li> <strong class="uidlink">twisted.protocols.basic.Int16StringReceiver</strong>:
+      <em class="summary">A receiver for int16-prefixed strings.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.runtime.ShareExchanger-class.html">viff.runtime.ShareExchanger</a></strong>:
+      <em class="summary">Send and receive shares.</em>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink">object</strong>:
+      <em class="summary">The most base type</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.field.FieldElement-class.html">viff.field.FieldElement</a></strong>:
+      <em class="summary">Common base class for elements.</em>
+    <ul>
+    <li> <strong class="uidlink"><a href="viff.field.GF256-class.html">viff.field.GF256</a></strong>:
+      <em class="summary">Models an element of the GF(2^8) field.</em>
+    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.matrix.Matrix-class.html">viff.matrix.Matrix</a></strong>:
+      <em class="summary">A matrix.</em>
+    </li>
+    <li> <strong class="uidlink"><a href="viff.prss.PRF-class.html">viff.prss.PRF</a></strong>:
+      <em class="summary">Models a pseudo random function (a PRF).</em>
+    </li>
+    </ul>
+    </li>
+</ul>
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Trees&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Thu Oct  9 13:11:46 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
