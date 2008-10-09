@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Shamir Module &mdash; VIFF v0.7.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+          URL_ROOT:    '',
+          VERSION:     '0.7.1',
+          COLLAPSE_MODINDEX: false,
+          FILE_SUFFIX: '.html'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="contents" title="Global table of contents" href="contents.html" />
+    <link rel="index" title="Global index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="VIFF v0.7.1 documentation" href="index.html" />
+    <link rel="up" title="Implementation" href="implementation.html" />
+    <link rel="next" title="Matrix Module" href="matrix.html" />
+    <link rel="prev" title="Finite Fields Module" href="field.html" />
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="matrix.html" title="Matrix Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="field.html" title="Finite Fields Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7.1 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  
+  <div class="section" id="module-viff.shamir">
+<h1>Shamir Module<a class="headerlink" href="#module-viff.shamir" title="Permalink to this headline">¶</a></h1>
+<p>Shamir secret sharing and recombination. Based on the paper <em>How to
+share a secret</em> by Adi Shamir in <em>Communications of the ACM</em> <strong>22</strong>
+(11): 612-613.</p>
+<dl class="function">
+<dt id="viff.shamir.recombine">
+<!--[viff.shamir.recombine]--><tt class="descclassname">viff.shamir.</tt><tt class="descname">recombine</tt><big>(</big><em>shares</em>, <em>x_recomb=0</em><big>)</big><a class="headerlink" href="#viff.shamir.recombine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recombines list of <tt class="docutils literal"><span class="pre">(xi,</span> <span class="pre">yi)</span></tt> pairs.</p>
+<p>Shares is a list of <em>threshold</em> + 1 <tt class="docutils literal"><span class="pre">(player</span> <span class="pre">id,</span> <span class="pre">share)</span></tt> pairs.
+Recombination is done in the optional point <em>x_recomb</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.shamir.share">
+<!--[viff.shamir.share]--><tt class="descclassname">viff.shamir.</tt><tt class="descname">share</tt><big>(</big><em>secret</em>, <em>threshold</em>, <em>num_players</em><big>)</big><a class="headerlink" href="#viff.shamir.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shamir share secret.</p>
+<p>The <em>threshold</em> indicates the maximum number of shares that reveal
+nothing about <em>secret</em>. The return value is a list of <tt class="docutils literal"><span class="pre">(player</span>
+<span class="pre">id,</span> <span class="pre">share)</span></tt> pairs.</p>
+<p>It holds that sharing and recombination cancels each other:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">from</span> <span class="nn">field</span> <span class="k">import</span> <span class="n">GF</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Zp</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mf">47</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">secret</span> <span class="o">=</span> <span class="n">Zp</span><span class="p">(</span><span class="mf">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">recombine</span><span class="p">(</span><span class="n">share</span><span class="p">(</span><span class="n">secret</span><span class="p">,</span> <span class="mf">7</span><span class="p">,</span> <span class="mf">15</span><span class="p">)[:</span><span class="mf">8</span><span class="p">])</span> <span class="o">==</span> <span class="n">secret</span>
+<span class="go">True</span>
+</pre></div>
+<p>The threshold can range from zero (for a dummy-sharing):</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">share</span><span class="p">(</span><span class="n">Zp</span><span class="p">(</span><span class="mf">10</span><span class="p">),</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">5</span><span class="p">)</span>
+<span class="go">[({1}, {10}), ({2}, {10}), ({3}, {10}), ({4}, {10}), ({5}, {10})]</span>
+</pre></div>
+<p>up to but not including <em>num_players</em>:</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">share</span><span class="p">(</span><span class="n">Zp</span><span class="p">(</span><span class="mf">10</span><span class="p">),</span> <span class="mf">5</span><span class="p">,</span> <span class="mf">5</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="nc">AssertionError</span>: <span class="n-Identifier">Threshold out of range</span>
+</pre></div>
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.shamir.verify_sharing">
+<!--[viff.shamir.verify_sharing]--><tt class="descclassname">viff.shamir.</tt><tt class="descname">verify_sharing</tt><big>(</big><em>shares</em>, <em>degree</em><big>)</big><a class="headerlink" href="#viff.shamir.verify_sharing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verifies that a sharing is correct.</p>
+<p>It is verified that the given shares correspond to points on a
+polynomial of at most the given degree.</p>
+<div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">from</span> <span class="nn">field</span> <span class="k">import</span> <span class="n">GF</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Zp</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mf">47</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shares</span> <span class="o">=</span> <span class="p">[(</span><span class="n">Zp</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">Zp</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mf">2</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="mf">6</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">shares</span>
+<span class="go">[({1}, {1}), ({2}, {4}), ({3}, {9}), ({4}, {16}), ({5}, {25})]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verify_sharing</span><span class="p">(</span><span class="n">shares</span><span class="p">,</span> <span class="mf">2</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verify_sharing</span><span class="p">(</span><span class="n">shares</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="field.html" title="previous chapter">Finite Fields Module</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="matrix.html" title="next chapter">Matrix Module</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/shamir.txt">Show Source</a></li>
+            </ul>
+            <h3>Quick search</h3>
+            <form class="search" action="search.html" method="get">
+              <input type="text" name="q" size="18" /> <input type="submit" value="Go" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="matrix.html" title="Matrix Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="field.html" title="Finite Fields Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v0.7.1 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li>
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Oct 09, 2008.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  </body>
+</html>
