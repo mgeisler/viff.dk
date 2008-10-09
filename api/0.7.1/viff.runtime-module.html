@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>viff.runtime</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="viff-module.html">Package&nbsp;viff</a> ::
+        Module&nbsp;runtime
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="viff.runtime-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module runtime</h1><p class="nomargin-top"><span class="codelink"><a href="viff.runtime-pysrc.html">source&nbsp;code</a></span></p>
+<p>VIFF runtime. This is where the virtual ideal functionality is
+hiding! The runtime is responsible for sharing inputs, handling
+communication, and running the calculations.</p>
+<p>Each player participating in the protocol will instantiate a
+<tt class="rst-docutils literal"><span class="pre">Runtime</span></tt> object and use it for the calculations.</p>
+<p>The Runtime returns <tt class="rst-docutils literal"><span class="pre">Share</span></tt> objects for most operations, and
+these can be added, subtracted, and multiplied as normal thanks to
+overloaded arithmetic operators. The runtime will take care of
+scheduling things correctly behind the scenes.</p>
+
+<!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Classes"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="viff.runtime.Share-class.html" class="summary-name">Share</a><br />
+      A shared number.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="viff.runtime.ShareList-class.html" class="summary-name">ShareList</a><br />
+      Create a share that waits on a number of other shares.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="viff.runtime.ShareExchanger-class.html" class="summary-name">ShareExchanger</a><br />
+      Send and receive shares.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="viff.runtime.ShareExchangerFactory-class.html" class="summary-name">ShareExchangerFactory</a><br />
+      Factory for creating ShareExchanger protocols.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="viff.runtime.BasicRuntime-class.html" class="summary-name">BasicRuntime</a><br />
+      Basic VIFF runtime with no crypto.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="viff.runtime.Runtime-class.html" class="summary-name">Runtime</a><br />
+      The VIFF runtime.
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime-module.html#gather_shares" class="summary-sig-name">gather_shares</a>(<span class="summary-sig-arg">shares</span>)</span><br />
+      Gather shares.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#gather_shares">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime-module.html#increment_pc" class="summary-sig-name">increment_pc</a>(<span class="summary-sig-arg">method</span>)</span><br />
+      Make <em>method</em> automatically increment the program counter.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#increment_pc">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime-module.html#preprocess" class="summary-sig-name">preprocess</a>(<span class="summary-sig-arg">generator</span>)</span><br />
+      Track calls to this method.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#preprocess">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="make_runtime_class"></a><span class="summary-sig-name">make_runtime_class</span>(<span class="summary-sig-arg">runtime_class</span>=<span class="summary-sig-default">&lt;class viff.runtime.Runtime at 0xac198fc&gt;</span>,
+        <span class="summary-sig-arg">mixins</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Creates a new runtime class with <em>runtime_class</em> as a base
+class mixing in the <em>mixins</em>.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#make_runtime_class">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="viff.runtime-module.html#create_runtime" class="summary-sig-name">create_runtime</a>(<span class="summary-sig-arg">id</span>,
+        <span class="summary-sig-arg">players</span>,
+        <span class="summary-sig-arg">threshold</span>,
+        <span class="summary-sig-arg">options</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">runtime_class</span>=<span class="summary-sig-default">&lt;class viff.runtime.Runtime at 0xac198fc&gt;</span>)</span><br />
+      Create a <tt class="rst-docutils literal"><span class="pre">Runtime</span></tt> and connect to the other players.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="viff.runtime-pysrc.html#create_runtime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="gather_shares"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">gather_shares</span>(<span class="sig-arg">shares</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#gather_shares">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Gather shares.</p>
+<p>Roughly modelled after the Twisted <tt class="rst-docutils literal"><span class="pre">gatherResults</span></tt>
+function. It takes a list of shares and returns a new
+<tt class="rst-docutils literal"><span class="pre">Share</span></tt> which will be triggered with a list of values,
+namely the values from the initial shares:</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> pprint <span class="py-keyword">import</span> pprint
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">from</span> viff.field <span class="py-keyword">import</span> GF256
+<span class="py-prompt">&gt;&gt;&gt; </span>a = Share(None, GF256)
+<span class="py-prompt">&gt;&gt;&gt; </span>b = Share(None, GF256)
+<span class="py-prompt">&gt;&gt;&gt; </span>shares = gather_shares([a, b])
+<span class="py-prompt">&gt;&gt;&gt; </span>shares.addCallback(pprint)           <span class="py-comment"># doctest: +ELLIPSIS</span>
+<span class="py-output">&lt;ShareList at 0x...&gt;</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>a.callback(10)
+<span class="py-prompt">&gt;&gt;&gt; </span>b.callback(20)
+<span class="py-output">[10, 20]</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="increment_pc"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">increment_pc</span>(<span class="sig-arg">method</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#increment_pc">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Make <em>method</em> automatically increment the program counter.</p>
+<p>Adding this decorator to a <tt class="rst-docutils literal"><span class="pre">Runtime</span></tt> method will ensure
+that the program counter is incremented correctly when entering
+the method.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="preprocess"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">preprocess</span>(<span class="sig-arg">generator</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#preprocess">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Track calls to this method.</p>
+<p>The decorated method will be replaced with a proxy method which
+first tries to get the data needed from
+<tt class="rst-docutils literal"><span class="pre">BasicRuntime._pool</span></tt>, and if that fails it falls back to the
+original method.</p>
+<p>The <em>generator</em> method is only used to record where the data
+should be generated from, the method is not actually called. This
+must be the name of the method (a string) and not the method
+itself.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="create_runtime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">create_runtime</span>(<span class="sig-arg">id</span>,
+        <span class="sig-arg">players</span>,
+        <span class="sig-arg">threshold</span>,
+        <span class="sig-arg">options</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">runtime_class</span>=<span class="sig-default">&lt;class viff.runtime.Runtime at 0xac198fc&gt;</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="viff.runtime-pysrc.html#create_runtime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a <tt class="rst-rst-docutils literal rst-docutils literal"><span class="pre">Runtime</span></tt> and connect to the other players.</p>
+<p>This function should be used in normal programs instead of
+instantiating the Runtime directly. This function makes sure that
+the Runtime is correctly connected to the other players.</p>
+<p>The return value is a Deferred which will trigger when the runtime
+is ready. Add your protocol as a callback on this Deferred using
+code like this:</p>
+<pre class="rst-literal-block">
+def protocol(runtime):
+    a, b, c = runtime.shamir_share([1, 2, 3], Zp, input)
+
+    a = runtime.open(a)
+    b = runtime.open(b)
+    c = runtime.open(c)
+
+    dprint(&quot;Opened a: %s&quot;, a)
+    dprint(&quot;Opened b: %s&quot;, b)
+    dprint(&quot;Opened c: %s&quot;, c)
+
+    runtime.wait_for(a,b,c)
+
+pre_runtime = create_runtime(id, players, 1)
+pre_runtime.addCallback(protocol)
+</pre>
+<p>This is the general template which VIFF programs should follow.
+Please see the example applications for more examples.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="viff-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://viff.dk/">VIFF: Virtual Ideal Functionality Framework</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Thu Oct  9 13:11:48 2008</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
