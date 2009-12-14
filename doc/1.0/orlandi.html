@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Orlandi Runtime - An Actively Secure Protocol with Full Threshold &mdash; VIFF v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VIFF v1.0 documentation" href="index.html" />
+    <link rel="up" title="Implementation" href="implementation.html" />
+    <link rel="next" title="An Hash Based Broadcast Protocol" href="hashbroadcast.html" />
+    <link rel="prev" title="Constants Module" href="constants.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="hashbroadcast.html" title="An Hash Based Broadcast Protocol"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="constants.html" title="Constants Module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-viff.orlandi">
+<h1>The Orlandi Runtime - An Actively Secure Protocol with Full Threshold<a class="headerlink" href="#module-viff.orlandi" title="Permalink to this headline">¶</a></h1>
+<p>Full threshold actively secure runtime.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The code in this module relies on a proprietary
+third-party module for doing commitments using elliptic curves. You
+will therefore not be able to run it with a plain VIFF
+installation.</p>
+</div>
+<dl class="class">
+<dt id="viff.orlandi.OrlandiException">
+<em class="property">class </em><tt class="descclassname">viff.orlandi.</tt><tt class="descname">OrlandiException</tt><a class="headerlink" href="#viff.orlandi.OrlandiException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="viff.orlandi.OrlandiShare">
+<em class="property">class </em><tt class="descclassname">viff.orlandi.</tt><tt class="descname">OrlandiShare</tt><big>(</big><em>runtime</em>, <em>field</em>, <em>value=None</em>, <em>rho=None</em>, <em>commitment=None</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiShare" title="Permalink to this definition">¶</a></dt>
+<dd><p>A share in the Orlandi runtime.</p>
+<p>A share in the Orlandi runtime is a 3-tuple <tt class="docutils literal"><span class="pre">(x_i,</span> <span class="pre">rho_i,</span> <span class="pre">Cr_i)</span></tt> of:</p>
+<ul class="simple">
+<li>A share of a number, <tt class="docutils literal"><span class="pre">x_i</span></tt></li>
+<li>A tuple of two random numbers, <tt class="docutils literal"><span class="pre">rho_i</span> <span class="pre">=</span> <span class="pre">(rho_i1,</span> <span class="pre">rho_i2)</span></tt></li>
+<li>A commitment to the number and the random numbers, <tt class="docutils literal"><span class="pre">Cr_i</span></tt></li>
+</ul>
+<p>The <tt class="xref docutils literal"><span class="pre">Runtime</span></tt> operates on shares, represented by this class.
+Shares are asynchronous in the sense that they promise to attain a
+value at some point in the future.</p>
+<p>Shares overload the arithmetic operations so that <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></tt>
+will create a new share <em>x</em>, which will eventually contain the
+sum of <em>a</em> and <em>b</em>. Each share is associated with a
+<tt class="xref docutils literal"><span class="pre">Runtime</span></tt> and the arithmetic operations simply call back to
+that runtime.</p>
+<p class="graphviz">
+<img src="_images/inheritance-5ac0ac613b2e4423965f646b50b489f2b09afac9.png" alt="digraph inheritance5d5b083b4a {
+rankdir=LR;
+size=&quot;8.0, 12.0&quot;;
+  &quot;Share&quot; [style=&quot;setlinewidth(0.5)&quot;,URL=&quot;runtime.html#viff.runtime.Share&quot;,fontname=Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans,height=0.25,shape=box,fontsize=10];
+  &quot;Deferred&quot; -&gt; &quot;Share&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;OrlandiShare&quot; [style=&quot;setlinewidth(0.5)&quot;,URL=&quot;#viff.orlandi.OrlandiShare&quot;,fontname=Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans,height=0.25,shape=box,fontsize=10];
+  &quot;Share&quot; -&gt; &quot;OrlandiShare&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;Deferred&quot; [shape=box,style=&quot;setlinewidth(0.5)&quot;,fontsize=10,fontname=Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans,height=0.25];
+}" usemap="#inheritance5d5b083b4a" class="inheritance"/>
+<map id="inheritance5d5b083b4a" name="inheritance5d5b083b4a">
+<area shape="rect" href="runtime.html#viff.runtime.Share" title="Share" alt="" coords="131,5,203,32"/>
+<area shape="rect" href="#viff.orlandi.OrlandiShare" title="OrlandiShare" alt="" coords="251,5,355,32"/>
+</map>
+</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="viff.orlandi.OrlandiRuntime">
+<em class="property">class </em><tt class="descclassname">viff.orlandi.</tt><tt class="descname">OrlandiRuntime</tt><big>(</big><em>player</em>, <em>threshold=None</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Orlandi runtime.</p>
+<p>The runtime is used for sharing values (<a title="viff.orlandi.OrlandiRuntime.secret_share" class="reference internal" href="#viff.orlandi.OrlandiRuntime.secret_share"><tt class="xref docutils literal"><span class="pre">secret_share()</span></tt></a> or
+<a title="viff.orlandi.OrlandiRuntime.shift" class="reference internal" href="#viff.orlandi.OrlandiRuntime.shift"><tt class="xref docutils literal"><span class="pre">shift()</span></tt></a>) into <a title="viff.orlandi.OrlandiShare" class="reference internal" href="#viff.orlandi.OrlandiShare"><tt class="xref docutils literal"><span class="pre">OrlandiShare</span></tt></a> object and opening such
+shares (<a title="viff.orlandi.OrlandiRuntime.open" class="reference internal" href="#viff.orlandi.OrlandiRuntime.open"><tt class="xref docutils literal"><span class="pre">open()</span></tt></a>) again. Calculations on shares is normally
+done through overloaded arithmetic operations, but it is also
+possible to call <a title="viff.orlandi.OrlandiRuntime.add" class="reference internal" href="#viff.orlandi.OrlandiRuntime.add"><tt class="xref docutils literal"><span class="pre">add()</span></tt></a>, <a title="viff.orlandi.OrlandiRuntime.mul" class="reference internal" href="#viff.orlandi.OrlandiRuntime.mul"><tt class="xref docutils literal"><span class="pre">mul()</span></tt></a>, etc. directly if one
+prefers.</p>
+<p>Each player in the protocol uses a <a title="viff.runtime.Runtime" class="reference external" href="runtime.html#viff.runtime.Runtime"><tt class="xref docutils literal"><span class="pre">Runtime</span></tt></a>
+object. To create an instance and connect it correctly with the
+other players, please use the <a title="viff.runtime.create_runtime" class="reference external" href="runtime.html#viff.runtime.create_runtime"><tt class="xref docutils literal"><span class="pre">create_runtime()</span></tt></a>
+function instead of instantiating a Runtime directly. The
+<a title="viff.runtime.create_runtime" class="reference external" href="runtime.html#viff.runtime.create_runtime"><tt class="xref docutils literal"><span class="pre">create_runtime()</span></tt></a> function will take care of
+setting up network connections and return a <tt class="xref docutils literal"><span class="pre">Deferred</span></tt>
+which triggers with the <a title="viff.runtime.Runtime" class="reference external" href="runtime.html#viff.runtime.Runtime"><tt class="xref docutils literal"><span class="pre">Runtime</span></tt></a> object when
+it is ready.</p>
+<p class="graphviz">
+<img src="_images/inheritance-9455c4fb81bb51a53bb2551efe60e480f5eceddd.png" alt="digraph inheritance21c258f213 {
+rankdir=LR;
+size=&quot;8.0, 12.0&quot;;
+  &quot;HashBroadcastMixin&quot; [style=&quot;setlinewidth(0.5)&quot;,URL=&quot;hashbroadcast.html#viff.hash_broadcast.HashBroadcastMixin&quot;,fontname=Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans,height=0.25,shape=box,fontsize=10];
+  &quot;Runtime&quot; [style=&quot;setlinewidth(0.5)&quot;,URL=&quot;runtime.html#viff.runtime.Runtime&quot;,fontname=Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans,height=0.25,shape=box,fontsize=10];
+  &quot;OrlandiRuntime&quot; [style=&quot;setlinewidth(0.5)&quot;,URL=&quot;#viff.orlandi.OrlandiRuntime&quot;,fontname=Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans,height=0.25,shape=box,fontsize=10];
+  &quot;Runtime&quot; -&gt; &quot;OrlandiRuntime&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+  &quot;HashBroadcastMixin&quot; -&gt; &quot;OrlandiRuntime&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+}" usemap="#inheritance21c258f213" class="inheritance"/>
+<map id="inheritance21c258f213" name="inheritance21c258f213">
+<area shape="rect" href="hashbroadcast.html#viff.hash_broadcast.HashBroadcastMixin" title="HashBroadcastMixin" alt="" coords="5,5,157,32"/>
+<area shape="rect" href="#viff.orlandi.OrlandiRuntime" title="OrlandiRuntime" alt="" coords="207,31,324,57"/>
+<area shape="rect" href="runtime.html#viff.runtime.Runtime" title="Runtime" alt="" coords="45,56,117,83"/>
+</map>
+</p>
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.add">
+<tt class="descname">add</tt><big>(</big><em>share_a</em>, <em>share_b</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Addition of shares.</p>
+<p>Communication cost: none.</p>
+<p>Each party <tt class="docutils literal"><span class="pre">P_i</span></tt> computes:</p>
+<div class="highlight-python"><pre>[z]_i = [x]_i + [y]_i
+      = (x_i + y_i mod p, rho_xi + rho_yi mod p, C_x * C_y)</pre>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.input">
+<tt class="descname">input</tt><big>(</big><em>inputters</em>, <em>field</em>, <em>number=None</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input <em>number</em> to the computation.</p>
+<p>The input is shared using the <a title="viff.orlandi.OrlandiRuntime.shift" class="reference internal" href="#viff.orlandi.OrlandiRuntime.shift"><tt class="xref docutils literal"><span class="pre">shift()</span></tt></a> method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.leak_tolerant_mul">
+<tt class="descname">leak_tolerant_mul</tt><big>(</big><em>share_x</em>, <em>share_y</em>, <em>M</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.leak_tolerant_mul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Leak tolerant multiplication of shares.</p>
+<p>Communication cost: ???.</p>
+<p>Assuming a set of multiplicative triples:
+<tt class="docutils literal"><span class="pre">M</span> <span class="pre">=</span> <span class="pre">([a_i],</span> <span class="pre">[b_i],</span> <span class="pre">[c_i])</span> <span class="pre">for</span> <span class="pre">1</span> <span class="pre">&lt;=</span> <span class="pre">i</span> <span class="pre">&lt;=</span> <span class="pre">2d</span> <span class="pre">+</span> <span class="pre">1</span></tt>.</p>
+<ol class="arabic">
+<li><p class="first"><tt class="docutils literal"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">d</span> <span class="pre">do</span> <span class="pre">[f_i]</span> <span class="pre">=</span> <span class="pre">rand(),</span> <span class="pre">[g_i]</span> <span class="pre">=</span> <span class="pre">rand()</span></tt></p>
+</li>
+<li><p class="first">Compute:</p>
+<div class="highlight-python"><pre>for j = 1, ..., 2d+1 do
+[F_j] = [x] + SUM_i=1^d [f_i]*j^i
+and
+[G_j] = [y] + SUM_i=1^d [g_i]*j^i</pre>
+</div>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">for</span> <span class="pre">j</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">2d+1</span> <span class="pre">do</span> <span class="pre">[H_j]</span> <span class="pre">=</span> <span class="pre">Mul([F_j],</span> <span class="pre">[G_j],</span> <span class="pre">[a_j],</span>
+<span class="pre">[b_j],</span> <span class="pre">[c_j])</span></tt></p>
+</li>
+<li><p class="first">compute <tt class="docutils literal"><span class="pre">[H_0]</span> <span class="pre">=</span> <span class="pre">SUM_j=1^2d+1</span> <span class="pre">delta_j[H_j]</span></tt> where
+<tt class="docutils literal"><span class="pre">delta_j</span> <span class="pre">=</span> <span class="pre">PRODUCT_k=1,</span> <span class="pre">k!=j^2d+1</span> <span class="pre">k/(k-j)</span></tt></p>
+</li>
+<li><p class="first">output <tt class="docutils literal"><span class="pre">[z]</span> <span class="pre">=</span> <span class="pre">[H_0]</span></tt></p>
+</li>
+</ol>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.mul">
+<tt class="descname">mul</tt><big>(</big><em>share_x</em>, <em>share_y</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.mul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiplication of shares.</p>
+<p>Communication cost: ???.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.open">
+<tt class="descname">open</tt><big>(</big><em>share</em>, <em>receivers=None</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share reconstruction.</p>
+<p>Every partyi broadcasts a share pair <tt class="docutils literal"><span class="pre">(x_i',</span> <span class="pre">rho_x,i')</span></tt>.</p>
+<p>The parties compute the sums <tt class="docutils literal"><span class="pre">x'</span></tt>, <tt class="docutils literal"><span class="pre">rho_x'</span></tt> and check
+<tt class="docutils literal"><span class="pre">Com_ck(x',rho_x')</span> <span class="pre">=</span> <span class="pre">C_x</span></tt>.</p>
+<p>If yes, return <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x'</span></tt>, else else return <tt class="xref xref docutils literal"><span class="pre">None</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.open_multiple_values">
+<tt class="descname">open_multiple_values</tt><big>(</big><em>shares</em>, <em>receivers=None</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.open_multiple_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share reconstruction.</p>
+<p>Open multiple values in one burst. 
+If called with one value it is slower than the open method.
+If called with more than two values it is faster than using 
+multiple calls to the open method.</p>
+<p>Every partyi broadcasts a share pair <tt class="docutils literal"><span class="pre">(x_i',</span> <span class="pre">rho_x,i')</span></tt>.</p>
+<p>The parties compute the sums <tt class="docutils literal"><span class="pre">x'</span></tt>, <tt class="docutils literal"><span class="pre">rho_x'</span></tt> and check
+<tt class="docutils literal"><span class="pre">Com_ck(x',rho_x')</span> <span class="pre">=</span> <span class="pre">C_x</span></tt>.</p>
+<p>If yes, return <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x'</span></tt>, else else return <tt class="xref xref docutils literal"><span class="pre">None</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.random_share">
+<tt class="descname">random_share</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.random_share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a random share in the field, field.</p>
+<p>To generate a share of a random element <tt class="docutils literal"><span class="pre">r</span> <span class="pre">in</span> <span class="pre">Z_p</span></tt>, party
+<tt class="docutils literal"><span class="pre">P_i</span></tt> chooses at random <tt class="docutils literal"><span class="pre">r_i,</span> <span class="pre">rho_ri</span> <span class="pre">in</span> <span class="pre">Z_p</span> <span class="pre">X</span> <span class="pre">(Z_p)^2</span></tt> and
+broadcast <tt class="docutils literal"><span class="pre">C_r^i</span> <span class="pre">=</span> <span class="pre">Com_ck(r_i,</span> <span class="pre">rho_ri)</span></tt>.</p>
+<p>Every party computes <tt class="docutils literal"><span class="pre">C_r</span> <span class="pre">=</span> <span class="pre">PRODUCT_i=1^n</span> <span class="pre">C_r^i</span> <span class="pre">=</span> <span class="pre">Com_ck(r,</span>
+<span class="pre">rho_r)</span></tt>, where <tt class="docutils literal"><span class="pre">r_i</span> <span class="pre">=</span> <span class="pre">SUM_i=1^n</span> <span class="pre">r_i</span> <span class="pre">and</span> <span class="pre">rho_r</span> <span class="pre">=</span> <span class="pre">SUM_i=1^n</span>
+<span class="pre">rho_ri</span></tt>.</p>
+<p>Party <tt class="docutils literal"><span class="pre">P_i</span> <span class="pre">sets</span> <span class="pre">[r]_i</span> <span class="pre">=</span> <span class="pre">(r_i,</span> <span class="pre">rho_ri,</span> <span class="pre">C_r)</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.random_triple">
+<tt class="descname">random_triple</tt><big>(</big><em>field</em>, <em>quantity=1</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.random_triple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a list of triples <tt class="docutils literal"><span class="pre">(a,</span> <span class="pre">b,</span> <span class="pre">c)</span></tt> where <tt class="docutils literal"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></tt>.</p>
+<p>The triple <tt class="docutils literal"><span class="pre">(a,</span> <span class="pre">b,</span> <span class="pre">c)</span></tt> is secure in the Fcrs-hybrid model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.secret_share">
+<tt class="descname">secret_share</tt><big>(</big><em>inputters</em>, <em>field</em>, <em>number=None</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.secret_share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share the value <em>number</em> among all the parties using
+additive sharing.</p>
+<p>To share an element <tt class="docutils literal"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">Z_p</span></tt>, choose random <tt class="docutils literal"><span class="pre">x_1,</span> <span class="pre">...,</span>
+<span class="pre">x_n-1</span> <span class="pre">in</span> <span class="pre">Z_p</span></tt>, define <tt class="docutils literal"><span class="pre">x_n</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">-</span> <span class="pre">SUM_i=1^n-1</span> <span class="pre">x_i</span> <span class="pre">mod</span> <span class="pre">p</span></tt>.</p>
+<p>Choose random values <tt class="docutils literal"><span class="pre">rho_x1,</span> <span class="pre">...,</span> <span class="pre">rho_xn</span> <span class="pre">in</span> <span class="pre">(Z_p)^2</span></tt>,
+define <tt class="docutils literal"><span class="pre">rho_x</span> <span class="pre">=</span> <span class="pre">SUM_i=1^n</span> <span class="pre">rho_x,i</span></tt> and <tt class="docutils literal"><span class="pre">C_x</span> <span class="pre">=</span> <span class="pre">Com_ck(x,</span>
+<span class="pre">p_x)</span></tt>.</p>
+<p>Send <tt class="docutils literal"><span class="pre">[x]_i</span> <span class="pre">=</span> <span class="pre">(x_i,</span> <span class="pre">rho_xi,</span> <span class="pre">C_x)</span></tt> to party <tt class="docutils literal"><span class="pre">P_i</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.set_args">
+<tt class="descname">set_args</tt><big>(</big><em>args</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.set_args" title="Permalink to this definition">¶</a></dt>
+<dd>args is a dictionary.</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.shift">
+<tt class="descname">shift</tt><big>(</big><em>inputters</em>, <em>field</em>, <em>number=None</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shift of a share.</p>
+<p>Useful for input.</p>
+<p>Communication cost: ???.</p>
+<p>Assume the parties are given a random share <tt class="docutils literal"><span class="pre">[r]</span></tt> by a
+trusted dealer. Then we denote the following protocol but
+<tt class="docutils literal"><span class="pre">[x]</span> <span class="pre">=</span> <span class="pre">Shift(P_i,</span> <span class="pre">x,</span> <span class="pre">[r])</span></tt>.</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">OpenTo(P_i,</span> <span class="pre">[r])</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">P_i</span> <span class="pre">broadcasts</span> <span class="pre">Delta</span> <span class="pre">=</span> <span class="pre">r</span> <span class="pre">-</span> <span class="pre">x</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">[x]</span> <span class="pre">=</span> <span class="pre">[r]</span> <span class="pre">-</span> <span class="pre">Delta</span></tt></li>
+</ol>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.sub">
+<tt class="descname">sub</tt><big>(</big><em>share_a</em>, <em>share_b</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subtraction of shares.</p>
+<p>Communication cost: none.</p>
+<p>Each party <tt class="docutils literal"><span class="pre">P_i</span></tt> computes:</p>
+<div class="highlight-python"><pre>[z]_i = [x]_i - [y]_i
+      = (x_i - y_i mod p, rho_x,i - rho_y,i mod p, C_x * C_y)</pre>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.triple_gen">
+<tt class="descname">triple_gen</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.triple_gen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a triple <tt class="docutils literal"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c</span></tt> s.t. <tt class="docutils literal"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></tt>.</p>
+<ol class="arabic">
+<li><p class="first">Every party <tt class="docutils literal"><span class="pre">P_i</span></tt> chooses random values <tt class="docutils literal"><span class="pre">a_i,</span> <span class="pre">r_i</span> <span class="pre">in</span> <span class="pre">Z_p</span>
+<span class="pre">X</span> <span class="pre">(Z_p)^2</span></tt>, compute <tt class="docutils literal"><span class="pre">alpha_i</span> <span class="pre">=</span> <span class="pre">Enc_eki(a_i)</span></tt> and <tt class="docutils literal"><span class="pre">Ai</span> <span class="pre">=</span>
+<span class="pre">Com_ck(a_i,</span> <span class="pre">r_i)</span></tt>, and broadcast them.</p>
+</li>
+<li><p class="first">Every party <tt class="docutils literal"><span class="pre">P_j</span></tt> does:</p>
+<ol class="loweralpha">
+<li><p class="first">choose random <tt class="docutils literal"><span class="pre">b_j,</span> <span class="pre">s_j</span> <span class="pre">in</span> <span class="pre">Z_p</span> <span class="pre">X</span> <span class="pre">(Z_p)^2</span></tt>.</p>
+</li>
+<li><p class="first">compute <tt class="docutils literal"><span class="pre">B_j</span> <span class="pre">=</span> <span class="pre">``Com_ck(b_j,</span> <span class="pre">s_j)</span></tt> and broadcast it.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">P_j</span></tt> do towards every other party:</p>
+<blockquote>
+<ol class="lowerroman simple">
+<li>choose random <tt class="docutils literal"><span class="pre">d_ij</span> <span class="pre">in</span> <span class="pre">Z_p^3</span></tt></li>
+<li>compute and send
+<tt class="docutils literal"><span class="pre">gamma_ij</span> <span class="pre">=</span> <span class="pre">alpha_i^b_j</span> <span class="pre">Enc_ek_i(1;1)^d_ij</span></tt> to <tt class="docutils literal"><span class="pre">P_i</span></tt>.</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p class="first">Every party <tt class="docutils literal"><span class="pre">P_i</span></tt> does:</p>
+<ol class="loweralpha simple">
+<li>compute <tt class="docutils literal"><span class="pre">c_i</span> <span class="pre">=</span> <span class="pre">SUM_j</span> <span class="pre">Dec_sk_i(gamma_ij)</span> <span class="pre">-</span> <span class="pre">SUM_j</span> <span class="pre">d_ij</span> <span class="pre">mod</span> <span class="pre">p</span></tt></li>
+<li>pick random <tt class="docutils literal"><span class="pre">t_i</span> <span class="pre">in</span> <span class="pre">(Z_p)^2</span></tt>, compute and
+broadcast <tt class="docutils literal"><span class="pre">C_i</span> <span class="pre">=</span> <span class="pre">Com_ck(c_i,</span> <span class="pre">t_i)</span></tt></li>
+</ol>
+</li>
+<li><p class="first">Everyone computes:
+<tt class="docutils literal"><span class="pre">(A,</span> <span class="pre">B,</span> <span class="pre">C)</span> <span class="pre">=</span> <span class="pre">(PRODUCT_i</span> <span class="pre">A_i,</span> <span class="pre">PRODUCT_i</span> <span class="pre">B_i,</span> <span class="pre">PRODUCT_i</span> <span class="pre">C_i)</span></tt></p>
+</li>
+<li><p class="first">Every party <tt class="docutils literal"><span class="pre">P_i</span></tt> outputs shares <tt class="docutils literal"><span class="pre">[a_i]</span> <span class="pre">=</span> <span class="pre">(a_i,</span> <span class="pre">r_i,</span> <span class="pre">A)</span></tt>,
+<tt class="docutils literal"><span class="pre">[b_i]</span> <span class="pre">=</span> <span class="pre">(b_i,</span> <span class="pre">s_i,</span> <span class="pre">B)</span></tt>, and <tt class="docutils literal"><span class="pre">[c_i]</span> <span class="pre">=</span> <span class="pre">(c_i,</span> <span class="pre">t_i,</span> <span class="pre">C)</span></tt>.</p>
+</li>
+</ol>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.orlandi.OrlandiRuntime.triple_test">
+<tt class="descname">triple_test</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#viff.orlandi.OrlandiRuntime.triple_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a triple <tt class="docutils literal"><span class="pre">(a,</span> <span class="pre">b,</span> <span class="pre">c)</span></tt> where <tt class="docutils literal"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></tt>.</p>
+<p>The triple <tt class="docutils literal"><span class="pre">(a,</span> <span class="pre">b,</span> <span class="pre">c)</span></tt> is checked against the
+triple <tt class="docutils literal"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></tt> and a random value <tt class="docutils literal"><span class="pre">r</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="constants.html"
+                                  title="previous chapter">Constants Module</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="hashbroadcast.html"
+                                  title="next chapter">An Hash Based Broadcast Protocol</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/orlandi.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="hashbroadcast.html" title="An Hash Based Broadcast Protocol"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="constants.html" title="Constants Module"
+             >previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" >Implementation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Dec 14, 2009.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

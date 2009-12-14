@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Planned Work on VIFF &mdash; VIFF v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VIFF v1.0 documentation" href="index.html" />
+    <link rel="next" title="Coding Style" href="coding-style.html" />
+    <link rel="prev" title="The History of VIFF" href="history.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="coding-style.html" title="Coding Style"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="history.html" title="The History of VIFF"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="planned-work-on-viff">
+<h1>Planned Work on VIFF<a class="headerlink" href="#planned-work-on-viff" title="Permalink to this headline">¶</a></h1>
+<p>This document collects the bigger pieces of work we plan to do on
+VIFF &#8212; pieces too big for the bug tracker.</p>
+<div class="section" id="active-security">
+<h2>Active Security<a class="headerlink" href="#active-security" title="Permalink to this headline">¶</a></h2>
+<p>The protocol implemented in <a title="" class="reference external" href="active.html#module-viff.active"><tt class="xref docutils literal"><span class="pre">viff.active</span></tt></a> is (believed to be)
+secure against active adversaries, but only as long as they don&#8217;t
+actually try to cheat! In other words, the players will crash in bad
+ways if malformed data is received or too few shares are received.</p>
+<p>The following points should be addressed:</p>
+<ul>
+<li><p class="first">Error correction. The honest players must tolerate being sent wrong
+shares or no shares at all from the corrupt players.</p>
+<p>This is related to <a class="reference external" href="http://tracker.viff.dk/issue4">Issue4</a>, <a class="reference external" href="http://tracker.viff.dk/issue29">Issue29</a>, and <a class="reference external" href="http://tracker.viff.dk/issue70">Issue70</a>.</p>
+</li>
+<li><p class="first">Byzantine agreement. After the preprocessing phase a Byzantime
+agreement protocol should be run in order to determine if all honest
+players are ready to continue.</p>
+<p>At the moment an honest players simply aborts the protocol if it
+detects any form of cheating &#8212; the &#8220;idea&#8221; being that this will
+make the other honest players crash too, thereby effectively halting
+the protocol.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="covert-adversaries">
+<h2>Covert Adversaries<a class="headerlink" href="#covert-adversaries" title="Permalink to this headline">¶</a></h2>
+<p>Implement an actively secure protocol for a covert adversary and
+threshold <tt class="docutils literal"><span class="pre">t</span> <span class="pre">&lt;</span> <span class="pre">n/2</span></tt>. The goal is to have almost the same complexity
+as for the passive case. Martin Geisler is working on a paper
+describing a solution.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Planned Work on VIFF</a><ul>
+<li><a class="reference external" href="#active-security">Active Security</a></li>
+<li><a class="reference external" href="#covert-adversaries">Covert Adversaries</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="history.html"
+                                  title="previous chapter">The History of VIFF</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="coding-style.html"
+                                  title="next chapter">Coding Style</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/todo.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="coding-style.html" title="Coding Style"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="history.html" title="The History of VIFF"
+             >previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Dec 14, 2009.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

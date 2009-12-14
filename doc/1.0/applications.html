@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Applications &mdash; VIFF v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VIFF v1.0 documentation" href="index.html" />
+    <link rel="next" title="Implementation" href="implementation.html" />
+    <link rel="prev" title="Installation Guide" href="install.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="implementation.html" title="Implementation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation Guide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="applications">
+<h1>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h1>
+<p>VIFF has been used for several small and some larger applications. The
+largest applications are listed below. Please see the <tt class="docutils literal"><span class="pre">apps/</span></tt>
+directory in VIFF for more examples of small programs using VIFF.</p>
+<div class="section" id="nordic-sugar">
+<h2>Nordic Sugar<a class="headerlink" href="#nordic-sugar" title="Permalink to this headline">¶</a></h2>
+<p>In Denmark, the production of sugarbeet is managed by sugarbeet
+contracts. A sugarbeet contract determines the quantity of sugarbeet
+that a farmer is allowed to produce. Traditionally, sugarbeet
+contracts have been traded between individual pairs of farmers. This
+has been done in spite of the fact that trading in a central market
+was known to increase the overall profit. A central market has,
+however, not been possible due to conflicting interests and lack of
+trust between the parties.</p>
+<p>In January 2008 the first large scale secure multiparty computation
+was carried out, effectively solving this problem. This was done by
+the SIMAP research project as reported in &#8220;<a class="reference external" href="http://eprint.iacr.org/2008/068">Multiparty Computation
+Goes Live</a>&#8221; (also published at <a class="reference external" href="http://www.springerlink.com/content/j4772m44r05x0527/">Financial Crypto 2009</a>). In the
+summer of 2009 the same computation was successfully repeated, this
+time using VIFF.</p>
+<p>The computation was a double auction in which the production rights
+for several thousand tons of sugarbeets were traded. During the first
+weeks of the auction, several hundred Danish sugarbeet farmers
+submitted their encrypted bids to a central database. Then the actual
+computation took place between three players:</p>
+<ul class="simple">
+<li>Nordic Sugar, the Danish sugar company</li>
+<li>DKS, the consolidation of Danish sugarbeet farmers</li>
+<li>Partisia, a Danish company specialized in secure multiparty
+solutions</li>
+</ul>
+<p>The computation took about 15 minutes using three laptops on a LAN.
+Most of the computation time was spend converting the encrypted bids
+to secret sharings. The actual multiparty computation took only a
+couple of minutes. As a result, the sugarbeet contracts could be
+traded at an optimal price without any sensitive information being
+disclosed.</p>
+<p>Using secure multiparty computation, trading sugarbeets using this
+kind of auction was possible without finding and paying a trusted
+third party to manage the auction. Such a trusted party would&#8212;if it
+could be found at all&#8212;probably have been quite expensive.</p>
+</div>
+<div class="section" id="distributed-rsa">
+<h2>Distributed RSA<a class="headerlink" href="#distributed-rsa" title="Permalink to this headline">¶</a></h2>
+<p>Atle Mauland from the Norwegian University of Science and Technology
+(NTNU) used VIFF for his Master&#8217;s Thesis titled &#8220;<a class="reference external" href="http://daim.idi.ntnu.no/masteroppgave?id=4699">Realizing Distributed
+RSA using Secure Multiparty Computations</a>&#8220;.</p>
+<p>The private key from a RSA key pair must be kept in a highly secure
+location (to prevent unauthorized persons from stealing it) but
+because we want to use the key, we cannot just write it on a piece of
+paper and store that in a safe.</p>
+<p>This tension between high availability and high security makes a
+distributed solution attractive. Atle Mauland implemented a protocol
+by Boneh and Franklin for generating RSA keys in a distributed
+fashion. The protocol ensures that the private key is never available
+in the clear to any given party and an attacker must break into all
+machines to learn the private key. Meanwhile, the parties can use
+their shares of the private key to securely decrypt messages encrypted
+under the public key.</p>
+<p>Generating a 1024-bit RSA key using VIFF took about 30 minutes on
+average (the time varied between 7 seconds and 2.5 hours). These
+results can likely be improved by using the GMPY library more
+aggressively.</p>
+</div>
+<div class="section" id="distributed-aes">
+<h2>Distributed AES<a class="headerlink" href="#distributed-aes" title="Permalink to this headline">¶</a></h2>
+<p>The Advanced Encryption Standard (Rijndael) block cipher turns out to
+have nice arithmetic properties which makes its computation by
+arithmetic circuits relatively fast. Marcel Keller from the University
+of Aarhus has implemented a multiparty version of AES for VIFF.</p>
+<p>Using the <a title="" class="reference external" href="aes.html#module-viff.aes"><tt class="xref docutils literal"><span class="pre">viff.aes</span></tt></a> module, it is possible to securely
+compute a secret shared AES encrypted ciphertext of a (possibly)
+secret shared plaintext with a (possibly) secret shared key. The
+inputs have to be given either as a list of shares over
+<a title="viff.field.GF256" class="reference external" href="field.html#viff.field.GF256"><tt class="xref docutils literal"><span class="pre">GF256</span></tt></a> (byte-wise) or as a string. The runtime has
+to be able to handle shares over GF256.</p>
+<p>Encrypting a 128-bit block using a 128-bit secret shared AES key takes
+about 2 seconds using three machines. Decryption is not implemented
+yet.</p>
+</div>
+<div class="section" id="secure-voting">
+<h2>Secure Voting<a class="headerlink" href="#secure-voting" title="Permalink to this headline">¶</a></h2>
+<p>Typical Internet voting systems store all votes in a single location.
+Håvard Vegge  from the Norwegian University of Science and Technology
+(NTNU) used VIFF for his Master&#8217;s Thesis titled &#8220;<a class="reference external" href="http://daim.idi.ntnu.no/masteroppgave?id=4559">Realizing Secure
+Multiparty Computations</a>&#8221; to implement a distributed voting system.</p>
+<p>The system removes the single point of failure by storing the votes in
+secret shared form between three servers. The voters will do the
+secret sharing on their own machine, encrypt the shares, and send the
+encrypted shares to a database. Each share is encrypted under the
+public key belonging to the computation server that will do the actual
+multiparty computation.</p>
+<p>This project shows how VIFF can be integrated with many other
+technologies. The user creates a vote on a website programmed in PHP
+and the voting is cast using a Java applet. The applet has the
+responsibility of encrypting the votes for the computation servers.
+When all voters have cast their vote, a XML-RPC message is sent to the
+Python program running on the servers. That program decrypts the
+shares and uses VIFF to compute the result.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Applications</a><ul>
+<li><a class="reference external" href="#nordic-sugar">Nordic Sugar</a></li>
+<li><a class="reference external" href="#distributed-rsa">Distributed RSA</a></li>
+<li><a class="reference external" href="#distributed-aes">Distributed AES</a></li>
+<li><a class="reference external" href="#secure-voting">Secure Voting</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="install.html"
+                                  title="previous chapter">Installation Guide</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="implementation.html"
+                                  title="next chapter">Implementation</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/applications.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="implementation.html" title="Implementation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation Guide"
+             >previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Dec 14, 2009.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>
