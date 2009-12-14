@@ -7,7 +7,7 @@
 .. raw:: html
 
   <div id="links">
-    <a class="green" href="#releases">Download VIFF 0.7.1</a>
+    <a class="green" href="#releases">Download VIFF 1.0</a>
     <a class="blue" href="doc/contact.html">Contact</a>
     <a class="orange" href="doc/index.html">Documentation</a>
     <a class="red" href="http://tracker.viff.dk">Report bugs</a>
@@ -118,6 +118,29 @@ you are unsure) and a snapshot can be downloaded here:
 .. __: http://hg.viff.dk/viff/archive/tip.zip
 
 You can also download a release below:
+
+* **viff-1.0**: tar.bz2__, tar.gz__, zip__, exe__,
+  released on December 14th, 2009.
+
+  .. __: http://viff.dk/release/viff-1.0.tar.bz2
+  .. __: http://viff.dk/release/viff-1.0.tar.gz
+  .. __: http://viff.dk/release/viff-1.0.zip
+  .. __: http://viff.dk/release/viff-1.0.win32.exe
+
+  We are happy to declare that we have reached VIFF version 1.0. The
+  current code is useful, flexible and unlikely to change radically.
+  The largest changes since 0.7.1 are summarized below.
+
+  The central class named Runtime was renamed to PassiveRuntime. All
+  runtime classes now uses the common method names input and output
+  for providing data to and retrieving data from the computation. A
+  multiparty version of AES was added: it allows parties to encrypt a
+  Shamir secret shared message under a secret shared AES key to obtain
+  a secret shared ciphertext.
+
+  See the NEWS__ file for more details.
+
+  .. __: http://hg.viff.dk/viff/raw-file/1.0/NEWS
 
 * **viff-0.7.1**: tar.bz2__, tar.gz__, zip__, exe__,
   released on October 9th 2008.
