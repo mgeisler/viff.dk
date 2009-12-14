@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Program Counters &mdash; VIFF v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VIFF v1.0 documentation" href="index.html" />
+    <link rel="up" title="Background Information" href="background.html" />
+    <link rel="next" title="Preprocessing" href="preprocessing.html" />
+    <link rel="prev" title="Background Information" href="background.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="preprocessing.html" title="Preprocessing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="background.html" title="Background Information"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li>
+          <li><a href="background.html" accesskey="U">Background Information</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="program-counters">
+<span id="id1"></span><h1>Program Counters<a class="headerlink" href="#program-counters" title="Permalink to this headline">¶</a></h1>
+<p>When two players execute a large computation they need to agree with
+each other on a labelling of the individual operations so that they
+know where each received result belongs. In VIFF we call these labels
+<em>program counters</em>. We will try to explain the design of these
+counters in this document and list some ideas for alternative
+implementations.</p>
+<p>The basic setup in VIFF is a set of players who communicate over
+reliable point-to-point links, e.g., TCP or SSL connections. It is
+important to remember that these links guarantee that all transmitted
+messages arrive unchanged at the destination and that they arrive in
+the order sent.</p>
+<div class="section" id="the-naive-solution">
+<h2>The naive solution<a class="headerlink" href="#the-naive-solution" title="Permalink to this headline">¶</a></h2>
+<p>The very first version of VIFF network data was numbered in the most
+naive way possible: using a single counter for each player. This
+worked fine most of the time, but once in a while a test would fail to
+give the correct result. It was only when one ran thousands of
+multiplications that the bug appeared, but its cause was quite simple.
+Consider a program like this where we assume that the shares <em>a</em>, <em>b</em>,
+<em>c</em>, and <em>d</em> have already been correctly defined:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">mul</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Back then, the <tt class="xref docutils literal"><span class="pre">mul()</span></tt> function was implemented like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">share_a</span><span class="p">,</span> <span class="n">share_b</span><span class="p">):</span>
+    <span class="n">inc_pc</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">gather_shares</span><span class="p">([</span><span class="n">share_a</span><span class="p">,</span> <span class="n">share_b</span><span class="p">])</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">shamir_share</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">recombine</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">threshold</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>where <tt class="xref docutils literal"><span class="pre">inc_pc()</span></tt> took care of incrementing the global program
+counter. This simple implementation worked 99.99% of the time with
+three players connected on a LAN, but once in a while it would fail to
+calculate the correct results.</p>
+<p>In our example program, <tt class="xref docutils literal"><span class="pre">shamir_share()</span></tt> is called twice: once
+when <em>a</em> and <em>b</em> are ready, and once when <em>c</em> and <em>d</em> are ready. Most
+of the time <em>a</em> and <em>b</em> are ready first on all players, and so they
+all agree on the program counter value for this call to
+<tt class="xref docutils literal"><span class="pre">shamir_share()</span></tt>. But when we have bad luck, one player sees
+<em>c</em> and <em>d</em> arrive first and so the two calls to <tt class="xref docutils literal"><span class="pre">shamir_share()</span></tt>
+are switched for that player.</p>
+<p>The problem is the asynchronous nature of Twisted: all players agree
+on the execution tree, but depending on the exact timing they might
+reach the nodes in the tree in a different order. The tree looks like
+this in our little example:</p>
+<div class="highlight-none"><div class="highlight"><pre>  x       y
+  |       |
+ mul     mul
+ / \     / \
+a   b   c   d
+</pre></div>
+</div>
+<p>and the two <tt class="xref docutils literal"><span class="pre">mul()</span></tt> can be called in either order since they do
+not depend on each other.</p>
+</div>
+<div class="section" id="the-working-solution">
+<h2>The working solution<a class="headerlink" href="#the-working-solution" title="Permalink to this headline">¶</a></h2>
+<p>The solution used now in VIFF has two ingredients. First, callbacks
+that depend on the program counter (like <cite>func</cite>:shamir_share in our
+example above) are not added with <tt class="xref docutils literal"><span class="pre">addCallback()</span></tt> but instead with
+the special <a title="viff.runtime.Runtime.schedule_callback" class="reference external" href="runtime.html#viff.runtime.Runtime.schedule_callback"><tt class="xref docutils literal"><span class="pre">schedule_callback()</span></tt></a> method.
+This method saves the program counter in effect at the time of the its
+call, and ensures that the saved program counter is temporarily made
+active when the callback is called.</p>
+<p>Secondly, the program counter is a <em>list</em> of counters. This is
+necessary to ensure that we can allocate new fresh counters at any
+point in the execution tree. The execution tree is never explicitly
+constructed in VIFF, so a simple static numbering is not possible.</p>
+<p>The program counter starts at the value <tt class="docutils literal"><span class="pre">[0]</span></tt>. It is changed in two
+cases:</p>
+<ul>
+<li><p class="first">when a callback is scheduled using
+<a title="viff.runtime.Runtime.schedule_callback" class="reference external" href="runtime.html#viff.runtime.Runtime.schedule_callback"><tt class="xref docutils literal"><span class="pre">schedule_callback()</span></tt></a>, a new sub-program
+counter is allocated. A sub-program counter is simply a program
+counter with another digit. Because of the asynchronous network, the
+callback will be invoked at an unknown later time. When invoked, it
+sees the sub-program counter. This ensures that that the parties
+agree on any network traffic produced in the callback.</p>
+<p>When a piece of code like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">cb</span><span class="p">(</span><span class="n">ignored</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;callback:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">program_counter</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">Deferred</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="s">&quot;main:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">program_counter</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">schedule_callback</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">cb</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;main:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">program_counter</span>
+
+<span class="n">d</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>is executed, one will see output like this:</p>
+<div class="highlight-none"><div class="highlight"><pre>main: [0]
+main: [1]
+callback: [0, 0]
+</pre></div>
+</div>
+</li>
+<li><p class="first">some functions depend on a unique program counter. These functions
+simply increase the last digit in the current program counter:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">program_counter</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="alternatives">
+<h2>Alternatives<a class="headerlink" href="#alternatives" title="Permalink to this headline">¶</a></h2>
+<p>We have come up with some alternative solutions, which are detailed
+below. More good ideas are of course welcome!</p>
+<div class="section" id="history-based-labels">
+<h3>History-based labels<a class="headerlink" href="#history-based-labels" title="Permalink to this headline">¶</a></h3>
+<p>An attractive alternative is to label data sent over the net based on
+its <em>history</em>. The idea is that we associate a label <tt class="docutils literal"><span class="pre">H(x)</span></tt> with
+each variable <em>x</em>. The history is defined when new variables are
+defined &#8212; if <tt class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></tt>, then we can set <tt class="docutils literal"><span class="pre">H(x)</span> <span class="pre">=</span> <span class="pre">(&quot;mul&quot;,</span> <span class="pre">H(a),</span>
+<span class="pre">H(b))</span></tt>. To avoid growing the history without bounds we can hash it
+with a cryptographic hash function to bring it down to a fixed size.</p>
+<p>The problem with this idea is that we sometimes need to assign a
+history to a variable that depends on no other variables. An example
+of this is the result of a call to
+<tt class="xref docutils literal"><span class="pre">prss_share()</span></tt> which takes no useful arguments. A
+possible solution would be to add some dummy arguments on which the
+history could be based, even though they wont be used by the method.
+So if you would normally call the function <tt class="xref docutils literal"><span class="pre">hat()</span></tt> with no
+arguments to get a <tt class="xref docutils literal"><span class="pre">Rabbit</span></tt> object, you have to change your
+code from this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">rabbit</span> <span class="o">=</span> <span class="n">hat</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>to this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">rabbit</span> <span class="o">=</span> <span class="n">hat</span><span class="p">(</span><span class="n">dummy</span><span class="o">=</span><span class="nb">locals</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>where the call to <tt class="xref docutils literal"><span class="pre">locals()</span></tt> gives you access to the local
+variables. If the use of <tt class="xref docutils literal"><span class="pre">locals()</span></tt> could be hidden this might be
+an acceptable solution.</p>
+<p>Using the history of the variables has the big advantage that we label
+each piece of transmitted data with just information that is relevant
+to it: namely its position in the tree formed by the calculation and
+<em>not</em> its position in the execution tree formed by the implementation
+in VIFF. This is conceptually cleaner than the current solution.</p>
+</div>
+<div class="section" id="program-transformation">
+<h3>Program transformation<a class="headerlink" href="#program-transformation" title="Permalink to this headline">¶</a></h3>
+<p>Another idea is to solve the labelling problem by having some external
+tool transform the program into one with explicit labels. Each send
+and each receive operation needs to be labelled and the labels much
+match pair-wise.</p>
+<p>It is not entirely clear how this should work in the presence of loops
+and if it is possible to implement this in an easier way than the
+current program counters.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Program Counters</a><ul>
+<li><a class="reference external" href="#the-naive-solution">The naive solution</a></li>
+<li><a class="reference external" href="#the-working-solution">The working solution</a></li>
+<li><a class="reference external" href="#alternatives">Alternatives</a><ul>
+<li><a class="reference external" href="#history-based-labels">History-based labels</a></li>
+<li><a class="reference external" href="#program-transformation">Program transformation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="background.html"
+                                  title="previous chapter">Background Information</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="preprocessing.html"
+                                  title="next chapter">Preprocessing</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/program-counters.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="preprocessing.html" title="Preprocessing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="background.html" title="Background Information"
+             >previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li>
+          <li><a href="background.html" >Background Information</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Dec 14, 2009.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

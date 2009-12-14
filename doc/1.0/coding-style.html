@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Coding Style &mdash; VIFF v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VIFF v1.0 documentation" href="index.html" />
+    <link rel="next" title="Developer’s Guide" href="development.html" />
+    <link rel="prev" title="Planned Work on VIFF" href="todo.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="development.html" title="Developer’s Guide"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="todo.html" title="Planned Work on VIFF"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="coding-style">
+<h1>Coding Style<a class="headerlink" href="#coding-style" title="Permalink to this headline">¶</a></h1>
+<p>The VIFF code tries to follow the coding style laid out in <span class="target" id="index-0"></span><a class="reference external" href="http://www.python.org/dev/peps/pep-0008"><strong>PEP 8</strong></a>,
+which you should read or at least skim over. You can check your code
+against by running the <a class="reference external" href="http://svn.browsershots.org/trunk/devtools/pep8/pep8.py">pep8.py</a> checker.</p>
+<div class="section" id="the-viff-coding-style-in-short">
+<h2>The VIFF Coding Style in Short<a class="headerlink" href="#the-viff-coding-style-in-short" title="Permalink to this headline">¶</a></h2>
+<p>A summary of the rules:</p>
+<ul>
+<li><p class="first">Use four spaces for indention, never tabs.</p>
+<blockquote class="epigraph">
+<p>Thus spake the Lord: <em>Thou shalt indent with four spaces. No
+more, no less. Four shall be the number of spaces thou shalt
+indent, and the number of thy indenting shall be four. Eight
+shalt thou not indent, nor either indent thou two, excepting that
+thou then proceed to four. Tabs are right out.</em></p>
+<p class="attribution">&mdash;Georg Brandl</p>
+</blockquote>
+</li>
+<li><p class="first">Use a single space around binary operators.</p>
+</li>
+<li><p class="first">Name classes using <tt class="docutils literal"><span class="pre">CamelCase</span></tt>.</p>
+</li>
+<li><p class="first">Name variables, function, and methods using lowercase words like
+<tt class="docutils literal"><span class="pre">foo_bar</span></tt>.</p>
+</li>
+<li><p class="first">Write docstrings for your functions and methods. Include test for
+<a class="reference external" href="http://docs.python.org/lib/module-doctest.html">doctest</a> if possible.</p>
+</li>
+<li><p class="first">Try to be consistent.</p>
+</li>
+</ul>
+<p>These rules are there to make the source code more readable for both
+old and new people.</p>
+</div>
+<div class="section" id="the-twisted-coding-style">
+<h2>The Twisted Coding Style<a class="headerlink" href="#the-twisted-coding-style" title="Permalink to this headline">¶</a></h2>
+<p>VIFF uses <a class="reference external" href="http://twistedmatrix.com/">Twisted</a> and their code follows a slightly different coding
+style. Their style is closer to the style used in Java where functions
+and methods are named <tt class="docutils literal"><span class="pre">fooBar</span></tt> instead of <tt class="docutils literal"><span class="pre">foo_bar</span></tt>.</p>
+<p>When writing code which is close to Twisted code, you might want to
+follow that style too. If you subclass a Twisted class to override
+some behavior, you might be forced to follow their style.</p>
+<p>If you have a choice, then you should only use the Twisted style if
+you expect people to call both your code and the Twisted code — if
+people will only call your code, then please follow the standard VIFF
+coding style.</p>
+</div>
+<div class="section" id="hints-for-indexed-variables">
+<h2>Hints for indexed variables<a class="headerlink" href="#hints-for-indexed-variables" title="Permalink to this headline">¶</a></h2>
+<p>When the code is based on a mathematical text, one often sees lots of
+<em>b</em><sub>i</sub> variables. A nice way to deal with those in code is to
+consider them part of a list called <tt class="docutils literal"><span class="pre">b</span></tt> and create it like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rt</span><span class="o">.</span><span class="n">prss_share_random</span><span class="p">(</span><span class="n">Zp</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>It is not a good idea to name the list <tt class="docutils literal"><span class="pre">bi</span></tt> since that is what you
+would want to call the elements in the list:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">bi</span> <span class="o">*</span> <span class="n">bi</span> <span class="k">for</span> <span class="n">bi</span> <span class="ow">in</span> <span class="n">b</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If the index of the current element is needed:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">number</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span> <span class="o">*</span> <span class="n">bi</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">b</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>If you want to work with the list by index, you get the nice
+correspondence between <em>b</em><sub>i</sub> and <tt class="docutils literal"><span class="pre">b[i]</span></tt>:</p>
+<div class="highlight-python"><pre>z = 0
+for in range(k)
+  z += b[i] + x[k - i]</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Coding Style</a><ul>
+<li><a class="reference external" href="#the-viff-coding-style-in-short">The VIFF Coding Style in Short</a></li>
+<li><a class="reference external" href="#the-twisted-coding-style">The Twisted Coding Style</a></li>
+<li><a class="reference external" href="#hints-for-indexed-variables">Hints for indexed variables</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="todo.html"
+                                  title="previous chapter">Planned Work on VIFF</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="development.html"
+                                  title="next chapter">Developer&#8217;s Guide</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/coding-style.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="development.html" title="Developer’s Guide"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="todo.html" title="Planned Work on VIFF"
+             >previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Dec 14, 2009.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

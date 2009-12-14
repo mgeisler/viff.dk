@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Paillier Crypto System &mdash; VIFF v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VIFF v1.0 documentation" href="index.html" />
+    <link rel="up" title="Implementation" href="implementation.html" />
+    <link rel="next" title="Comparison protocols" href="comparison.html" />
+    <link rel="prev" title="A Thresholdbased Actively Secure Runtime" href="active.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="comparison.html" title="Comparison protocols"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="active.html" title="A Thresholdbased Actively Secure Runtime"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" accesskey="U">Implementation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-viff.paillier">
+<h1>Paillier Crypto System<a class="headerlink" href="#module-viff.paillier" title="Permalink to this headline">¶</a></h1>
+<p>Paillier crypto system and two-party runtime.</p>
+<p>The <a title="viff.paillier.PaillierRuntime" class="reference internal" href="#viff.paillier.PaillierRuntime"><tt class="xref docutils literal"><span class="pre">PaillierRuntime</span></tt></a> is a special two-player runtime based on
+the homomorphic Paillier crypto system.</p>
+<p>From the paper &#8220;Public-Key Cryptosystems Based on Composite Degree
+Residuosity Classes&#8221; by Pascal Paillier in EUROCRYPT 1999, 223-238.</p>
+<dl class="class">
+<dt id="viff.paillier.PaillierRuntime">
+<em class="property">class </em><tt class="descclassname">viff.paillier.</tt><tt class="descname">PaillierRuntime</tt><big>(</big><em>player</em>, <em>threshold</em>, <em>options=None</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two-player runtime based on the Paillier crypto system.</p>
+<p class="graphviz">
+<img src="_images/inheritance-434f28dafb9bd41fb4be5acd6fbeca28b43ac06f.png" alt="digraph inheritancef014486c04 {
+rankdir=LR;
+size=&quot;8.0, 12.0&quot;;
+  &quot;Runtime&quot; [style=&quot;setlinewidth(0.5)&quot;,URL=&quot;runtime.html#viff.runtime.Runtime&quot;,fontname=Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans,height=0.25,shape=box,fontsize=10];
+  &quot;PaillierRuntime&quot; [style=&quot;setlinewidth(0.5)&quot;,URL=&quot;#viff.paillier.PaillierRuntime&quot;,fontname=Vera Sans, DejaVu Sans, Liberation Sans, Arial, Helvetica, sans,height=0.25,shape=box,fontsize=10];
+  &quot;Runtime&quot; -&gt; &quot;PaillierRuntime&quot; [arrowsize=0.5,style=&quot;setlinewidth(0.5)&quot;];
+}" usemap="#inheritancef014486c04" class="inheritance"/>
+<map id="inheritancef014486c04" name="inheritancef014486c04">
+<area shape="rect" href="runtime.html#viff.runtime.Runtime" title="Runtime" alt="" coords="7,5,79,32"/>
+<area shape="rect" href="#viff.paillier.PaillierRuntime" title="PaillierRuntime" alt="" coords="129,5,241,32"/>
+</map>
+</p>
+<dl class="method">
+<dt id="viff.paillier.PaillierRuntime.add">
+<tt class="descname">add</tt><big>(</big><em>share_a</em>, <em>share_b</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Addition of shares.</p>
+<p>Communication cost: none.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.paillier.PaillierRuntime.input">
+<tt class="descname">input</tt><big>(</big><em>inputters</em>, <em>field</em>, <em>number=None</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime.input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input <em>number</em> to the computation.</p>
+<p>The input is shared using the <a title="viff.paillier.PaillierRuntime.share" class="reference internal" href="#viff.paillier.PaillierRuntime.share"><tt class="xref docutils literal"><span class="pre">share()</span></tt></a> method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="viff.paillier.PaillierRuntime.mul">
+<tt class="descname">mul</tt><big>(</big><em>share_a</em>, <em>share_b</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime.mul" title="Permalink to this definition">¶</a></dt>
+<dd>Multiplication of shares.</dd></dl>
+
+<dl class="method">
+<dt id="viff.paillier.PaillierRuntime.open">
+<tt class="descname">open</tt><big>(</big><em>share</em>, <em>receivers=None</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime.open" title="Permalink to this definition">¶</a></dt>
+<dd>Open <em>share</em> to <em>receivers</em> (defaults to both players).</dd></dl>
+
+<dl class="method">
+<dt id="viff.paillier.PaillierRuntime.prss_share_random">
+<tt class="descname">prss_share_random</tt><big>(</big><em>field</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime.prss_share_random" title="Permalink to this definition">¶</a></dt>
+<dd>Generate a share of a uniformly random element.</dd></dl>
+
+<dl class="method">
+<dt id="viff.paillier.PaillierRuntime.share">
+<tt class="descname">share</tt><big>(</big><em>inputters</em>, <em>field</em>, <em>number=None</em><big>)</big><a class="headerlink" href="#viff.paillier.PaillierRuntime.share" title="Permalink to this definition">¶</a></dt>
+<dd>Share <em>number</em> additively.</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="viff.paillier.encrypt">
+<tt class="descclassname">viff.paillier.</tt><tt class="descname">encrypt</tt><big>(</big><em>m</em>, <em>pubkey</em><big>)</big><a class="headerlink" href="#viff.paillier.encrypt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="viff.paillier.decrypt">
+<tt class="descclassname">viff.paillier.</tt><tt class="descname">decrypt</tt><big>(</big><em>c</em>, <em>seckey</em><big>)</big><a class="headerlink" href="#viff.paillier.decrypt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="active.html"
+                                  title="previous chapter">A Thresholdbased Actively Secure Runtime</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="comparison.html"
+                                  title="next chapter">Comparison protocols</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/paillier.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="comparison.html" title="Comparison protocols"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="active.html" title="A Thresholdbased Actively Secure Runtime"
+             >previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li>
+          <li><a href="implementation.html" >Implementation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Dec 14, 2009.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

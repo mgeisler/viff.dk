@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation Guide &mdash; VIFF v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="VIFF v1.0 documentation" href="index.html" />
+    <link rel="next" title="Applications" href="applications.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="applications.html" title="Applications"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Overview"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation-guide">
+<h1>Installation Guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline">¶</a></h1>
+<p>VIFF is written in Python and uses the Twisted framework for
+asynchronous communication, (optionally) OpenSSL and PyOpenSSL for
+secure communication, and GMPY for fast bignum arithmetic. You can
+find these components here:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Python:</th><td class="field-body"><a class="reference external" href="http://python.org/">http://python.org/</a></td>
+</tr>
+<tr class="field"><th class="field-name">Twisted:</th><td class="field-body"><a class="reference external" href="http://twistedmatrix.com/">http://twistedmatrix.com/</a></td>
+</tr>
+<tr class="field"><th class="field-name">OpenSSL:</th><td class="field-body"><a class="reference external" href="http://www.openssl.org/">http://www.openssl.org/</a></td>
+</tr>
+<tr class="field"><th class="field-name">PyOpenSSL:</th><td class="field-body"><a class="reference external" href="http://pyopenssl.sourceforge.net/">http://pyopenssl.sourceforge.net/</a></td>
+</tr>
+<tr class="field"><th class="field-name">GMPY:</th><td class="field-body"><a class="reference external" href="http://code.google.com/p/gmpy/">http://code.google.com/p/gmpy/</a></td>
+</tr>
+</tbody>
+</table>
+<p>VIFF has been successfully tested with the following versions:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Python:</th><td class="field-body">2.4.1 &#8211; 2.6.0 (3.0 is not yet supported)</td>
+</tr>
+<tr class="field"><th class="field-name">Twisted:</th><td class="field-body">2.5 &#8211; 8.1.0</td>
+</tr>
+<tr class="field"><th class="field-name">OpenSSL:</th><td class="field-body">0.9.8g</td>
+</tr>
+<tr class="field"><th class="field-name">PyOpenSSL:</th><td class="field-body">0.7 &#8211; 0.8</td>
+</tr>
+<tr class="field"><th class="field-name">GMPY:</th><td class="field-body">1.0alpha &#8211; 1.0.3</td>
+</tr>
+</tbody>
+</table>
+<p>Please <a class="reference external" href="mailto:viff-devel&#37;&#52;&#48;viff&#46;dk">report back</a> if you find that VIFF works with other versions
+than the ones listed here.</p>
+<p>Below you will find installation instructions for the different
+platforms on which we <a class="reference external" href="http://buildbot.viff.dk/">test VIFF</a>.</p>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<p>This describes the installation procedure for VIFF on Windows. It has
+been tested and verified on Windows XP Professional 2002 SP2 and
+Windows Vista Ultimate SP1.</p>
+<ol class="arabic simple">
+<li>Download and install <a class="reference external" href="http://python.org/">Python</a>.</li>
+<li>Include the path to your Python installation (e.g. <tt class="docutils literal"><span class="pre">C:\Python25\</span></tt>)
+in the <tt class="docutils literal"><span class="pre">PATH</span></tt> system environment variable. One way to edit this
+environment variable is by right-clicking My Computer in the Start
+menu, selecting Properties, Advanced, and then pressing the
+Environment Variables button.</li>
+<li>Download and install <a class="reference external" href="http://twistedmatrix.com/">Twisted</a>.</li>
+<li>Download and install <a class="reference external" href="http://code.google.com/p/gmpy/">GMPY</a>. If you are using Vista, right-click on
+the installer and choose the option to run as administrator.</li>
+<li>Download and execute an <a class="reference external" href="http://www.slproweb.com/products/Win32OpenSSL.html">OpenSSL Win32 Installer</a>. Problems have
+been reported when using the latest release, 0.9.8h, so currently
+0.9.8g is recommended.</li>
+<li>Download and install <a class="reference external" href="http://pyopenssl.sourceforge.net/">PyOpenSSL</a>. Again, run the installer as
+administrator if you are using Vista.</li>
+<li>Download and install <a class="reference external" href="http://viff.dk/">VIFF</a>. Note that if you are using the
+installer on Vista, you will again need to run it as an
+administrator.</li>
+<li>Proceed to <a class="reference internal" href="#testing">testing</a>.</li>
+</ol>
+</div>
+<div class="section" id="mac-os-x">
+<h2>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h2>
+<p>This describes installation of VIFF on Max OS X 10.5.</p>
+<ol class="arabic">
+<li><p class="first">Download and install the full <a class="reference external" href="http://www.pythonmac.org">MacPython</a> version 2.5 (the
+Python-installation which comes with Mac OS X is not entirely
+up-to-date).</p>
+</li>
+<li><p class="first">Download and Install <a class="reference external" href="http://twistedmatrix.com/">Twisted</a> from source. There is an installer
+for Mac OS X 10.5 which can be used if you use Mac OS X
+10.5. Notice again that Mac OS X comes with a pre-installed version
+of Twisted, but this is not the full Twisted installation. After
+installation change your <tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt> (in your
+<tt class="docutils literal"><span class="pre">~/.bash_profile</span></tt>) to:</p>
+<div class="highlight-python"><pre>export PYTHONPATH="/Library/Python/2.5/site-packages:${PYTHONPATH}"
+export PYTHONPATH=$PYTHONPATH:$HOME/opt/lib/python</pre>
+</div>
+</li>
+<li><p class="first">Optionally: download <a class="reference external" href="http://pyopenssl.sourceforge.net/">PyOpenSSL</a> and tell us if it works!</p>
+</li>
+<li><p class="first">Download and install <a class="reference external" href="http://gmplib.org/">GMP</a>. You can preferably use the Macports or
+Fink package utilities. If you download the other dependencies from
+either Macports or Fink, they might depend on Python 2.4 which is
+not preferable, you should use Python 2.5, unless you have good
+reasons not to.</p>
+</li>
+<li><p class="first">Download and install <a class="reference external" href="http://code.google.com/p/gmpy/">GMPY</a> following the instructions in
+<tt class="docutils literal"><span class="pre">gmpy-1.02.macosx.README.txt</span></tt> (under Downloads).</p>
+</li>
+<li><p class="first">Install VIFF <a class="reference internal" href="#installing-from-source">from source</a>. If you prefer you can just
+install it in site-packages, it makes no difference.</p>
+<p>For developers, either add VIFF to the PYTHONPATH:</p>
+<div class="highlight-python"><pre>export PYTHONPATH=$PYTHONPATH:$HOME/path-to-viff/viff</pre>
+</div>
+<p>or create a symbolic link from the site-packages directory to the
+VIFF Python files (<tt class="docutils literal"><span class="pre">viff/viff/</span></tt>), as otherwise you need to
+re-install VIFF each time the project is modified.</p>
+</li>
+<li><p class="first">Proceed to <a class="reference internal" href="#testing">testing</a>.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="gnu-linux">
+<h2>GNU/Linux<a class="headerlink" href="#gnu-linux" title="Permalink to this headline">¶</a></h2>
+<p>VIFF was originally developed on GNU/Linux and is well supported
+there. When installing the VIFF dependencies you either have the
+option of using your <a class="reference internal" href="#using-a-package-manager">package manager</a> or to install from source. VIFF
+itself must be installed <a class="reference internal" href="#installing-from-source">from source</a>.</p>
+<div class="section" id="using-a-package-manager">
+<h3>Using a Package Manager<a class="headerlink" href="#using-a-package-manager" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Debian</dt>
+<dd><p class="first">You can install all dependencies by the command:</p>
+<div class="last highlight-python"><pre>aptitude install python-twisted-core python-pyopenssl python-gmpy</pre>
+</div>
+</dd>
+<dt>Ubuntu</dt>
+<dd>Install the <tt class="docutils literal"><span class="pre">python-twisted-core</span></tt> and <tt class="docutils literal"><span class="pre">python-gmpy</span></tt> using
+Synaptic package manager. This will automatically pull in
+<tt class="docutils literal"><span class="pre">python-pyopenssl</span></tt> as a dependency.</dd>
+<dt>Gentoo</dt>
+<dd><p class="first">The following command will install the dependencies:</p>
+<div class="highlight-python"><pre>emerge -av twisted gmpy</pre>
+</div>
+<p class="last">Make sure to have the <tt class="docutils literal"><span class="pre">crypt</span></tt> use flag enabled, otherwise SSL
+might not be available.</p>
+</dd>
+</dl>
+<p>If you know how to install using other package managers, please <a class="reference external" href="mailto:viff-devel&#37;&#52;&#48;viff&#46;dk">let
+us know</a>.</p>
+<p>VIFF itself is not yet packaged for any distribution, so you will have
+to install it from source as described below.</p>
+</div>
+<div class="section" id="installing-from-source">
+<h3>Installing from Source<a class="headerlink" href="#installing-from-source" title="Permalink to this headline">¶</a></h3>
+<p>If you do not have permission to use the package manager or simply
+prefer to install from source, then (assuming that Python is already
+installed) one can easily install VIFF and its dependencies by
+downloading and unpacking each of them and executing:</p>
+<div class="highlight-python"><pre>python setup.py install --home=$HOME/opt</pre>
+</div>
+<p>That will install everything under the given prefix. With the above
+command the Python modules are installed into:</p>
+<div class="highlight-python"><pre>$HOME/opt/lib/python</pre>
+</div>
+<p>You should add the directory to the <tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt> environment
+variable. Bash users can normally do this by adding:</p>
+<div class="highlight-python"><pre>export PYTHONPATH=$PYTHONPATH:$HOME/opt/lib/python</pre>
+</div>
+<p>to their <tt class="docutils literal"><span class="pre">~/.bash_profile</span></tt> file, creating it if it is not already
+there. Consult the documentation for your shell to learn how
+environment variables are set.</p>
+<p>If you are doing development on VIFF, you might prefer to make a
+symlink from the <tt class="docutils literal"><span class="pre">viff</span></tt> folder in your repository to a place in your
+<tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt>, like this:</p>
+<div class="highlight-python"><pre>sudo ln -s ~/viff/viff /usr/lib/python2.5/site-packages/viff</pre>
+</div>
+</div>
+</div>
+<div class="section" id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<p>To verify the installation, try out one of the applications. We will
+run the millionaires example with three players and a threshold of
+one. For this test, we will let all players run on localhost: Player 1
+will run on port 9001, player 2 on port 9002, and player 3 on port
+9003. The test is done on Windows, but it works the same on the other
+platforms. Do the following:</p>
+<ol class="arabic">
+<li><p class="first">Go to the <tt class="docutils literal"><span class="pre">viff/apps/</span></tt> directory and generate the needed
+configuration files by entering:</p>
+<div class="highlight-python"><pre>python generate-config-files.py -n 3 -t 1 \
+localhost:9001 localhost:9002 localhost:9003</pre>
+</div>
+<p>The backslash indicates that both lines should be typed as a single
+line in the terminal.</p>
+</li>
+<li><p class="first">Open three separate command prompts and go to the <tt class="docutils literal"><span class="pre">viff/apps/</span></tt>
+directory in each. In the first, type:</p>
+<div class="highlight-python"><pre>python millionaires.py --no-ssl player-1.ini</pre>
+</div>
+<p>in the second, type:</p>
+<div class="highlight-python"><pre>python millionaires.py --no-ssl player-2.ini</pre>
+</div>
+<p>and in the last, type:</p>
+<div class="highlight-python"><pre>python millionaires.py --no-ssl player-3.ini</pre>
+</div>
+<p>The order in which you start the players does not matter. They
+should find each other within a couple of seconds after you have
+started the final player.</p>
+<p>If the installation works, you should see something like this from
+e.g. player 3:</p>
+<div class="highlight-python"><pre>C:\viff\apps&gt; python millionaires.py --no-ssl player-3.ini
+Seeding random generator with random seed 7416
+Not using SSL
+I am Millionaire 3 and I am worth 20 millions.
+From poorest to richest:
+  Millionaire 2
+  Millionaire 3 (20 millions)
+  Millionaire 1
+Initiating shutdown sequence.</pre>
+</div>
+<p>If something went wrong, then please <a class="reference external" href="http://tracker.viff.dk/">file a bug report</a> or report
+it on the <a class="reference external" href="mailto:viff-devel&#37;&#52;&#48;viff&#46;dk">VIFF mailing list</a>. This will help us improve VIFF.</p>
+<p>If things worked as they should, then you are <em>also</em> very welcome
+to send a mail saying so to <a class="reference external" href="mailto:viff-devel&#37;&#52;&#48;viff&#46;dk">VIFF mailing list</a>! We would love to
+hear your feedback.</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Installation Guide</a><ul>
+<li><a class="reference external" href="#windows">Windows</a></li>
+<li><a class="reference external" href="#mac-os-x">Mac OS X</a></li>
+<li><a class="reference external" href="#gnu-linux">GNU/Linux</a><ul>
+<li><a class="reference external" href="#using-a-package-manager">Using a Package Manager</a></li>
+<li><a class="reference external" href="#installing-from-source">Installing from Source</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#testing">Testing</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="overview.html"
+                                  title="previous chapter">Overview</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="applications.html"
+                                  title="next chapter">Applications</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/install.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="applications.html" title="Applications"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Overview"
+             >previous</a> |</li>
+        <li><a href="index.html">VIFF v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008, VIFF Development Team.
+      Last updated on Dec 14, 2009.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>
